@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// import React from 'react'
+// import PropTypes from 'prop-types'
 
-const EventExpanded = ({ title, type, permission, date, start, end, description, speakers, pub, priv, related }) => {
-  return (
-    <div>EventExpanded</div>
-  )
-}
+// const EventExpanded = ({ title, type, permission, date, start, end, description, speakers, pub, priv, related }) => {
+//   return (
+//     <div>EventExpanded</div>
+//   )
+// }
 
-EventExpanded.propTypes = {}
+// EventExpanded.propTypes = {}
 
-export default EventExpanded
+// export default EventExpanded

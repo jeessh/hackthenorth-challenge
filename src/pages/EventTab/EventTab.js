@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
 import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
 import "./index.css";
 const EventTab = () => {
-  const { loading, error, data } = useQuery(GET_EVENTS);
+  const { data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
 
   //After rendering, set filteres for data events

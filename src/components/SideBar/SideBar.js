@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react'
 import './index.css'
-import { click } from '@testing-library/user-event/dist/click'
 
 const SideBar = () => {
     // 1. home button at top

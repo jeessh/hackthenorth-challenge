@@ -2,21 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-import {yellowStar} from "../../constants/star.js";
-
 const EventCard = ({
   title,
   type,
   date,
   start,
-    end,
-    description,
-    speakers,
-    pub,
-    priv,
-    related,
-    permission
-
+  // end,
+  // description,
+  // speakers,
+  // pub,
+  // priv,
+  // related,
+  // permission
 }) => {
   //use openai to autogenerate an image
 
@@ -26,7 +23,7 @@ const EventCard = ({
     } else if (type === "workshop") {
       return "Workshop 🛠️";
     } else {
-        return "Activity 🎉";
+      return "Activity 🎉";
     }
   };
 
@@ -34,12 +31,13 @@ const EventCard = ({
     <div className="cardWrapper">
       <div className="cardTags">
         <h3 className="eventType">{formatType(type)}</h3>
-
       </div>
       <div className="cardImage" />
       <div className="cardText">
         <h1>{title}</h1>
-        <h2>{date} {start}</h2>
+        <h2>
+          {date} {start}
+        </h2>
       </div>
     </div>
   );
