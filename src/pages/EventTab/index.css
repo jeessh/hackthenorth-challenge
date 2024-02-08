@@ -1,0 +1,11 @@
+.viewContainer{
+    display: flex;
+    background-color: rgb(34, 32, 40);
+}
+
+.eventContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 100px;
+    gap: 20px;
+}

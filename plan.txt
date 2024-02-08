@@ -1,0 +1,28 @@
+FEATURES
+- parallax in the background
+- spinning gear to open sidebar search
+- searching feature
+    - searching through db names
+    - returns top 3 picks of similarity, based on string input
+- tab for favourited events
+
+EXPANDED CARD
+- expanded card has blurred background
+- only blocks out events, not the sidebar
+
+CARD
+- type (workshop/act/tech) at top right corner with emoji
+- filler image (maybe chatgpt)
+- name, time, date in bottom bar
+- add a star icon to set a reminder to add
+- hardcode one to send 3 seconds after
+
+LOGIN
+- select between Hacker and Visitor (MUST)
+- if chose login and successful, localstorage
+    - give 2 rounds of preferences
+    - give recommended shit based on openai suggestions
+    - open ai will reorder them
+
+
+- change shadow colour on hover (to match type)
