@@ -7,14 +7,17 @@ const SideBar = () => {
     // filter options
     // colour switching
     // 
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState(true);
     const clickRef = useRef();
+    const fillerRef = useRef();
     const handleClick = () => {
         if(!click){
             clickRef.current.classList.add("closeSide");
+            fillerRef.current.classList.add("closeFiller");
             setClick(true);
         } else {
             clickRef.current.classList.remove("closeSide");
+            fillerRef.current.classList.remove("closeFiller");
             setClick(false);
         }
     }
@@ -23,8 +26,9 @@ const SideBar = () => {
         <div className='gear' onClick={handleClick}>
             GEAR
         </div>
-        <div className='sideContainer' ref={clickRef}>
-            hey
+        <div className='filler closeFiller' ref={fillerRef}/>
+        <div className='sideContainer closeSide' ref={clickRef}>
+            hi
        </div>
     </>
   )

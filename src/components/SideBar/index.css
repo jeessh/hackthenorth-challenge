@@ -1,12 +1,25 @@
 .sideContainer {
-    width:50%;
+    position: fixed;
+    width:30%;
     height: 100vh;
     /* background-color: rgb(46, 42, 52); */
     background-color: rgb(44, 93, 93);
     transition: 0.25s ease-in;
     z-index: 100;
 }
+.filler {
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    transition: 0.25s ease-in;
+    z-index: 100;
+}
+
 .closeSide {
+    transform:translateX(-100%);
+    transition: 0.2s ease-out;
+}
+.closeFiller {
     width: 0;
     transition: 0.2s ease-out;
 }

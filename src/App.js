@@ -6,8 +6,13 @@ import {
   HttpLink,
   from,
 } from "@apollo/client";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
 import EventTab from "./pages/EventTab/EventTab";
+import Landing from "./pages/Landing/Landing";
+import Login from "./pages/Login/Login";
+
+import "./styles/globals.css"
 
 const link = from([
   new HttpLink({ uri: "https://api.hackthenorth.com/v3/graphql" }),
@@ -20,9 +25,16 @@ const client = new ApolloClient({
 
 const App = () => {
   return (
-    <ApolloProvider client={client}>
-      <EventTab />
-    </ApolloProvider>
+    <BrowserRouter>
+        <ApolloProvider client={client}>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/events" element={<EventTab />} />
+        <Route path="*" element={<Navigate to="/"/>}/>
+      </Routes>
+      </ApolloProvider>
+    </BrowserRouter>
   );
 };
 

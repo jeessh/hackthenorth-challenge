@@ -16,7 +16,6 @@ const EventCard = ({
   // permission
 }) => {
   //use openai to autogenerate an image
-
   const formatType = (type) => {
     if (type === "tech_talk") {
       return "Tech Talk 🎙️";
@@ -27,10 +26,13 @@ const EventCard = ({
     }
   };
 
+  const typeCol = type === "tech_talk" ? "Tech" 
+                : type === "workshop" ? "Work" : "Act";
+
   return (
     <div className="cardWrapper">
       <div className="cardTags">
-        <h3 className="eventType">{formatType(type)}</h3>
+        <h3 className={'eventType' + typeCol}>{formatType(type)}</h3>
       </div>
       <div className="cardImage" />
       <div className="cardText">
