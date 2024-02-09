@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import './index.css'
 
 const SideBar = () => {
@@ -7,6 +8,7 @@ const SideBar = () => {
     // filter options
     // colour switching
     // 
+    const navigate = useNavigate();
     const [click, setClick] = useState(true);
     const clickRef = useRef();
     const fillerRef = useRef();
@@ -21,6 +23,10 @@ const SideBar = () => {
             setClick(false);
         }
     }
+    const handleLogout = () => {
+        localStorage.setItem('loggedIn', JSON.stringify(false));
+        navigate('/');
+    }
   return (
     <>
         <div className='gear' onClick={handleClick}>
@@ -28,7 +34,9 @@ const SideBar = () => {
         </div>
         <div className='filler closeFiller' ref={fillerRef}/>
         <div className='sideContainer closeSide' ref={clickRef}>
-            hi
+            <div onClick={handleLogout}>
+                LOGOUT
+            </div>
        </div>
     </>
   )

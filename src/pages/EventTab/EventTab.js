@@ -5,22 +5,28 @@ import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
 import "./index.css";
+
 const EventTab = () => {
   const { data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   //After rendering, set filteres for data events
   useEffect(() => {
+    const logged = JSON.parse(localStorage.getItem("loggedIn"));
+    console.log(logged);
+    if (logged) {
+      setLoggedIn(true);
+    }
     //.filter((event) => event.permission === 'public')
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
-      console.log(output);
       output.sort((eva, evb) => eva.start_time - evb.start_time);
-      console.log(output);
+      output = !loggedIn ? output.filter((event) => event.permission === "public") : output;
       setEvents(output);
     }
-  }, [data]);
+  }, [data, loggedIn]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);

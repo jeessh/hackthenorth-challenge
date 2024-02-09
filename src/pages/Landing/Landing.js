@@ -9,6 +9,7 @@ const Landing = () => {
   const [LoggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     const logged = JSON.parse(localStorage.getItem('loggedIn'));
+    console.log(logged);
     if (logged) {
       setLoggedIn(true);
     }
