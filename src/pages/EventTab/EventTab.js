@@ -4,21 +4,23 @@ import { GET_EVENTS } from "../../GraphQL/apiQueries";
 import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
+import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import "./index.css";
 
 const EventTab = () => {
   const { data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
+  const [selectEvent, setSelectEvent] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   //After rendering, set filteres for data events
   useEffect(() => {
     const logged = JSON.parse(localStorage.getItem("loggedIn"));
-    console.log(logged);
+    console.log("Logged in: " + logged);
     if (logged) {
       setLoggedIn(true);
     }
-    //.filter((event) => event.permission === 'public')
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
@@ -26,7 +28,7 @@ const EventTab = () => {
       output = !loggedIn ? output.filter((event) => event.permission === "public") : output;
       setEvents(output);
     }
-  }, [data, loggedIn]);
+  }, [data, loggedIn, selectEvent]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
@@ -40,9 +42,37 @@ const EventTab = () => {
     return converted;
   };
 
+  const handleExpand = (event) => {
+    setSelectEvent(event);
+    console.log(event);
+  };
+
+  const handleSideBar = () => {
+    setSidebarOpen(!sidebarOpen);
+  }
+
+  const handleCloseExpand = () => {
+    console.log(selectEvent);
+    setSelectEvent(null);
+  }
+
+  const handleSearch = (event) => {
+    let search = event.target.value;
+    let output = data.sampleEvents.filter((event) => event.name.toLowerCase().includes(search.toLowerCase()));
+    setEvents(output);
+  }
+
   return (
     <div className="viewContainer">
-      <SideBar />
+      <div>
+          <input 
+          type="search" 
+          placeholder="Search Events"
+          onChange={handleSearch}
+          />
+      </div>
+      <SideBar onClick={() => handleSideBar()}/>
+      <div>
       <div className="eventContainer">
         {events.map((event) => (
           <EventCard
@@ -55,13 +85,34 @@ const EventTab = () => {
             end={convertToTime(event.end_time)}
             speakers={event.speakers.map((speaker) => speaker.name)}
             related={event.related_events}
+            pub={event.public_url}
+            priv={event.private_url}
+            description={event.description}
+            onClick={() => handleExpand(event)} // Modify this line
           />
         ))}
       </div>
+      { selectEvent !== null ?  
+          <EventExpanded 
+          title={selectEvent.name} 
+          type={selectEvent.event_type}
+          date={getDate(selectEvent.start_time)}
+          start={convertToTime(selectEvent.start_time)}
+          end={convertToTime(selectEvent.end_time)}
+          description={selectEvent.description}
+          speakers={selectEvent.speakers.map((speaker) => speaker.name)}
+          pub={selectEvent.public_url}
+          priv={selectEvent.private_url}
+          related={selectEvent.related_events}
+          permission={selectEvent.permission}
+          sidebarOpen={sidebarOpen}
+          onClick={handleCloseExpand}
+          /> 
+          : null}
+      </div>
     </div>
   );
-};
-
+        };
 // query {
 //   sampleEvents {
 //     id

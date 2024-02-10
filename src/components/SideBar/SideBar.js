@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './index.css'
 
-const SideBar = () => {
+const SideBar = ({ onClick }) => {
     // 1. home button at top
     // search
     // filter options
@@ -13,6 +14,7 @@ const SideBar = () => {
     const clickRef = useRef();
     const fillerRef = useRef();
     const handleClick = () => {
+        onClick();
         if(!click){
             clickRef.current.classList.add("closeSide");
             fillerRef.current.classList.add("closeFiller");
@@ -27,6 +29,9 @@ const SideBar = () => {
         localStorage.setItem('loggedIn', JSON.stringify(false));
         navigate('/');
     }
+
+
+
   return (
     <>
         <div className='gear' onClick={handleClick}>
@@ -34,6 +39,7 @@ const SideBar = () => {
         </div>
         <div className='filler closeFiller' ref={fillerRef}/>
         <div className='sideContainer closeSide' ref={clickRef}>
+
             <div onClick={handleLogout}>
                 LOGOUT
             </div>
@@ -41,5 +47,9 @@ const SideBar = () => {
     </>
   )
 }
+
+SideBar.propTypes = {
+    onClick: PropTypes.func.isRequired
+};
 
 export default SideBar
