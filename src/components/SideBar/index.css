@@ -1,18 +1,18 @@
 .sideContainer {
   position: fixed;
-  width: 30%;
+  width: 25%;
   height: 100vh;
   /* background-color: rgb(46, 42, 52); */
   background-color: rgb(108, 42, 104);
-  transition: 0.4s ease-in;
+  transition: 0.5s ease-in;
   z-index: 1;
   top: 0;
 }
 .filler {
   position: relative;
-  width: 50%;
+  width: 35%;
   height: 100vh;
-  transition: 0.4s ease-in;
+  transition: 0.5s ease-in;
 }
 
 .closeSide {
@@ -27,18 +27,25 @@
 .gear {
   z-index: 100;
   position: absolute;
-  left: 30%;
+  left: 25%;
   width: 50px;
   top: 0;
   padding: 20px;
   color: rgb(220, 220, 220);
   font-size: 1.5rem;
   cursor: pointer;
-  transition: 0.4s ease-in;
+  transition: 0.5s ease-in;
 }
 
 .closeGear {
   left: 0;
   transition: 0.5s ease-out;
-  transform: rotate(-360deg);
+  transform: rotate(-135deg);
+}
+
+.gear:hover {
+  transform: scale(1.1), rotate(0);
+}
+.closeGear:hover {
+  transform: scale(1.1), rotate(0);
 }

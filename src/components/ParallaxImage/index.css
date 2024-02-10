@@ -1,0 +1,18 @@
+.parallaxContainerLeft {
+  position: absolute;
+  width: 70vw;
+  z-index: 0;
+  left: -35vw;
+  filter: drop-shadow(0px 5px 35px rgba(0, 0, 0, 0.75));
+}
+.parallaxContainerRight {
+  position: absolute;
+  width: 70vw;
+  z-index: 0;
+  right: -35vw;
+  filter: drop-shadow(0px 5px 35px rgba(0, 0, 0, 0.75));
+}
+
+.parallax {
+    width: 100%;
+}

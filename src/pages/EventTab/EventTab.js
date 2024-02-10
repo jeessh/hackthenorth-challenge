@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
+import setting from "../../assets/setting.png";
 import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
+import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
 import "./index.css";
 
 const EventTab = () => {
@@ -13,7 +15,10 @@ const EventTab = () => {
   const [selectEvent, setSelectEvent] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [advancedSearch, setAdvancedSearch] = useState(false);
   const searchRef = useRef();
+  const arrowRef = useRef();
 
   //After rendering, set filteres for data events
   useEffect(() => {
@@ -31,6 +36,10 @@ const EventTab = () => {
         : output;
       setEvents(output);
     }
+    window.addEventListener("load", setLoading(false));
+    return () => {
+      window.removeEventListener("load", setLoading(false));
+    };
   }, [data, loggedIn, selectEvent]);
 
   const convertToTime = (unix) => {
@@ -55,30 +64,37 @@ const EventTab = () => {
   };
 
   const handleCloseExpand = () => {
-    console.log(selectEvent);
     setSelectEvent(null);
   };
 
   const handleSearch = (event) => {
     let search = event.target.value;
-    let output = data.sampleEvents.filter((event) =>
-      event.name.toLowerCase().includes(search.toLowerCase()),
-    );
-    if (output.length === 0) {
-      output = data.sampleEvents.filter((event) =>
+    let output = data.sampleEvents.filter(
+      (event) =>
+        event.name.toLowerCase().includes(search.toLowerCase()) ||
         event.description.toLowerCase().includes(search.toLowerCase()),
-      );
-    } 
+    );
+    if (output.length <= 2) {
+      console.log("2")
+    }
     setEvents(output);
   };
 
-  
+  const handleAdvanced = () => {
+    setAdvancedSearch(!advancedSearch);
+    arrowRef.current.style.transform = advancedSearch
+      ? "rotateZ(0deg)"
+      : "rotateZ(90deg)";
+  };
 
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
   return (
-    <div className="viewContainer">
+    <section className="viewContainer">
       <SideBar onClick={() => handleSideBar()} />
       <div className="align">
-        <h1 className="eventHeader">Event Dashboard</h1>
+        <h1 className="eventTabHeader">Event Dashboard</h1>
         <div className="searchContainer" ref={searchRef}>
           <input
             type="search"
@@ -87,6 +103,16 @@ const EventTab = () => {
             onChange={handleSearch}
           />
         </div>
+        <div className="advancedSearchContainer">
+          <div className="advancedSearchToggle" onClick={handleAdvanced}>
+            <h1 onClick={handleAdvanced}>Advanced Search</h1>
+            <div className="arrowMove">
+              <div className="arrow" ref={arrowRef} />
+            </div>
+          </div>
+        </div>
+        <ParallaxImage url={setting} offsetRate={0.02} top={10} rotate={0.08} side={"left"} />
+
         <div className="eventContainer">
           {events.map((event) => (
             <EventCard
@@ -129,7 +155,7 @@ const EventTab = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 // query {

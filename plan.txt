@@ -1,3 +1,8 @@
+IMPORTANT REMINDERS
+- to link related events, use component, have prop for onclick, onclick with change setEvent to new expanded event
+- make parallax larger and overflow:hidden
+
+
 7th ✅
 - initial event tab
 - sidebar
@@ -7,9 +12,8 @@
 
 TODAY'S PLAN (9th) ✅
 - expanded view
-
 - searching function
-- filter function
+- parallax
 
 TOMORROW PLAN (10th)
 - starring favourites?
@@ -17,9 +21,27 @@ TOMORROW PLAN (10th)
 - exapnded view (styling??)
 
 (11th)
+- filter function
 
 (12th)
+- styling + responsiveness
+(13th)
+- styling + responsiveness
 
+(14th)
+- styling + responsiveness
+
+(15th)
+- styling + responsiveness
+
+(16th)
+- writeup rough draft
+(17th)
+- tune up things
+(18th)
+- tune up things
+
+- SUBMIT
 
 FEATURES
 - parallax in the background
@@ -41,7 +63,7 @@ SEARCH
     - favourited ones (set to remind)
 
 
-LOGIN
+LOGIN & SETUP
 - select between Hacker and Visitor (MUST) ✅
 - if chose login and successful, localstorage ✅
     - give 2 rounds of preferences to set 

@@ -14,15 +14,12 @@ const EventExpanded = ({ title, permission, sidebarOpen, onClick }) => {
   }, [sidebarOpen]);
 
   const handleClick = (e) => {
-    console.log("clicked parent");
     onClick();
     e.stopPropagation();
   };
 
   const handleChildClick = (e) => {
-    console.log(permission);
     e.stopPropagation();
-    console.log("clicked child");
   };
 
   return (

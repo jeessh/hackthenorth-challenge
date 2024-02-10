@@ -17,18 +17,10 @@ const SideBar = ({ onClick }) => {
   const gearRef = useRef();
   const handleClick = () => {
     onClick();
-    if (!click) {
-      clickRef.current.classList.add("closeSide");
-      fillerRef.current.classList.add("closeFiller");
-      gearRef.current.classList.add("closeGear");
-
-      setClick(true);
-    } else {
-      clickRef.current.classList.remove("closeSide");
-      fillerRef.current.classList.remove("closeFiller");
-      gearRef.current.classList.remove("closeGear");
-      setClick(false);
-    }
+    clickRef.current.classList.toggle("closeSide");
+    fillerRef.current.classList.toggle("closeFiller");
+    gearRef.current.classList.toggle("closeGear");
+    setClick(!click);
   };
   const handleLogout = () => {
     localStorage.setItem("loggedIn", JSON.stringify(false));
