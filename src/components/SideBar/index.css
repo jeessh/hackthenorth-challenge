@@ -1,35 +1,36 @@
 .sideContainer {
-    position: fixed;
-    width:30%;
-    height: 100vh;
-    /* background-color: rgb(46, 42, 52); */
-    background-color: rgb(108, 42, 104);
-    transition: 0.25s ease-in;
-    z-index: 1;
+  position: fixed;
+  width: 30%;
+  height: 100vh;
+  /* background-color: rgb(46, 42, 52); */
+  background-color: rgb(108, 42, 104);
+  transition: 0.25s ease-in;
+  z-index: 1;
+  top: 0;
 }
 .filler {
-    position: relative;
-    width: 50%;
-    height: 100vh;
-    transition: 0.25s ease-in;
-    z-index: 1;
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  transition: 0.25s ease-in;
+  z-index: 1;
 }
 
 .closeSide {
-    transform:translateX(-100%);
-    transition: 0.2s ease-out;
+  transform: translateX(-100%);
+  transition: 0.2s ease-out;
 }
 .closeFiller {
-    width: 0;
-    transition: 0.2s ease-out;
+  width: 0;
+  transition: 0.2s ease-out;
 }
 
 .gear {
-    z-index: 100;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: rgb(220, 220, 220);
-    font-size: 1.5rem;
-    cursor: pointer;
+  z-index: 100;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: rgb(220, 220, 220);
+  font-size: 1.5rem;
+  cursor: pointer;
 }

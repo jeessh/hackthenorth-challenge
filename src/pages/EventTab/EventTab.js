@@ -25,7 +25,9 @@ const EventTab = () => {
       let output = [];
       output.push(...data.sampleEvents);
       output.sort((eva, evb) => eva.start_time - evb.start_time);
-      output = !loggedIn ? output.filter((event) => event.permission === "public") : output;
+      output = !loggedIn
+        ? output.filter((event) => event.permission === "public")
+        : output;
       setEvents(output);
     }
   }, [data, loggedIn, selectEvent]);
@@ -49,70 +51,73 @@ const EventTab = () => {
 
   const handleSideBar = () => {
     setSidebarOpen(!sidebarOpen);
-  }
+  };
 
   const handleCloseExpand = () => {
     console.log(selectEvent);
     setSelectEvent(null);
-  }
+  };
 
   const handleSearch = (event) => {
     let search = event.target.value;
-    let output = data.sampleEvents.filter((event) => event.name.toLowerCase().includes(search.toLowerCase()));
+    let output = data.sampleEvents.filter((event) =>
+      event.name.toLowerCase().includes(search.toLowerCase()),
+    );
     setEvents(output);
-  }
+  };
 
   return (
     <div className="viewContainer">
+      <SideBar onClick={() => handleSideBar()} />
       <div>
-          <input 
-          type="search" 
-          placeholder="Search Events"
-          onChange={handleSearch}
+        <div className="searchContainer">
+          <input
+            type="search"
+            placeholder="Search Events"
+            className="searchBar"
+            onChange={handleSearch}
           />
-      </div>
-      <SideBar onClick={() => handleSideBar()}/>
-      <div>
-      <div className="eventContainer">
-        {events.map((event) => (
-          <EventCard
-            key={event.id}
-            title={event.name}
-            date={getDate(event.start_time)}
-            type={event.event_type}
-            permission={event.permission}
-            start={convertToTime(event.start_time)}
-            end={convertToTime(event.end_time)}
-            speakers={event.speakers.map((speaker) => speaker.name)}
-            related={event.related_events}
-            pub={event.public_url}
-            priv={event.private_url}
-            description={event.description}
-            onClick={() => handleExpand(event)} // Modify this line
+        </div>
+        <div className="eventContainer">
+          {events.map((event) => (
+            <EventCard
+              key={event.id}
+              title={event.name}
+              date={getDate(event.start_time)}
+              type={event.event_type}
+              permission={event.permission}
+              start={convertToTime(event.start_time)}
+              end={convertToTime(event.end_time)}
+              speakers={event.speakers.map((speaker) => speaker.name)}
+              related={event.related_events}
+              pub={event.public_url}
+              priv={event.private_url}
+              description={event.description}
+              onClick={() => handleExpand(event)} // Modify this line
+            />
+          ))}
+        </div>
+        {selectEvent !== null ? (
+          <EventExpanded
+            title={selectEvent.name}
+            type={selectEvent.event_type}
+            date={getDate(selectEvent.start_time)}
+            start={convertToTime(selectEvent.start_time)}
+            end={convertToTime(selectEvent.end_time)}
+            description={selectEvent.description}
+            speakers={selectEvent.speakers.map((speaker) => speaker.name)}
+            pub={selectEvent.public_url}
+            priv={selectEvent.private_url}
+            related={selectEvent.related_events}
+            permission={selectEvent.permission}
+            sidebarOpen={sidebarOpen}
+            onClick={handleCloseExpand}
           />
-        ))}
-      </div>
-      { selectEvent !== null ?  
-          <EventExpanded 
-          title={selectEvent.name} 
-          type={selectEvent.event_type}
-          date={getDate(selectEvent.start_time)}
-          start={convertToTime(selectEvent.start_time)}
-          end={convertToTime(selectEvent.end_time)}
-          description={selectEvent.description}
-          speakers={selectEvent.speakers.map((speaker) => speaker.name)}
-          pub={selectEvent.public_url}
-          priv={selectEvent.private_url}
-          related={selectEvent.related_events}
-          permission={selectEvent.permission}
-          sidebarOpen={sidebarOpen}
-          onClick={handleCloseExpand}
-          /> 
-          : null}
+        ) : null}
       </div>
     </div>
   );
-        };
+};
 // query {
 //   sampleEvents {
 //     id
