@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
 import moment from "moment";
@@ -13,6 +13,7 @@ const EventTab = () => {
   const [selectEvent, setSelectEvent] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const searchRef = useRef();
 
   //After rendering, set filteres for data events
   useEffect(() => {
@@ -63,14 +64,22 @@ const EventTab = () => {
     let output = data.sampleEvents.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase()),
     );
+    if (output.length === 0) {
+      output = data.sampleEvents.filter((event) =>
+        event.description.toLowerCase().includes(search.toLowerCase()),
+      );
+    } 
     setEvents(output);
   };
+
+  
 
   return (
     <div className="viewContainer">
       <SideBar onClick={() => handleSideBar()} />
-      <div>
-        <div className="searchContainer">
+      <div className="align">
+        <h1 className="eventHeader">Event Dashboard</h1>
+        <div className="searchContainer" ref={searchRef}>
           <input
             type="search"
             placeholder="Search Events"
@@ -114,6 +123,11 @@ const EventTab = () => {
             onClick={handleCloseExpand}
           />
         ) : null}
+        {events.length === 0 && (
+          <div className="noEvents">
+            <h1 className="noEventsText">No Events Found :{"("}</h1>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
-7th
+7th ✅
 - initial event tab
 - sidebar
 
-8th
+8th ✅
 - landing and login
 
-TODAY'S PLAN (9th)
+TODAY'S PLAN (9th) ✅
 - expanded view
 
 - searching function
@@ -23,19 +23,31 @@ TOMORROW PLAN (10th)
 
 FEATURES
 - parallax in the background
-- spinning gear to open sidebar search
+- spinning gear to open sidebar search ✅
 - searching feature
-    - searching through db names
+    - searching through db names ✅
     - returns top 3 picks of similarity, based on string input
 - tab for favourited events
 
+SEARCH
+- advanced search options
+    - filter, change order
+        - FILTER OPTIONS
+            - type (workshop/activity/tech)
+            - date
+            - time? perhaps
+            - public/private (ONLY ALLOW IF YOURE LOGGED IN)
+    - ????
+    - favourited ones (set to remind)
+
+
 LOGIN
-- select between Hacker and Visitor (MUST)
-- if chose login and successful, localstorage
-    - give 2 rounds of preferences to set
+- select between Hacker and Visitor (MUST) ✅
+- if chose login and successful, localstorage ✅
+    - give 2 rounds of preferences to set 
         - top 3 areas of interest
         - accessibility things
-    - give recommended shit based on openai suggestions
+    - give recommended based on openai suggestions
         - returns an array of 3 matching events and their ids
         - make ids have an additional recommended tag
         - premade, ref.classList.add tag when needed
@@ -43,14 +55,14 @@ LOGIN
 
 EXPANDED CARD
 - expanded card has blurred background
-- only blocks out events, not the sidebar
+- only blocks out events, not the sidebar ✅
 
 CARD
-- type (workshop/act/tech) at top right corner with emoji
+- type (workshop/act/tech) at top right corner with emoji ✅
 - filler image (maybe chatgpt)
-- name, time, date in bottom bar
+- name, time, date in bottom bar ✅
 - add a star icon to set a reminder to add
-- hardcode one to send 3 seconds after
+- hardcode reminder to send 3 seconds after
 
 
-- change shadow colour on hover (to match type)
+- change shadow colour on hover (to match type) 

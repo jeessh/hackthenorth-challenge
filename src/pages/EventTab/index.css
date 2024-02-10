@@ -1,12 +1,15 @@
-.viewColumn {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(34, 32, 40);
-}
-
 .viewContainer {
   display: flex;
   background-color: rgb(34, 32, 40);
+}
+
+.align {
+  width: 100%;
+}
+
+.eventHeader {
+  font-size: 5vw;
+  text-align: center;
 }
 
 .eventContainer {
@@ -14,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 100px;
+
   gap: 20px;
 }
 
@@ -22,10 +26,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px;
-  gap: 20px;
+
+  width: 100%;
   background-color: rgb(39, 40, 32);
 }
 
 .searchBar {
+  width: 50%;
+  height: 50px;
+  padding: 10px;
+  text-indent: 3%;
+  border-radius: 25px;
+  font: 500 1.5rem "Roboto", monospace;
+}
+
+.noEvents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
+.noEventsText {
+  font-size: 3em;
 }
