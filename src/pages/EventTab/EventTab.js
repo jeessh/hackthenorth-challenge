@@ -111,7 +111,7 @@ const EventTab = () => {
             </div>
           </div>
         </div>
-        <ParallaxImage url={setting} offsetRate={0.02} top={10} rotate={0.08} side={"left"} />
+        <ParallaxImage url={setting} offsetRate={0.02} top={10} rotate={0.08} className={"left"} />
 
         <div className="eventContainer">
           {events.map((event) => (

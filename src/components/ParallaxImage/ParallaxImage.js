@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-const ParallaxImage = ({ url, offsetRate, top, rotate, side }) => {
+const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   const [offset, setOffset] = useState(0);
   const handleScroll = () => {
     setOffset(window.scrollY);
@@ -15,11 +15,10 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, side }) => {
     };
   }, []);
 
-  const parallaxContainer = side === "left" ? "parallaxContainerLeft" : "parallaxContainerRight";
 
 
   return (
-    <div className={parallaxContainer}>
+    <div className={className}>
       <img
         src={url}
         alt="parallax"
@@ -38,7 +37,7 @@ ParallaxImage.propTypes = {
   offsetRate: PropTypes.number.isRequired,
   top: PropTypes.number,
   rotate: PropTypes.number,
-  side: PropTypes.string
+  className: PropTypes.string
 };
 
 export default ParallaxImage;
