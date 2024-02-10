@@ -8,7 +8,6 @@
     box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.35);
     margin-bottom: 20px;
     transition: all 0.3s ease;
-    overflow: hidden;
     height: 300px;
 }
 .cardWrapper:hover {

@@ -1,3 +1,26 @@
+7th
+- initial event tab
+- sidebar
+
+8th
+- landing and login
+
+TODAY'S PLAN (9th)
+- expanded view
+
+- searching function
+- filter function
+
+TOMORROW PLAN (10th)
+- starring favourites?
+- preferences & accessibility
+- exapnded view (styling??)
+
+(11th)
+
+(12th)
+
+
 FEATURES
 - parallax in the background
 - spinning gear to open sidebar search

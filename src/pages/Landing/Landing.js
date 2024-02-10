@@ -1,7 +1,7 @@
 // import React, {useEffect, useState} from 'react'
 import React, {useState, useEffect} from 'react'
-import login from '../../assets/password.png'
-import visit from '../../assets/visitor.png'
+import hacker from '../../assets/hacker.png'
+import visit from '../../assets/traveler.png'
 import './index.css'
 import {useNavigate} from 'react-router-dom'
 
@@ -37,8 +37,8 @@ const Landing = () => {
 
     <section className='landingCardContainer'>
       <div className='landingCard' onClick={handleLoginClick}>
-        <img src={login} className='landingIcon' alt='logo' />
-        <h1 className='landingHeader'>landing</h1>
+        <img src={hacker} className='landingIcon' alt='logo' />
+        <h1 className='landingHeader'>Hacker</h1>
       </div>
       <div className='landingCard' onClick={handleVisitClick}>
       <img src={visit} className='landingIcon' alt='logo' />

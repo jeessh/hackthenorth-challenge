@@ -7,6 +7,7 @@ const EventCard = ({
   type,
   date,
   start,
+  onClick
   // end,
   // description,
   // speakers,
@@ -27,10 +28,14 @@ const EventCard = ({
   };
 
   const typeCol = type === "tech_talk" ? "Tech" 
-                : type === "workshop" ? "Work" : "Act";
+    : type === "workshop" ? "Work" : "Act";
+
+  const handleClick = () => {
+    onClick();
+  }
 
   return (
-    <div className="cardWrapper">
+    <div className="cardWrapper" onClick={handleClick}>
       <div className="cardTags">
         <h3 className={'eventType' + typeCol}>{formatType(type)}</h3>
       </div>
@@ -57,6 +62,7 @@ EventCard.propTypes = {
   pub: PropTypes.string,
   priv: PropTypes.string,
   related: PropTypes.array,
+  onClick: PropTypes.func
 };
 
 export default EventCard;

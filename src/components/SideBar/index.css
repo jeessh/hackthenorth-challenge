@@ -3,16 +3,16 @@
     width:30%;
     height: 100vh;
     /* background-color: rgb(46, 42, 52); */
-    background-color: rgb(44, 93, 93);
+    background-color: rgb(108, 42, 104);
     transition: 0.25s ease-in;
-    z-index: 100;
+    z-index: 1;
 }
 .filler {
     position: relative;
     width: 50%;
     height: 100vh;
     transition: 0.25s ease-in;
-    z-index: 100;
+    z-index: 1;
 }
 
 .closeSide {
@@ -26,7 +26,7 @@
 
 .gear {
     z-index: 100;
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     color: rgb(220, 220, 220);
