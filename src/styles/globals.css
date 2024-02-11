@@ -23,3 +23,19 @@ h3 {
     monospace;
   color: rgb(220, 220, 220);
 }
+
+p {
+  font:
+    500 1rem "Roboto",
+    monospace;
+  color: rgb(220, 220, 220);
+  line-height: 2rem;
+}
+
+a {
+  font:
+    500 1rem "Roboto",
+    monospace;
+  color: rgb(220, 220, 220);
+  text-decoration: none;
+}

@@ -45,3 +45,9 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 0px 50px 25px rgba(13, 11, 17, 0.55);
 }
+
+@media screen and (max-width: 768px) {
+  .cardWrapper {
+    height: 350px;
+  }
+}

@@ -4,26 +4,29 @@ IMPORTANT REMINDERS
 
 
 7th ✅
-- initial event tab
-- sidebar
+- initial event tab ✅
+- sidebar ✅
 
 8th ✅
-- landing and login
+- landing and login ✅
 
 (9th) ✅
-- expanded view
-- searching function
-- parallax
+- expanded view ✅
+- searching function ✅
+- parallax ✅
 
-TODAY PLAN (10th)
-- starring favourites?
-- preferences & accessibility
-- exapnded view (styling??)
+TODAY PLAN (10th) ✅
+- filter function ✅
+- exapnded view ✅
 
 (11th)
-- filter function
+- finished related events 
+- fix public searchers being able to access everything ✅
+- starring favourites?
+- preferences & accessibility functionality
 
 (12th)
+- landing page 
 - styling + responsiveness
 (13th)
 - styling + responsiveness

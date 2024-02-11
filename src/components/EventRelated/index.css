@@ -1,0 +1,10 @@
+.relatedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1200px;
+}

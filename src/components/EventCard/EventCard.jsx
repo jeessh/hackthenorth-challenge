@@ -16,7 +16,7 @@ const EventCard = ({
   // related,
   // permission
 }) => {
-  //use openai to autogenerate an image
+
   const formatType = (type) => {
     if (type === "tech_talk") {
       return "Tech Talk 🎙️";

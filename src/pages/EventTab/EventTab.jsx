@@ -13,70 +13,83 @@ const EventTab = () => {
   const { data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [advancedSearch, setAdvancedSearch] = useState(false);
+  const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
   const searchRef = useRef();
   const arrowRef = useRef();
+  const loggedIn = JSON.parse(localStorage.getItem("loggedIn"));
 
   //After rendering, set filteres for data events
   useEffect(() => {
-    const logged = JSON.parse(localStorage.getItem("loggedIn"));
-    console.log("Logged in: " + logged);
-    if (logged) {
-      setLoggedIn(true);
-    }
+    console.log(loggedIn);
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
       output.sort((eva, evb) => eva.start_time - evb.start_time);
       output = !loggedIn
-        ? output.filter((event) => event.permission === "public")
-        : output;
+        ? output.filter(
+            (event) =>
+              event.permission === "public" &&
+              filters.includes(event.event_type),
+          )
+        : output.filter((event) => filters.includes(event.event_type));
+      console.log(filters);
+      console.log(output);
+
       setEvents(output);
     }
     window.addEventListener("load", setLoading(false));
     return () => {
       window.removeEventListener("load", setLoading(false));
     };
-  }, [data, loggedIn, selectEvent]);
+  }, [data, selectEvent, filters]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
-    let converted = moment(t).format("h:mm a");
+    let converted = moment(t).utc().format("h:mm a");
     return converted;
   };
 
-  const getDate = (unix) => {
+  const getNumDate = (unix) => {
     var t = new Date(unix);
     let converted = moment(t).format("MM/DD");
     return converted;
   };
 
+  const getStrDate = (unix) => {
+    var t = new Date(unix);
+    let converted = moment(t).format("MMMM Do, YYYY");
+    return converted;
+  };
+
   const handleExpand = (event) => {
     setSelectEvent(event);
-    console.log(event);
+  };
+
+  const handleNewExpand = (event) => {
+    console.log("New Expand", event);
   };
 
   const handleSideBar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const handleCloseExpand = () => {
-    setSelectEvent(null);
-  };
-
   const handleSearch = (event) => {
     let search = event.target.value;
-    let output = data.sampleEvents.filter(
-      (event) =>
-        event.name.toLowerCase().includes(search.toLowerCase()) ||
-        event.description.toLowerCase().includes(search.toLowerCase()),
-    );
-    if (output.length <= 2) {
-      console.log("2");
-    }
+    let output = loggedIn
+      ? data.sampleEvents.filter(
+          (event) =>
+            event.name.toLowerCase().includes(search.toLowerCase()) ||
+            event.description.toLowerCase().includes(search.toLowerCase()),
+        )
+      : data.sampleEvents.filter(
+          (event) =>
+            event.permission === "public" &&
+            (event.name.toLowerCase().includes(search.toLowerCase()) ||
+              event.description.toLowerCase().includes(search.toLowerCase())),
+        );
     setEvents(output);
   };
 
@@ -87,9 +100,22 @@ const EventTab = () => {
       : "rotateZ(90deg)";
   };
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
+  const advClick = (e, ev) => {
+    e.stopPropagation();
+    let temp = [...filters];
+    if (ev === "tech_talk") {
+      temp[0] = temp[0] === "tech_talk" ? "" : "tech_talk";
+    } else if (ev === "workshop") {
+      temp[1] = temp[1] === "workshop" ? "" : "workshop";
+    } else {
+      temp[2] = temp[2] === "activity" ? "" : "activity";
+    }
+    console.log(temp);
+    setFilters(temp);
+  };
+
+  if (loading) return <div className="loading"></div>;
+
   return (
     <section className="viewContainer">
       <SideBar onClick={() => handleSideBar()} />
@@ -111,11 +137,43 @@ const EventTab = () => {
             </div>
           </div>
           {advancedSearch ? (
-            <div className="advancedMenu">prefs</div>
+            <div className="advancedMenuContainer">
+              <div className="advFilter">
+                <button
+                  className={
+                    "filter1" + (filters[0] === "tech_talk" ? " active" : "")
+                  }
+                  onClick={(e) => advClick(e, "tech_talk")}
+                >
+                  Tech Talk
+                </button>
+                <button
+                  className={
+                    "filter2 " + (filters[1] === "workshop" ? " active" : "")
+                  }
+                  onClick={(e) => advClick(e, "workshop")}
+                >
+                  Workshop
+                </button>
+                <button
+                  className={
+                    "filter3" + (filters[2] === "activity" ? " active" : "")
+                  }
+                  onClick={(e) => advClick(e, "activity")}
+                >
+                  Activity
+                </button>
+              </div>
+            </div>
           ) : (
             <div
-              className="advancedMenu"
-              style={{ height: 0, width: "20%", border: 0 }}
+              className="advancedMenuContainer"
+              style={{
+                height: 0,
+                width: "20%",
+                border: 0,
+                transition: "0.2s ease-in",
+              }}
             />
           )}
         </div>
@@ -132,37 +190,30 @@ const EventTab = () => {
             <EventCard
               key={event.id}
               title={event.name}
-              date={getDate(event.start_time)}
+              date={getNumDate(event.start_time)}
               type={event.event_type}
-              permission={event.permission}
               start={convertToTime(event.start_time)}
-              end={convertToTime(event.end_time)}
-              speakers={event.speakers.map((speaker) => speaker.name)}
-              related={event.related_events}
-              pub={event.public_url}
-              priv={event.private_url}
-              description={event.description}
               onClick={() => handleExpand(event)} // Modify this line
             />
           ))}
         </div>
-        {selectEvent !== null ? (
+        {/* Toggled on when a card is clicked, showing expanded information */}
+        {selectEvent && (
           <EventExpanded
             title={selectEvent.name}
             type={selectEvent.event_type}
-            date={getDate(selectEvent.start_time)}
+            date={getStrDate(selectEvent.start_time)}
             start={convertToTime(selectEvent.start_time)}
             end={convertToTime(selectEvent.end_time)}
             description={selectEvent.description}
             speakers={selectEvent.speakers.map((speaker) => speaker.name)}
-            pub={selectEvent.public_url}
-            priv={selectEvent.private_url}
+            url={loggedIn ? selectEvent.private_url : selectEvent.public_url}
             related={selectEvent.related_events}
-            permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}
-            onClick={handleCloseExpand}
+            onClick={() => handleExpand()}
+            onClickRelated={() => handleNewExpand()}
           />
-        ) : null}
+        )}
         {events.length === 0 && (
           <div className="noEvents">
             <h1 className="noEventsText">No Events Found :{"("}</h1>
