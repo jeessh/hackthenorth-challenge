@@ -37,7 +37,7 @@ const SideBar = ({ onClick }) => {
         ref={gearRef}
       />
       <div className="sideContainer closeSide" ref={clickRef}>
-        <div onClick={handleLogout}>LOGOUT</div>
+        <button onClick={handleLogout}>LOGOUT</button>
       </div>
     </>
   );

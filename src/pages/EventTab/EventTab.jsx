@@ -75,7 +75,7 @@ const EventTab = () => {
         event.description.toLowerCase().includes(search.toLowerCase()),
     );
     if (output.length <= 2) {
-      console.log("2")
+      console.log("2");
     }
     setEvents(output);
   };
@@ -110,8 +110,22 @@ const EventTab = () => {
               <div className="arrow" ref={arrowRef} />
             </div>
           </div>
+          {advancedSearch ? (
+            <div className="advancedMenu">prefs</div>
+          ) : (
+            <div
+              className="advancedMenu"
+              style={{ height: 0, width: "20%", border: 0 }}
+            />
+          )}
         </div>
-        <ParallaxImage url={setting} offsetRate={0.02} top={10} rotate={0.08} className={"left"} />
+        <ParallaxImage
+          url={setting}
+          offsetRate={0.02}
+          top={10}
+          rotate={0.08}
+          className={"left"}
+        />
 
         <div className="eventContainer">
           {events.map((event) => (

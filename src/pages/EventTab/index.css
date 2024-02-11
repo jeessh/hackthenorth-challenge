@@ -22,6 +22,7 @@
 
 .advancedSearchContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -47,8 +48,19 @@
   transition: 0.15s ease-in;
 }
 .advancedSearchToggle:hover .arrowMove {
-  transform: translate(30px);
+  transform: translate(20px);
   transition: 0.1s ease-out;
+}
+
+.advancedMenu {
+  display: flex;
+  height: 15em;
+  width: 60%;
+  background-color: var(--darkcardbg);
+  border: 2.5px solid rgba(220, 220, 220, 0.35);
+  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
 }
 
 .eventContainer {

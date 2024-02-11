@@ -10,12 +10,12 @@ IMPORTANT REMINDERS
 8th ✅
 - landing and login
 
-TODAY'S PLAN (9th) ✅
+(9th) ✅
 - expanded view
 - searching function
 - parallax
 
-TOMORROW PLAN (10th)
+TODAY PLAN (10th)
 - starring favourites?
 - preferences & accessibility
 - exapnded view (styling??)
