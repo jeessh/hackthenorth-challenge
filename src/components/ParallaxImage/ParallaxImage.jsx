@@ -9,13 +9,12 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, true);
+    // Remove the event listener
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll, true);
     };
-  }, []);
-
-
+  }, [offset]);
 
   return (
     <div className={className}>
@@ -25,7 +24,7 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
         className="parallax"
         style={{
           transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
-          marginTop: `${top}em`
+          marginTop: `${top}em`,
         }}
       />
     </div>
@@ -37,7 +36,7 @@ ParallaxImage.propTypes = {
   offsetRate: PropTypes.number.isRequired,
   top: PropTypes.number,
   rotate: PropTypes.number,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ParallaxImage;
