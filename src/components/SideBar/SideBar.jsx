@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import setting from "../../assets/setting.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import PropTypes from "prop-types";

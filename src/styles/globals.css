@@ -4,6 +4,10 @@
   --eventbg: rgb(34, 32, 40);
 }
 
+body {
+  margin: 0!important;
+}
+
 h1 {
   font:
     800 1.8rem "Roboto",

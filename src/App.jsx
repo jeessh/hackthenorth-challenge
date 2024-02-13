@@ -7,7 +7,7 @@ import {
   from,
 } from "@apollo/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
+import { CallbackPage } from "./pages/Auth0/callback";
 import EventTab from "./pages/EventTab/EventTab";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
@@ -32,6 +32,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/events" element={<EventTab />} />
           <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/callback" element={<CallbackPage />} />
         </Routes>
       </ApolloProvider>
     </BrowserRouter>
