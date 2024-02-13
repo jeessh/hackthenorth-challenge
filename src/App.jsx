@@ -6,7 +6,7 @@ import {
   HttpLink,
   from,
 } from "@apollo/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { CallbackPage } from "./pages/Auth0/callback";
 import EventTab from "./pages/EventTab/EventTab";
 import Landing from "./pages/Landing/Landing";
@@ -25,7 +25,6 @@ const client = new ApolloClient({
 
 const App = () => {
   return (
-    <BrowserRouter>
       <ApolloProvider client={client}>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -35,7 +34,6 @@ const App = () => {
           <Route path="/callback" element={<CallbackPage />} />
         </Routes>
       </ApolloProvider>
-    </BrowserRouter>
   );
 };
 

@@ -23,6 +23,7 @@ const EventTab = () => {
 
   //After rendering, set filteres for data events
   useEffect(() => {
+    console.log(isAuthenticated);
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
@@ -39,7 +40,7 @@ const EventTab = () => {
 
       setEvents(output);
     }
-  }, [data, selectEvent, filters]);
+  }, [data, selectEvent, filters, isAuthenticated]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
