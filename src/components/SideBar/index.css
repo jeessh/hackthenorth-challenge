@@ -1,3 +1,4 @@
+/* SIDEBAR CONTAINER AND WRAPPERS */
 .sideContainer {
   position: fixed;
   display: flex;
@@ -52,8 +53,9 @@
 .closeGear:hover {
   transform: scale(1.1), rotate(0);
 }
-
+/* SIDEBAR ITEMS */
 .sideItemWrapper {
+  position: relative;
   padding: 10px;
   padding-left: 30px;
   margin: 0;
@@ -61,6 +63,22 @@
   cursor: pointer;
   border-bottom: 3px solid rgba(220, 220, 220, 0.3);
   box-shadow: inset 0px 0 15px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-in;
+}
+.sideItemWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(66, 56, 83, 0.75);
+  z-index: -1;
+  transition: 0.6s ease-in;
+}
+.sideItemWrapper:hover::before {
+  width: 100%;
+  transition: 0.5s ease-out;
 }
 
 .sideItem {
@@ -77,28 +95,32 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  transition: 0.4s ease-in;
+  border-top: 3px solid rgba(220, 220, 220, 0.3);
+  box-shadow: inset 0px 0 15px 2px rgba(0, 0, 0, 0.4);
+}
+.sideLogWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(66, 56, 83, 0.75);
+  z-index: -1;
+  transition: 0.6s ease-in;
+}
+.sideLogWrapper:hover::before {
+  width: 100%;
+  transition: 0.5s ease-out;
 }
 
 .sideLog {
   padding: 30px;
   margin: 0;
   font-size: 2vw;
-  color: rgb(220, 220, 220);
   transition: 0.5s ease-in;
   cursor: pointer;
-  border-top: 3px solid rgba(220, 220, 220, 0.3);
-  box-shadow: inset 0px 0 15px 2px rgba(0, 0, 0, 0.4);
-}
-
-.tempOverlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  transition: 0.5s ease-in;
-  display: none;
-
 }
 
 @media screen and (max-width: 768px) {

@@ -57,7 +57,6 @@ const SideBar = ({ onClick }) => {
           <h1 className="sideItem">🎉 EVENTS</h1>
         </a>
         <a className="sideItemWrapper">
-          <h1 className="tempOverlay">Coming Soon!</h1>
           <h1 className="sideItem">⚙️ SETTINGS</h1>
         </a>
         <a className="sideLogWrapper">

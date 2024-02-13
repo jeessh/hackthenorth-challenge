@@ -12,6 +12,8 @@
 
 .expandedContainer {
   overflow: scroll;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,6 +26,7 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.75);
   padding: 20px;
   border-radius: 10px;
+  scrollbar-color: var(--darkcardbg) rgba(94, 84, 113, 0.623);
 }
 
 .expandedHeader {
@@ -36,6 +39,14 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+}
+
+.eventInfoWrapper {
+  display: grid;
+  grid-template-columns: 35% 80%;
+  margin: 0px;
+  margin-top: 0;
+  align-items: center;
 }
 
 .expandedEvTech,
@@ -55,25 +66,21 @@
 .expandedEvWork {
   background-color: rgba(71, 123, 135, 0.9);
 }
-
-.externalLinks {
-  display: flex;
-  margin-top: 20px;
-  width: 100%;
-}
-
 .externalLink {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
-  height: 50px;
+  width: 75%;
+  height: 75px;
   background-color: var(--darkcardbg);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.75);
-  margin: 10px;
+  margin: 20px;
   transition: 0.3s ease-out;
+  font:
+    800 1.3em "Roboto",
+    monospace;
 }
 .externalLink:hover {
   transform: translateY(-5px);
@@ -85,4 +92,12 @@
   grid-template-columns: repeat(4, 1fr);
   margin-top: 20px;
   overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-color: var(--darkcardbg) rgba(94, 84, 113, 0.623);
+  scrollbar-width: thin;
+}
+
+.removeScrollBg {
+  scrollbar-width: none;
+  scrollbar-color: var(--darkcardbg) rgba(0, 0, 0, 0);
 }

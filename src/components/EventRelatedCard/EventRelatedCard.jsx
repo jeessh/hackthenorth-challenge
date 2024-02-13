@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-const EventRelated = ({ id, type, title, onClickRelated }) => {
+const EventRelatedCard = ({ id, type, title, onClickRelated }) => {
   const typeCol =
     type === "tech_talk" ? "Tech" : type === "workshop" ? "Work" : "Act";
   const formatType = (type) => {
@@ -22,11 +22,11 @@ const EventRelated = ({ id, type, title, onClickRelated }) => {
   );
 };
 
-EventRelated.propTypes = {
+EventRelatedCard.propTypes = {
   id: PropTypes.number,
   type: PropTypes.string,
   title: PropTypes.string,
   onClickRelated: PropTypes.func,
 };
 
-export default EventRelated;
+export default EventRelatedCard;

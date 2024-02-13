@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import "./index.css";
-import EventRelated from "../EventRelated/EventRelated";
+import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -15,7 +15,7 @@ const EventExpanded = ({
   end,
   speakers,
   url,
-  // permission,
+  permission,
   related,
   sidebarOpen,
   onClick,
@@ -76,24 +76,33 @@ const EventExpanded = ({
             🕒 {start} - {end} (UTC+0)
           </h3>
           <h3>📅 Date: {date}</h3>
-          {speakers.map((speaker, index) => (
-            <h3 key={index}>📣 Speakers: {speaker}</h3>
-          ))}
           <p>{description}</p>
-          <a
-            className="externalLink"
-            href={url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join the Event!
-          </a>
+          <div className="eventInfoWrapper">
+            <div>
+              {speakers.map((speaker, index) => (
+                <h3 key={index}>📣 Speakers: {speaker}</h3>
+              ))}
+              <h3>
+                🔒 Access:{" "}
+                {permission.charAt(0).toUpperCase() + permission.slice(1)}
+              </h3>
+            </div>
+            <a
+              className="externalLink"
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Join the Event!
+            </a>
+          </div>
+
           {relatedEvents.length > 0 && (
             <>
               <h2>🔗 Related Events:</h2>
-              <div className="relatedEventsContainer">
+              <div className={relatedEvents.length > 2 ? "relatedEventsContainer" : "relatedEventsContainer removeScrollBg"}>
                 {relatedEvents.map((event) => (
-                  <EventRelated
+                  <EventRelatedCard
                     key={event.id}
                     id={event.id}
                     title={event.name}

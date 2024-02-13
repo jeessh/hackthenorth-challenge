@@ -22,19 +22,23 @@ TODAY PLAN (10th) ✅
 (11th)
 - finished related events ✅
 - fix public searchers being able to access everything ✅
-- make related event change scroll to top
-- starring favourites?
-- preferences & accessibility functionality
 
 (12th)
-- landing page 
-- mock sidebar ✅
+- preferences functionality
+- style related events
 - styling + responsiveness
+- mock sidebar ✅
+
 (13th)
+- accessibility
+    - reduce motion
+    - dark/light mode
 - styling + responsiveness
 
 (14th)
+- landing page 
 - styling + responsiveness
+
 
 (15th)
 - styling + responsiveness
@@ -49,36 +53,28 @@ TODAY PLAN (10th) ✅
 - SUBMIT
 
 FEATURES
-- parallax in the background
+- parallax in the background ✅
 - spinning gear to open sidebar search ✅
 - searching feature
     - searching through db names ✅
     - returns top 3 picks of similarity, based on string input
 - tab for favourited events
 
-SEARCH
-- advanced search options 
-    - filter, change order
-        - FILTER OPTIONS
-            - type (workshop/activity/tech) ✅
-            - date
-            - time? perhaps
-            - public/private (ONLY ALLOW IF YOURE LOGGED IN)
-    - ????
-    - favourited ones (set to remind)
+ADVANCED SEARCHING
+- filter, change order, yes/no
+    - FILTER OPTIONS
+        - type (workshop/activity/tech) ✅
+        - date??
+        - time range??
+        - public/private (ONLY ALLOW IF YOURE LOGGED IN)
+
+        -RANDOMIZE FOR FUN??!?
+- ????
+- favourited ones (set to remind)
 
 
 LOGIN & SETUP
 - select between Hacker and Visitor (MUST) ✅
-- if chose login and successful, localstorage ✅
-    - give 2 rounds of preferences to set 
-        - top 3 areas of interest
-        - accessibility things
-    - give recommended based on openai suggestions
-        - returns an array of 3 matching events and their ids
-        - make ids have an additional recommended tag
-        - premade, ref.classList.add tag when needed
-    - open ai will reorder them
 
 EXPANDED CARD
 - expanded card has blurred background ✅
@@ -91,12 +87,6 @@ CARD
 - add a star icon to set a reminder to add
 - hardcode reminder to send 3 seconds after
 
-SIDEBAR
-- home
-- refreshments (coming soon)
-- room booking
-- form teams (coming soon)
 
-- logout/login
 
 - change shadow colour on hover (to match type) 

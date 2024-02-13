@@ -48,15 +48,9 @@ const EventTab = () => {
     return converted;
   };
 
-  const getNumDate = (unix) => {
+  const getDate = (unix, format) => { // if format is true, return numerical date. otherwise, return string date
     var t = new Date(unix);
-    let converted = moment(t).format("MM/DD");
-    return converted;
-  };
-
-  const getStrDate = (unix) => {
-    var t = new Date(unix);
-    let converted = moment(t).format("MMMM Do, YYYY");
+    let converted = format ? moment(t).format("MM/DD") : moment(t).format("MMMM Do, YYYY");
     return converted;
   };
 
@@ -115,6 +109,7 @@ const EventTab = () => {
 
   return (
     <section className="viewContainer">
+      {/* Regular Search bar + Sidebar */}
       <SideBar onClick={() => handleSideBar()} />
       <div className="align">
         <h1 className="eventTabHeader">Event Dashboard</h1>
@@ -126,6 +121,7 @@ const EventTab = () => {
             onChange={handleSearch}
           />
         </div>
+        {/* Advanced Search Bar */}
         <div className="advancedSearchContainer">
           <div className="advancedSearchToggle" onClick={handleAdvanced}>
             <h1 onClick={handleAdvanced}>Advanced Search</h1>
@@ -174,6 +170,7 @@ const EventTab = () => {
             />
           )}
         </div>
+        {/* Parallax Images */}
         <ParallaxImage
           url={setting}
           offsetRate={0.02}
@@ -181,13 +178,13 @@ const EventTab = () => {
           rotate={0.08}
           className={"left"}
         />
-
+        {/* Event Dashboard with all event cards */}
         <div className="eventContainer">
           {events.map((event) => (
             <EventCard
               key={event.id}
               title={event.name}
-              date={getNumDate(event.start_time)}
+              date={getDate(event.start_time, true)}
               type={event.event_type}
               start={convertToTime(event.start_time)}
               onClick={() => handleExpand(event)} // Modify this line
@@ -199,7 +196,7 @@ const EventTab = () => {
           <EventExpanded
             title={selectEvent.name}
             type={selectEvent.event_type}
-            date={getStrDate(selectEvent.start_time)}
+            date={getDate(selectEvent.start_time, false)}
             start={convertToTime(selectEvent.start_time)}
             end={convertToTime(selectEvent.end_time)}
             description={selectEvent.description}
