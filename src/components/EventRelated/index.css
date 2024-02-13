@@ -1,10 +1,41 @@
 .relatedContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-    max-width: 1200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--darkcardbg);
+  padding: 20px;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+}
+
+.relatedCard:hover {
+  box-shadow: 0 5px 15px 2.5px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
+  cursor: pointer;
+  transition: 0.15s ease-out;
+}
+
+.relatedTech,
+.relatedWork,
+.relatedAct {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  background-color: rgba(169, 98, 48, 0.9);
+  padding: 15px;
+  border-radius: 100px;
+  width: 22.5px;
+  height: min-content;
+  text-align: center;
+  box-shadow: 0 5px 15px 2.5px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+.relatedTech {
+  background-color: rgba(137, 43, 115, 0.9);
+}
+.relatedWork {
+  background-color: rgba(71, 123, 135, 0.9);
 }

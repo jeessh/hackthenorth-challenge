@@ -14,7 +14,6 @@ const EventTab = () => {
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [advancedSearch, setAdvancedSearch] = useState(false);
   const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
   const searchRef = useRef();
@@ -40,15 +39,11 @@ const EventTab = () => {
 
       setEvents(output);
     }
-    window.addEventListener("load", setLoading(false));
-    return () => {
-      window.removeEventListener("load", setLoading(false));
-    };
   }, [data, selectEvent, filters]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
-    let converted = moment(t).utc().format("h:mm a");
+    let converted = moment(t).format("h:mm a");
     return converted;
   };
 
@@ -68,8 +63,11 @@ const EventTab = () => {
     setSelectEvent(event);
   };
 
-  const handleNewExpand = (event) => {
-    console.log("New Expand", event);
+  const handleNewExpand = (id) => {
+    console.log(`ID: ${id}`);
+    let temp = data.sampleEvents.filter((event) => event.id === id);
+    console.log(temp);
+    setSelectEvent(temp[0]);
   };
 
   const handleSideBar = () => {
@@ -113,8 +111,6 @@ const EventTab = () => {
     console.log(temp);
     setFilters(temp);
   };
-
-  if (loading) return <div className="loading"></div>;
 
   return (
     <section className="viewContainer">
@@ -209,9 +205,10 @@ const EventTab = () => {
             speakers={selectEvent.speakers.map((speaker) => speaker.name)}
             url={loggedIn ? selectEvent.private_url : selectEvent.public_url}
             related={selectEvent.related_events}
+            permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}
             onClick={() => handleExpand()}
-            onClickRelated={() => handleNewExpand()}
+            onClickRelated={handleNewExpand}
           />
         )}
         {events.length === 0 && (

@@ -20,13 +20,15 @@ TODAY PLAN (10th) ✅
 - exapnded view ✅
 
 (11th)
-- finished related events 
+- finished related events ✅
 - fix public searchers being able to access everything ✅
+- make related event change scroll to top
 - starring favourites?
 - preferences & accessibility functionality
 
 (12th)
 - landing page 
+- mock sidebar ✅
 - styling + responsiveness
 (13th)
 - styling + responsiveness
@@ -55,10 +57,10 @@ FEATURES
 - tab for favourited events
 
 SEARCH
-- advanced search options
+- advanced search options 
     - filter, change order
         - FILTER OPTIONS
-            - type (workshop/activity/tech)
+            - type (workshop/activity/tech) ✅
             - date
             - time? perhaps
             - public/private (ONLY ALLOW IF YOURE LOGGED IN)
@@ -79,7 +81,7 @@ LOGIN & SETUP
     - open ai will reorder them
 
 EXPANDED CARD
-- expanded card has blurred background
+- expanded card has blurred background ✅
 - only blocks out events, not the sidebar ✅
 
 CARD
@@ -89,5 +91,12 @@ CARD
 - add a star icon to set a reminder to add
 - hardcode reminder to send 3 seconds after
 
+SIDEBAR
+- home
+- refreshments (coming soon)
+- room booking
+- form teams (coming soon)
+
+- logout/login
 
 - change shadow colour on hover (to match type) 

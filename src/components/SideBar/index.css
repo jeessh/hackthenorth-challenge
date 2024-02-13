@@ -1,12 +1,16 @@
 .sideContainer {
   position: fixed;
+  display: flex;
+  flex-direction: column;
   width: 25%;
   height: 100vh;
   /* background-color: rgb(46, 42, 52); */
-  background-color: rgb(108, 42, 104);
+  background-color: rgb(41, 37, 53);
   transition: 0.5s ease-in;
   z-index: 1;
   top: 0;
+  border-right: 5px solid rgba(220, 220, 220, 0.3);
+  box-shadow: 50px 0 100px 10px rgb(0, 0, 0, 0.4);
 }
 .filler {
   position: relative;
@@ -18,6 +22,7 @@
 .closeSide {
   transform: translateX(-100%);
   transition: 0.5s ease-out;
+  box-shadow: none;
 }
 .closeFiller {
   width: 0;
@@ -26,13 +31,11 @@
 
 .gear {
   z-index: 100;
-  position: absolute;
+  position: fixed;
   left: 25%;
   width: 50px;
   top: 0;
   padding: 20px;
-  color: rgb(220, 220, 220);
-  font-size: 1.5rem;
   cursor: pointer;
   transition: 0.5s ease-in;
 }
@@ -48,4 +51,87 @@
 }
 .closeGear:hover {
   transform: scale(1.1), rotate(0);
+}
+
+.sideItemWrapper {
+  padding: 10px;
+  padding-left: 30px;
+  margin: 0;
+  transition: 0.5s ease-in;
+  cursor: pointer;
+  border-bottom: 3px solid rgba(220, 220, 220, 0.3);
+  box-shadow: inset 0px 0 15px 2px rgba(0, 0, 0, 0.4);
+}
+
+.sideItem {
+  font-size: 2vw;
+}
+
+.settings {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.sideLogWrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.sideLog {
+  padding: 30px;
+  margin: 0;
+  font-size: 2vw;
+  color: rgb(220, 220, 220);
+  transition: 0.5s ease-in;
+  cursor: pointer;
+  border-top: 3px solid rgba(220, 220, 220, 0.3);
+  box-shadow: inset 0px 0 15px 2px rgba(0, 0, 0, 0.4);
+}
+
+.tempOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  transition: 0.5s ease-in;
+  display: none;
+
+}
+
+@media screen and (max-width: 768px) {
+  .sideContainer {
+    width: 100%;
+    padding-top: 100px;
+    align-items: center;
+  }
+  .gear {
+    left: 0;
+  }
+
+  .sideItemWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-bottom: none;
+    border-radius: 5px;
+    width: 60%;
+  }
+  .sideItem {
+    font-size: 2em;
+  }
+  .sideLogWrapper {
+    bottom: 150px;
+    display: flex;
+    justify-content: center;
+  }
+  .sideLog {
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+    border-top: none;
+  }
 }

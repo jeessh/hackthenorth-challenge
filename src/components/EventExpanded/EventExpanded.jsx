@@ -14,17 +14,22 @@ const EventExpanded = ({
   end,
   speakers,
   url,
+  // permission,
   related,
   sidebarOpen,
   onClick,
-  onClickRelated
+  onClickRelated,
 }) => {
+  const loggedIn = JSON.parse(localStorage.getItem("loggedIn"));
+
   const expandedRef = useRef();
   const { data } = useQuery(GET_EVENTS);
-  const relatedEvents = data.sampleEvents.filter((event) =>
+  let relatedEvents = data.sampleEvents.filter((event) =>
     related.includes(event.id),
   );
-
+  relatedEvents = !loggedIn
+    ? relatedEvents.filter((event) => event.permission === "public")
+    : relatedEvents;
   useEffect(() => {
     if (sidebarOpen) {
       expandedRef.current.style.width = "70vw";
@@ -55,7 +60,6 @@ const EventExpanded = ({
 
   const typeCol =
     type === "tech_talk" ? "Tech" : type === "workshop" ? "Work" : "Act";
-
   return (
     <section
       className="expandedBackground"
@@ -66,7 +70,7 @@ const EventExpanded = ({
         <h3 className={"expandedEv" + typeCol}>{formatType(type)}</h3>
 
         <div className="expandedContent">
-          <h1>{title}</h1>
+          <h1 className="expandedHeader">{title}</h1>
           <h3>
             🕒 {start} - {end} (UTC+0)
           </h3>
@@ -83,17 +87,22 @@ const EventExpanded = ({
           >
             Join the Event!
           </a>
-          <h2>🔗 Related Events:</h2>
-          <div className="relatedEventsContainer">
-            {relatedEvents.map((event) => (
-              <EventRelated
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                onClickRelated={onClickRelated}
-              />
-            ))}
-          </div>
+          {relatedEvents.length > 0 && (
+            <>
+              <h2>🔗 Related Events:</h2>
+              <div className="relatedEventsContainer">
+                {relatedEvents.map((event) => (
+                  <EventRelated
+                    key={event.id}
+                    id={event.id}
+                    title={event.name}
+                    type={event.event_type}
+                    onClickRelated={onClickRelated}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
@@ -109,6 +118,7 @@ EventExpanded.propTypes = {
   description: PropTypes.string,
   speakers: PropTypes.array,
   url: PropTypes.string,
+  permission: PropTypes.string,
   related: PropTypes.array,
   sidebarOpen: PropTypes.bool,
   onClick: PropTypes.func,

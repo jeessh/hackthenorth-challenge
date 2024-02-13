@@ -1,6 +1,7 @@
 :root {
   --darkbg: rgb(28, 25, 38);
   --darkcardbg: rgb(37, 32, 50);
+  --eventbg: rgb(34, 32, 40);
 }
 
 h1 {
@@ -12,7 +13,7 @@ h1 {
 
 h2 {
   font:
-    500 1.5rem "Roboto",
+    800 1.5rem "Roboto",
     monospace;
   color: rgb(220, 220, 220);
 }

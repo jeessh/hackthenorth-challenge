@@ -37,7 +37,21 @@ const SideBar = ({ onClick }) => {
         ref={gearRef}
       />
       <div className="sideContainer closeSide" ref={clickRef}>
-        <button onClick={handleLogout}>LOGOUT</button>
+        <a className="sideItemWrapper" href="/">
+            <h1 className="sideItem"> 🏠 HOME</h1>
+        </a>
+        <a className="sideItemWrapper">
+            <h1 className="sideItem">🎉 EVENTS</h1>
+        </a>
+        <a className="sideItemWrapper">
+          <h1 className="tempOverlay">Coming Soon!</h1>
+            <h1 className="sideItem">⚙️ SETTINGS</h1>
+        </a>
+        <a className="sideLogWrapper">
+          <h1 className="sideLog" onClick={handleLogout}>
+            LOGOUT
+          </h1>
+        </a>
       </div>
     </>
   );
