@@ -4,6 +4,7 @@ import "./index.css";
 import EventRelated from "../EventRelated/EventRelated";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const EventExpanded = ({
   title,
@@ -20,14 +21,14 @@ const EventExpanded = ({
   onClick,
   onClickRelated,
 }) => {
-  const loggedIn = JSON.parse(localStorage.getItem("loggedIn"));
+  const { isAuthenticated } = useAuth0();
 
   const expandedRef = useRef();
   const { data } = useQuery(GET_EVENTS);
   let relatedEvents = data.sampleEvents.filter((event) =>
     related.includes(event.id),
   );
-  relatedEvents = !loggedIn
+  relatedEvents = !isAuthenticated
     ? relatedEvents.filter((event) => event.permission === "public")
     : relatedEvents;
   useEffect(() => {

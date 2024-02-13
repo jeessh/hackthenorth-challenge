@@ -7,6 +7,7 @@ import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./index.css";
 
 const EventTab = () => {
@@ -18,16 +19,15 @@ const EventTab = () => {
   const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
   const searchRef = useRef();
   const arrowRef = useRef();
-  const loggedIn = JSON.parse(localStorage.getItem("loggedIn"));
+  const { isAuthenticated } = useAuth0();
 
   //After rendering, set filteres for data events
   useEffect(() => {
-    console.log(loggedIn);
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
       output.sort((eva, evb) => eva.start_time - evb.start_time);
-      output = !loggedIn
+      output = !isAuthenticated
         ? output.filter(
             (event) =>
               event.permission === "public" &&
@@ -76,7 +76,7 @@ const EventTab = () => {
 
   const handleSearch = (event) => {
     let search = event.target.value;
-    let output = loggedIn
+    let output = isAuthenticated
       ? data.sampleEvents.filter(
           (event) =>
             event.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -203,7 +203,7 @@ const EventTab = () => {
             end={convertToTime(selectEvent.end_time)}
             description={selectEvent.description}
             speakers={selectEvent.speakers.map((speaker) => speaker.name)}
-            url={loggedIn ? selectEvent.private_url : selectEvent.public_url}
+            url={isAuthenticated ? selectEvent.private_url : selectEvent.public_url}
             related={selectEvent.related_events}
             permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}

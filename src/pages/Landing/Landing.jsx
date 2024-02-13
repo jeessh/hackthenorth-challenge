@@ -1,19 +1,13 @@
 // import React, {useEffect, useState} from 'react'
-import React, { useState, useEffect } from "react";
+import React from "react";
 import hacker from "../../assets/hacker.png";
 import visit from "../../assets/traveler.png";
 import "./index.css";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  const [LoggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    const logged = JSON.parse(localStorage.getItem("loggedIn"));
-    console.log(logged);
-    if (logged) {
-      setLoggedIn(true);
-    }
-  }, []);
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   const navigate = useNavigate();
 
@@ -21,11 +15,13 @@ const Landing = () => {
 
   // }
 
-  const handleLoginClick = () => {
-    if (LoggedIn) {
+  const handleLoginClick = async () => {
+    if (isAuthenticated) {
       navigate("/events");
     } else {
-      navigate("/login");
+      await loginWithRedirect({
+        appState: { returnTo: "/events" },
+      });
     }
   };
 
