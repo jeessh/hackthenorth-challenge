@@ -17,7 +17,7 @@ const client = new ApolloClient({
   link: new HttpLink({
     uri: "https://api.hackthenorth.com/v3/graphql",
     fetchOptions: {
-      mode: "cors", // no-cors, *cors, same-origin
+      mode: "no-cors", // no-cors, *cors, same-origin
     },
   }),
 });
