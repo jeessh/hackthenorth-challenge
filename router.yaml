@@ -1,0 +1,5 @@
+cors:
+  origins:
+    - https://hackthenorth-jesse.vercel.app/
+    - https://api.hackthenorth.com/v3/graphql
+  allow_credentials: true
