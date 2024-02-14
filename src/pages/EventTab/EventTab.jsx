@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_EVENTS } from "../../Middleware/apiQueries.cjs";
 import setting from "../../assets/setting.png";
 import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
@@ -11,8 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "./index.css";
 
 const EventTab = () => {
-  const { data } = useQuery(GET_EVENTS);
-
+  const [eventData, setEventData] = useState();
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,11 +24,21 @@ const EventTab = () => {
   const { isAuthenticated } = useAuth0();
   sessionStorage.setItem("sort", sortDate);
 
+  useEffect(() => {
+    fetch("https://api.hackthenorth.com/v3/events")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data !== eventData) {
+          setEventData(data);
+        }
+      });
+  }, []);
+
   //After rendering, set filteres for data events
   useEffect(() => {
-    if (data) {
+    if (eventData) {
       let output = [];
-      output.push(...data.sampleEvents);
+      output.push(...eventData);
 
       output = sortDate
         ? output.sort((eva, evb) => eva.start_time - evb.start_time)
@@ -49,7 +56,7 @@ const EventTab = () => {
 
       setEvents(output);
     }
-  }, [data, selectEvent, filters, sortDate, isAuthenticated]);
+  }, [selectEvent, filters, sortDate, isAuthenticated, eventData]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
@@ -71,7 +78,7 @@ const EventTab = () => {
   };
 
   const handleNewExpand = (id) => {
-    let temp = data.sampleEvents.filter((event) => event.id === id);
+    let temp = eventData.filter((event) => event.id === id);
     setSelectEvent(temp[0]);
   };
 
@@ -82,12 +89,12 @@ const EventTab = () => {
   const handleSearch = (event) => {
     let search = event.target.value;
     let output = isAuthenticated
-      ? data.sampleEvents.filter(
+      ? eventData.filter(
           (event) =>
             event.name.toLowerCase().includes(search.toLowerCase()) ||
             event.description.toLowerCase().includes(search.toLowerCase()),
         )
-      : data.sampleEvents.filter(
+      : eventData.filter(
           (event) =>
             event.permission === "public" &&
             (event.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -239,22 +246,5 @@ const EventTab = () => {
     </section>
   );
 };
-// query {
-//   sampleEvents {
-//     id
-//     name
-//     event_type
-//     permission
-//     start_time
-//     end_time
-//     description
-//     speakers {
-//       name
-//     }
-//     public_url
-//     private_url
-//     related_events
-//   }
-// }
 
 export default EventTab;

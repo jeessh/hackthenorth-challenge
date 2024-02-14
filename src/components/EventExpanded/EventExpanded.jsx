@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
-import { useQuery } from "@apollo/client";
-import { GET_EVENTS } from "../../Middleware/apiQueries.cjs";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const EventExpanded = ({
@@ -22,10 +20,19 @@ const EventExpanded = ({
   onClickRelated,
 }) => {
   const { isAuthenticated } = useAuth0();
+  const [eventData, setEventData] = useState([]);
 
   const expandedRef = useRef();
-  const { data } = useQuery(GET_EVENTS);
-  let relatedEvents = data.sampleEvents.filter((event) =>
+  useEffect(() => {
+    fetch("https://api.hackthenorth.com/v3/events")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data !== eventData) {
+          setEventData(data);
+        }
+      });
+  }, [eventData]);
+  let relatedEvents = eventData.filter((event) =>
     related.includes(event.id),
   );
   relatedEvents = !isAuthenticated
