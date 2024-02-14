@@ -13,13 +13,13 @@ import "./styles/globals.css";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-
   link: new HttpLink({
     uri: "https://api.hackthenorth.com/v3/graphql",
     fetchOptions: {
-      mode: "no-cors", // no-cors, *cors, same-origin
+      mode: "cors", // no-cors, *cors, same-origin
     },
   }),
+  uri: "https://api.hackthenorth.com/v3/graphql",
 });
 
 const App = () => {
