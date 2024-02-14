@@ -37,7 +37,9 @@ const EventTab = () => {
 
   //After rendering, set filteres for data events
   useEffect(() => {
-    console.log(data.sampleEvents);
+    if(data) {
+      console.log(data.sampleEvents);
+    }
     if (eventData) {
       let output = [];
       output.push(...eventData);
