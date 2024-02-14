@@ -1,4 +1,5 @@
 cors:
+  allow_any_origin: true
   origins:
     - https://hackthenorth-jesse.vercel.app/
     - https://api.hackthenorth.com/v3/graphql
