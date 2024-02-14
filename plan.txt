@@ -24,24 +24,28 @@ TODAY PLAN (10th) ✅
 - fix public searchers being able to access everything ✅
 
 (12th)
-- style related events
+- style related events 🅱️
+    - add small background stuff 🅱️
+    - maybe time/date 🅱️
 - mock sidebar ✅
 - styling + responsiveness
 
 (13th)
-- advanced filtering functionality
-
+- advanced filtering functionality 🅱️
+    - sort by [date][event] (two options toggle)
+    - filter public private
 - styling + responsiveness
 
 (14th)
-- accessibility
-    - reduce motion
-    - dark/light mode
-- landing page 
+- landing page ✅
+    - start ✅
+    - login cards ✅
 - styling + responsiveness
 
-
 (15th)
+- accessibility 🅱️
+    - reduce motion 🅱️
+    - dark/light mode 🅱️
 - styling + responsiveness
 
 (16th)
