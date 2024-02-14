@@ -24,12 +24,12 @@ TODAY PLAN (10th) ✅
 - fix public searchers being able to access everything ✅
 
 (12th)
-- preferences functionality
 - style related events
-- styling + responsiveness
 - mock sidebar ✅
+- styling + responsiveness
 
 (13th)
+- preferences functionality
 - accessibility
     - reduce motion
     - dark/light mode
@@ -44,9 +44,9 @@ TODAY PLAN (10th) ✅
 - styling + responsiveness
 
 (16th)
-- writeup rough draft
+- styling + responsiveness
 (17th)
-- tune up things
+- writeup rough draft
 (18th)
 - tune up things
 
@@ -57,20 +57,24 @@ FEATURES
 - spinning gear to open sidebar search ✅
 - searching feature
     - searching through db names ✅
-    - returns top 3 picks of similarity, based on string input
-- tab for favourited events
 
 ADVANCED SEARCHING
-- filter, change order, yes/no
+- filter, change order
     - FILTER OPTIONS
         - type (workshop/activity/tech) ✅
         - date??
         - time range??
         - public/private (ONLY ALLOW IF YOURE LOGGED IN)
+    - CHANGE ORDER
+        - type
 
         -RANDOMIZE FOR FUN??!?
 - ????
 - favourited ones (set to remind)
+
+SIDEBAR ACCESSIBILITY
+- dark/light mode
+- reduce motion
 
 
 LOGIN & SETUP
@@ -83,10 +87,8 @@ EXPANDED CARD
 CARD
 - type (workshop/act/tech) at top right corner with emoji ✅
 - filler image (maybe chatgpt)
+    - if not image, change
 - name, time, date in bottom bar ✅
-- add a star icon to set a reminder to add
-- hardcode reminder to send 3 seconds after
-
-
-
-- change shadow colour on hover (to match type) 
+- add a star icon to set a reminder to add??
+    - hardcode reminder to send 3 seconds after
+- add a border-bottom with matching color ✅

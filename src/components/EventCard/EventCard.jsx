@@ -16,7 +16,6 @@ const EventCard = ({
   // related,
   // permission
 }) => {
-
   const formatType = (type) => {
     if (type === "tech_talk") {
       return "Tech Talk 🎙️";
@@ -30,12 +29,22 @@ const EventCard = ({
   const typeCol =
     type === "tech_talk" ? "Tech" : type === "workshop" ? "Work" : "Act";
 
+  const cardBorder =
+    type === "tech_talk"
+      ? "rgba(137, 43, 115, 0.75)"
+      : type === "workshop"
+        ? "rgba(71, 123, 135, 0.75)"
+        : "rgba(169, 98, 48, 0.75)";
   const handleClick = () => {
     onClick();
   };
 
   return (
-    <div className="cardWrapper" onClick={handleClick}>
+    <div
+      className="cardWrapper"
+      onClick={handleClick}
+      style={{ border: `4px solid ${cardBorder}` }}
+    >
       <div className="cardTags">
         <h3 className={"eventType" + typeCol}>{formatType(type)}</h3>
       </div>

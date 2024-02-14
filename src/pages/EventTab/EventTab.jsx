@@ -48,9 +48,12 @@ const EventTab = () => {
     return converted;
   };
 
-  const getDate = (unix, format) => { // if format is true, return numerical date. otherwise, return string date
+  const getDate = (unix, format) => {
+    // if format is true, return numerical date. otherwise, return string date
     var t = new Date(unix);
-    let converted = format ? moment(t).format("MM/DD") : moment(t).format("MMMM Do, YYYY");
+    let converted = format
+      ? moment(t).format("MM/DD")
+      : moment(t).format("MMMM Do, YYYY");
     return converted;
   };
 
@@ -95,16 +98,15 @@ const EventTab = () => {
 
   const advClick = (e, ev) => {
     e.stopPropagation();
-    let temp = [...filters];
+    let filter = [...filters];
     if (ev === "tech_talk") {
-      temp[0] = temp[0] === "tech_talk" ? "" : "tech_talk";
+      filter[0] = filter[0] === "tech_talk" ? "" : "tech_talk";
     } else if (ev === "workshop") {
-      temp[1] = temp[1] === "workshop" ? "" : "workshop";
+      filter[1] = filter[1] === "workshop" ? "" : "workshop";
     } else {
-      temp[2] = temp[2] === "activity" ? "" : "activity";
+      filter[2] = filter[2] === "activity" ? "" : "activity";
     }
-    console.log(temp);
-    setFilters(temp);
+    setFilters(filter);
   };
 
   return (
@@ -124,7 +126,7 @@ const EventTab = () => {
         {/* Advanced Search Bar */}
         <div className="advancedSearchContainer">
           <div className="advancedSearchToggle" onClick={handleAdvanced}>
-            <h1 onClick={handleAdvanced}>Advanced Search</h1>
+            <h2 onClick={handleAdvanced}>Advanced Search</h2>
             <div className="arrowMove">
               <div className="arrow" ref={arrowRef} />
             </div>
@@ -201,7 +203,9 @@ const EventTab = () => {
             end={convertToTime(selectEvent.end_time)}
             description={selectEvent.description}
             speakers={selectEvent.speakers.map((speaker) => speaker.name)}
-            url={isAuthenticated ? selectEvent.private_url : selectEvent.public_url}
+            url={
+              isAuthenticated ? selectEvent.private_url : selectEvent.public_url
+            }
             related={selectEvent.related_events}
             permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}

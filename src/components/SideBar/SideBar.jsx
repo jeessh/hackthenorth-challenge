@@ -33,7 +33,7 @@ const SideBar = ({ onClick }) => {
         },
       });
     } else {
-      // user is not loggedin, send to login =
+      // user is not loggedin, send to login
       await loginWithRedirect({
         appState: { returnTo: "/events" },
       });

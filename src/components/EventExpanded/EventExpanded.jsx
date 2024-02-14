@@ -58,7 +58,12 @@ const EventExpanded = ({
       return "Activity 🎉";
     }
   };
-
+  const cardBorder =
+    type === "tech_talk"
+      ? "rgba(137, 43, 115, 0.75)"
+      : type === "workshop"
+        ? "rgba(71, 123, 135, 0.75)"
+        : "rgba(169, 98, 48, 0.75)";
   const typeCol =
     type === "tech_talk" ? "Tech" : type === "workshop" ? "Work" : "Act";
   return (
@@ -67,7 +72,11 @@ const EventExpanded = ({
       ref={expandedRef}
       onClick={handleClick}
     >
-      <div className="expandedContainer" onClick={handleChildClick}>
+      <div
+        className="expandedContainer"
+        onClick={handleChildClick}
+        style={{ borderBottom: `8px solid ${cardBorder}` }}
+      >
         <h3 className={"expandedEv" + typeCol}>{formatType(type)}</h3>
 
         <div className="expandedContent">
@@ -100,7 +109,13 @@ const EventExpanded = ({
           {relatedEvents.length > 0 && (
             <>
               <h2>🔗 Related Events:</h2>
-              <div className={relatedEvents.length > 2 ? "relatedEventsContainer" : "relatedEventsContainer removeScrollBg"}>
+              <div
+                className={
+                  relatedEvents.length > 2
+                    ? "relatedEventsContainer"
+                    : "relatedEventsContainer removeScrollBg"
+                }
+              >
                 {relatedEvents.map((event) => (
                   <EventRelatedCard
                     key={event.id}

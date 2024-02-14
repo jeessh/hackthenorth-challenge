@@ -1,8 +1,4 @@
-.loading {
-  background-color: rgb(34, 32, 40);
-  height: 1000vh;
-}
-
+/* overall containers */
 .viewContainer {
   display: flex;
   position: relative;
@@ -14,12 +10,34 @@
   width: 100%;
 }
 
+/* "Event Dashboard" */
 .eventTabHeader {
   margin-top: 2em;
   font-size: 5vw;
   text-align: center;
 }
 
+/* Search Tab */
+.searchContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.searchBar {
+  width: 50%;
+  height: 50px;
+  padding: 10px;
+  text-indent: 3%;
+  border-radius: 25px;
+  font:
+    500 1.5rem "Roboto",
+    monospace;
+}
+
+/* Advanced Search Tab */
 .advancedSearchContainer {
   display: flex;
   flex-direction: column;
@@ -97,6 +115,7 @@
     monospace;
   height: 100%;
   transition: 0.3s ease-out;
+  cursor: pointer;
 }
 
 .filter1.active,
@@ -114,6 +133,8 @@
 .filter3.active {
   background-color: rgba(169, 98, 48, 0.9);
 }
+
+/* Events Section */
 .eventContainer {
   position: relative;
   display: grid;
@@ -121,25 +142,6 @@
   padding: 100px;
   padding-top: 25px;
   gap: 20px;
-}
-
-.searchContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.searchBar {
-  width: 50%;
-  height: 50px;
-  padding: 10px;
-  text-indent: 3%;
-  border-radius: 25px;
-  font:
-    500 1.5rem "Roboto",
-    monospace;
 }
 
 .noEvents {
@@ -166,5 +168,17 @@
   }
   .noEventsText {
     font-size: 2em;
+  }
+
+  .advancedMenuContainer {
+    width: 80%;
+  }
+
+  .filter1,
+  .filter2,
+  .filter3 {
+    font:
+      0.75em "Roboto",
+      monospace;
   }
 }
