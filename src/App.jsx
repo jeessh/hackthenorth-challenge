@@ -19,17 +19,20 @@ const link = from([
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
+  fetchOptions: {
+    mode: "no-cors",
+  },
 });
 
 const App = () => {
   return (
-      <ApolloProvider client={client}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/events" element={<EventTab />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </ApolloProvider>
+    <ApolloProvider client={client}>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/events" element={<EventTab />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </ApolloProvider>
   );
 };
 
