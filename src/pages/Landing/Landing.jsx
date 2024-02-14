@@ -30,16 +30,28 @@ const Landing = () => {
   };
 
   return (
-    <section className="landingCardContainer">
-      <div className="landingCard" onClick={handleLoginClick}>
-        <img src={hacker} className="landingIcon" alt="logo" />
-        <h1 className="landingHeader">Hacker</h1>
-      </div>
-      <div className="landingCard" onClick={handleVisitClick}>
-        <img src={visit} className="landingIcon" alt="logo" />
-        <h1 className="landingHeader">Visitor</h1>
-      </div>
-    </section>
+    <main style={{ backgroundColor: `var(--darkbg)` }}>
+      <section className="welcomeContainer">
+        <div className="welcomeContent">
+          <h1 className="welcomeHeader">Welcome to</h1>
+          <div className="hackTheNorthWrapper">
+            <h1 className="hackTheNorthText">Hack</h1>
+            <h1 className="hackTheNorthText">the</h1>
+            <h1 className="hackTheNorthText">North</h1>
+          </div>
+        </div>
+      </section>
+      <section className="landingCardContainer">
+        <div className="landingCard" onClick={handleLoginClick}>
+          <img src={hacker} className="landingIcon" alt="logo" />
+          <h1 className="landingHeader">Hacker</h1>
+        </div>
+        <div className="landingCard" onClick={handleVisitClick}>
+          <img src={visit} className="landingIcon" alt="logo" />
+          <h1 className="landingHeader">Visitor</h1>
+        </div>
+      </section>
+    </main>
   );
 };
 
