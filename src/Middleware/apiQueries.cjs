@@ -1,10 +1,5 @@
-/* eslint-disable no-undef */
 import { gql } from "@apollo/client";
-import cors from "cors";
-import express from "express";
 
-const app = express();
-app.use(cors());
 
 export const GET_EVENTS = gql`
   query {

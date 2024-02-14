@@ -4,7 +4,6 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from,
 } from "@apollo/client";
 import { Routes, Route, Navigate } from "react-router-dom";
 import EventTab from "./pages/EventTab/EventTab";
@@ -12,17 +11,15 @@ import Landing from "./pages/Landing/Landing";
 
 import "./styles/globals.css";
 
-const link = from([
-  new HttpLink({ uri: "https://api.hackthenorth.com/v3/graphql" }),
-]);
-
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
-  fetchOptions: {
-    mode: "no-cors",
-  },
-  cors: false
+
+  link: new HttpLink({
+    uri: "https://api.hackthenorth.com/v3/graphql",
+    fetchOptions: {
+      mode: "cors", // no-cors, *cors, same-origin
+    },
+  }),
 });
 
 const App = () => {

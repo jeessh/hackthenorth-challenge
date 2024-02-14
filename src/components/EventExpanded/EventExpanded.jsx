@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./index.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
 import { useQuery } from "@apollo/client";
-import { GET_EVENTS } from "../../Middleware/apiQueries";
+import { GET_EVENTS } from "../../Middleware/apiQueries.cjs";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const EventExpanded = ({
