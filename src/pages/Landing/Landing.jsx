@@ -23,26 +23,26 @@ const Landing = () => {
   };
 
   return (
-      <section className="welcomeContainer">
-        <img src={gear} className="welcomeGear" alt="gear" />
-        <div className="welcomeContent">
-          <h1 className="welcomeHeader">Welcome to</h1>
-          <div className="hackTheNorthWrapper">
-            <h1 className="HTN">HACK</h1>
-            <h1 className="HTN HTNOutline">THE</h1>
-            <h1 className="HTN">NORTH</h1>
-          </div>
-          <div className="hackTheNorthBackText">2021</div>
-          <section className="landingCardContainer">
-            <div className="landingCard" onClick={handleLoginClick}>
-              <h1 className="landingHeader">Hacker 💻</h1>
-            </div>
-            <div className="landingCard" onClick={handleVisitClick}>
-              <h1 className="landingHeader">Visitor 👋</h1>
-            </div>
-          </section>
+    <section className="welcomeContainer">
+      <img src={gear} className="welcomeGear" alt="gear" />
+      <div className="welcomeContent">
+        <h1 className="welcomeHeader">Welcome to</h1>
+        <div className="hackTheNorthWrapper">
+          <h1 className="HTN">HACK</h1>
+          <h1 className="HTN HTNOutline">THE</h1>
+          <h1 className="HTN">NORTH</h1>
         </div>
-      </section>
+        <div className="hackTheNorthBackText">2021</div>
+        <section className="landingCardContainer">
+          <div className="landingCard" onClick={handleLoginClick}>
+            <h1 className="landingHeader">Hacker 💻</h1>
+          </div>
+          <div className="landingCard" onClick={handleVisitClick}>
+            <h1 className="landingHeader">Visitor 👋</h1>
+          </div>
+        </section>
+      </div>
+    </section>
   );
 };
 
