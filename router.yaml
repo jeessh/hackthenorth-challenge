@@ -1,2 +1,2 @@
-cors: 
-  allow_credentials: true
+cors:
+  allow_any_origin: true
