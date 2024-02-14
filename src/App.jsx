@@ -22,6 +22,7 @@ const client = new ApolloClient({
   fetchOptions: {
     mode: "no-cors",
   },
+  cors: false
 });
 
 const App = () => {
