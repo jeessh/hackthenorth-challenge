@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_EVENTS } from "../../GraphQL/apiQueries";
+import { GET_EVENTS } from "../../Middleware/apiQueries";
 import setting from "../../assets/setting.png";
 import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
