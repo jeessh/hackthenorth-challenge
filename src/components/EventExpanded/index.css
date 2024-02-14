@@ -103,3 +103,19 @@
   scrollbar-width: none;
   scrollbar-color: var(--darkcardbg) rgba(0, 0, 0, 0);
 }
+
+@media screen and (max-width: 768px) {
+ .eventInfoWrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    left: 0;
+ }
+ .externalLink {
+   width: 100%;
+ }
+ .relatedEventsHeader {
+  font-size: 1.3rem;
+ }
+  
+}

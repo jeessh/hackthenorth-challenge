@@ -16,12 +16,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(page);
     pageChange();
   }, [page]);
 
   const handleChange = (e) => {
-    console.log(e.target.id);
     if (e.target.id === "user") {
       setUser(e.target.value);
     } else {
@@ -35,7 +33,6 @@ const Login = () => {
       localStorage.setItem("loggedIn", JSON.stringify(true));
       setPage("interest");
     } else {
-      console.log("Invalid credentials");
     }
   };
   const pageChange = () => {

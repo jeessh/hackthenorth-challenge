@@ -134,6 +134,23 @@
   background-color: rgba(169, 98, 48, 0.9);
 }
 
+.sortButton {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font:
+    1em "Roboto",
+    monospace;
+  color: rgb(135, 135, 135);
+  transition: 0.35s ease-in;
+  background-color: rgb(65, 58, 85);
+  border: 2px solid rgba(220, 220, 220, 0.35);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+
+}
+
 /* Events Section */
 .eventContainer {
   position: relative;

@@ -8,7 +8,7 @@
   /* background-color: rgb(46, 42, 52); */
   background-color: rgb(41, 37, 53);
   transition: 0.5s ease-in;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   border-right: 5px solid rgba(220, 220, 220, 0.3);
   box-shadow: 50px 0 100px 10px rgb(0, 0, 0, 0.4);
@@ -143,24 +143,26 @@
   .sideItemWrapper {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
     border-bottom: none;
     border-radius: 5px;
     width: 60%;
+    box-shadow: none;
   }
   .sideItem {
     font-size: 2em;
   }
   .sideLogWrapper {
-    bottom: 150px;
+    bottom: 100px;
     display: flex;
     justify-content: center;
+    box-shadow: none;
   }
   .sideLog {
     text-align: center;
     border-radius: 5px;
     padding: 20px;
-    width: 50%;
     border-top: none;
+    font-size: 2em;
   }
 }

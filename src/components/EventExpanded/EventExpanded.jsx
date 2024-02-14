@@ -6,6 +6,7 @@ import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/apiQueries";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 const EventExpanded = ({
   title,
   type,
@@ -37,7 +38,6 @@ const EventExpanded = ({
     } else {
       expandedRef.current.style.width = "100vw";
     }
-    console.log(relatedEvents);
   }, [sidebarOpen]);
 
   const handleClick = (e) => {
@@ -108,7 +108,7 @@ const EventExpanded = ({
 
           {relatedEvents.length > 0 && (
             <>
-              <h2>🔗 Related Events:</h2>
+              <h2 className="relatedEventsHeader">🔗 Related Events:</h2>
               <div
                 className={
                   relatedEvents.length > 2

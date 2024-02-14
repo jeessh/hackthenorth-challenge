@@ -6,14 +6,14 @@
   padding: 20px;
   border-radius: 5px;
   transition: 0.2s ease-in;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 120px;
   margin: 20px;
 }
 
-.relatedCard:hover {
+.relatedContainer:hover {
   box-shadow: 0 5px 15px 2.5px rgba(0, 0, 0, 0.5);
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   cursor: pointer;
   transition: 0.15s ease-out;
 }
@@ -24,18 +24,25 @@
   position: absolute;
   left: -20px;
   top: -20px;
-  background-color: rgba(169, 98, 48, 0.9);
-  padding: 15px;
+  background-color: rgba(169, 98, 48, 1);
+  padding: 12px;
   border-radius: 100px;
   width: 22.5px;
   height: min-content;
   text-align: center;
-  box-shadow: 0 5px 15px 2.5px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 2.5px 10px 2.5px rgba(0, 0, 0, 0.5);
+  border: 2.5px solid rgba(220,220,220,0.2);
   margin: 10px;
 }
 .relatedTech {
-  background-color: rgba(137, 43, 115, 0.9);
+  background-color: rgba(137, 43, 115, 1);
 }
 .relatedWork {
-  background-color: rgba(71, 123, 135, 0.9);
+  background-color: rgba(71, 123, 135, 1);
+}
+
+.relatedContent {
+  position:absolute;
+  display:flex;
+  bottom: 0;
 }

@@ -29,13 +29,14 @@ TODAY PLAN (10th) ✅
 - styling + responsiveness
 
 (13th)
-- preferences functionality
-- accessibility
-    - reduce motion
-    - dark/light mode
+- advanced filtering functionality
+
 - styling + responsiveness
 
 (14th)
+- accessibility
+    - reduce motion
+    - dark/light mode
 - landing page 
 - styling + responsiveness
 
@@ -67,6 +68,7 @@ ADVANCED SEARCHING
         - public/private (ONLY ALLOW IF YOURE LOGGED IN)
     - CHANGE ORDER
         - type
+            - nvm functionally useless
 
         -RANDOMIZE FOR FUN??!?
 - ????

@@ -12,22 +12,33 @@ import "./index.css";
 
 const EventTab = () => {
   const { data } = useQuery(GET_EVENTS);
+
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [advancedSearch, setAdvancedSearch] = useState(false);
   const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
+  const [sortDate, setSortDate] = useState(
+    localStorage.getItem("sort") === "true",
+  ); // if true, sort by date. else, sort by type
+
   const searchRef = useRef();
   const arrowRef = useRef();
   const { isAuthenticated } = useAuth0();
+  localStorage.setItem("sort", sortDate);
 
   //After rendering, set filteres for data events
   useEffect(() => {
-    console.log(isAuthenticated);
     if (data) {
       let output = [];
       output.push(...data.sampleEvents);
-      output.sort((eva, evb) => eva.start_time - evb.start_time);
+
+      output = sortDate
+        ? output.sort((eva, evb) => eva.start_time - evb.start_time)
+        : output.sort((eva, evb) =>
+            eva.event_type.localeCompare(evb.event_type),
+          );
+      // output.sort((eva, evb) => eva.start_time - evb.start_time);
       output = !isAuthenticated
         ? output.filter(
             (event) =>
@@ -35,12 +46,10 @@ const EventTab = () => {
               filters.includes(event.event_type),
           )
         : output.filter((event) => filters.includes(event.event_type));
-      console.log(filters);
-      console.log(output);
 
       setEvents(output);
     }
-  }, [data, selectEvent, filters, isAuthenticated]);
+  }, [data, selectEvent, filters, sortDate, isAuthenticated]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
@@ -62,9 +71,7 @@ const EventTab = () => {
   };
 
   const handleNewExpand = (id) => {
-    console.log(`ID: ${id}`);
     let temp = data.sampleEvents.filter((event) => event.id === id);
-    console.log(temp);
     setSelectEvent(temp[0]);
   };
 
@@ -158,6 +165,16 @@ const EventTab = () => {
                 >
                   Activity
                 </button>
+              </div>
+              <div>
+                <h3>Sort by:</h3>
+                <button
+                  className="sortButton"
+                  onClick={() => setSortDate(!sortDate)}
+                >
+                  {sortDate ? "Date" : "Event"}
+                </button>
+                <h2></h2>
               </div>
             </div>
           ) : (
