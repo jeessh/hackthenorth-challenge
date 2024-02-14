@@ -19,13 +19,13 @@ const EventTab = () => {
   const [advancedSearch, setAdvancedSearch] = useState(false);
   const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
   const [sortDate, setSortDate] = useState(
-    localStorage.getItem("sort") === "true",
+    sessionStorage.getItem("sort") === "true",
   ); // if true, sort by date. else, sort by type
 
   const searchRef = useRef();
   const arrowRef = useRef();
   const { isAuthenticated } = useAuth0();
-  localStorage.setItem("sort", sortDate);
+  sessionStorage.setItem("sort", sortDate);
 
   //After rendering, set filteres for data events
   useEffect(() => {
