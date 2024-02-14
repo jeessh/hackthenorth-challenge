@@ -1,0 +1,1 @@
+// format type, border colours, anything else that is const

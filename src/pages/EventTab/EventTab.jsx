@@ -6,9 +6,12 @@ import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
 import { useAuth0 } from "@auth0/auth0-react";
+import { GET_EVENTS } from "../../GraphQL/queries";
+import { useQuery } from "@apollo/client";
 import "./index.css";
 
 const EventTab = () => {
+  const { data } = useQuery(GET_EVENTS);
   const [eventData, setEventData] = useState();
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
@@ -22,8 +25,6 @@ const EventTab = () => {
   const searchRef = useRef();
   const arrowRef = useRef();
   const { isAuthenticated } = useAuth0();
-  sessionStorage.setItem("sort", sortDate);
-
   useEffect(() => {
     fetch("https://api.hackthenorth.com/v3/events")
       .then((res) => res.json())
@@ -36,15 +37,17 @@ const EventTab = () => {
 
   //After rendering, set filteres for data events
   useEffect(() => {
+    console.log(data.sampleEvents);
     if (eventData) {
       let output = [];
       output.push(...eventData);
 
       output = sortDate
-        ? output.sort((eva, evb) => eva.start_time - evb.start_time)
-        : output.sort((eva, evb) =>
+        ? output.sort((eva, evb) =>
             eva.event_type.localeCompare(evb.event_type),
-          );
+          )
+        : output.sort((eva, evb) => eva.start_time - evb.start_time);
+
       // output.sort((eva, evb) => eva.start_time - evb.start_time);
       output = !isAuthenticated
         ? output.filter(
@@ -56,6 +59,7 @@ const EventTab = () => {
 
       setEvents(output);
     }
+    sessionStorage.setItem("sort", sortDate);
   }, [selectEvent, filters, sortDate, isAuthenticated, eventData]);
 
   const convertToTime = (unix) => {
@@ -179,7 +183,7 @@ const EventTab = () => {
                   className="sortButton"
                   onClick={() => setSortDate(!sortDate)}
                 >
-                  {sortDate ? "Date" : "Event"}
+                  {sortDate ? "Event" : "Date"}
                 </button>
                 <h2></h2>
               </div>

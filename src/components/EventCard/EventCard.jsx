@@ -43,7 +43,7 @@ const EventCard = ({
     <div
       className="cardWrapper"
       onClick={handleClick}
-      style={{ border: `4px solid ${cardBorder}` }}
+      style={{ border: `3px solid ${cardBorder}` }}
     >
       <div className="cardTags">
         <h3 className={"eventType" + typeCol}>{formatType(type)}</h3>

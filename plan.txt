@@ -31,24 +31,28 @@ TODAY PLAN (10th) ✅
 - styling + responsiveness
 
 (13th)
-- advanced filtering functionality 🅱️
-    - sort by [date][event] (two options toggle)
-    - filter public private
-- styling + responsiveness
-
-(14th)
 - landing page ✅
     - start ✅
     - login cards ✅
+- advanced filtering functionality 🅱️
+    - sort by [date][event] (two options toggle)
+    - filter public private
+    - search toggle (title, description, both)
+- styling + responsiveness
+
+(14th)
+- refactor code
+    - WILL TALK GODDAMN LONG
 - styling + responsiveness
 
 (15th)
-- accessibility 🅱️
-    - reduce motion 🅱️
-    - dark/light mode 🅱️
+- refactor code
+    - WILL TALK GODDAMN LONG
 - styling + responsiveness
 
 (16th)
+- accessibility 🅱️
+    - reduce motion 🅱️
 - styling + responsiveness
 (17th)
 - writeup rough draft
