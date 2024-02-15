@@ -5,6 +5,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
 import { convertToTime, getDate } from "../../constants/constants";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { GET_EVENTS } from "../../GraphQL/queries";
 import { useQuery } from "@apollo/client";
@@ -122,7 +123,7 @@ const EventTab = () => {
         {/* Advanced Search Bar */}
         <section className="advancedSearchContainer">
           <div className="advancedSearchToggle" onClick={handleAdvanced}>
-            <h2>Advanced Search</h2>
+            <h2>Filters</h2>
             <div className="arrowMove">
               <div className="arrow" ref={arrowRef} />
             </div>
@@ -157,26 +158,32 @@ const EventTab = () => {
               </div>
               <div className="advancedInline">
                 <div className="advancedInlineWrapper">
-                  <button
-                    className="advancedButton"
-                    onClick={() => setSortDate(!sortDate)}
-                  >
-                    Date
-                  </button>
-                  <button
-                    className="advancedButton"
-                    onClick={() => setSortDate(!sortDate)}
-                  >
-                    Event
-                  </button>
+                  <fieldset className="temp">
+                    <legend className="legend">Sort By</legend>
+                    <button
+                      className="advancedButton"
+                      onClick={() => setSortDate(!sortDate)}
+                    >
+                      Date
+                    </button>
+                    <button
+                      className="advancedButton"
+                      onClick={() => setSortDate(!sortDate)}
+                    >
+                      Event
+                    </button>
+                  </fieldset>
                 </div>
                 <div className="advancedInlineWrapper">
-                  <button className="advancedButton" onClick={handleAccess}>
-                    Public
-                  </button>
-                  <button className="advancedButton" onClick={handleAccess}>
-                    Private
-                  </button>
+                  <fieldset className="temp">
+                    <legend className="legend">View Access</legend>
+                    <button className="advancedButton" onClick={handleAccess}>
+                      Public
+                    </button>
+                    <button className="advancedButton" onClick={handleAccess}>
+                      Private
+                    </button>
+                  </fieldset>
                 </div>
               </div>
             </section>
@@ -188,8 +195,10 @@ const EventTab = () => {
                 width: "20%",
                 border: 0,
                 display: "flex",
+                backgroundColor: "rgb(34, 32, 40)",
+                boxShadow: "none",
                 justifyContent: "center",
-                transition: "0.2s ease-in",
+                transition: "0.15s ease-in",
               }}
             />
           )}

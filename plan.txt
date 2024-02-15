@@ -34,22 +34,24 @@ TODAY PLAN (10th) ✅
 - landing page ✅
     - start ✅
     - login cards ✅
-- advanced filtering functionality 🅱️
-    - sort by [date][event] (two options toggle)🅱️
-    - filter public private🅱️
 - styling + responsiveness
 
 (14th)
-
+- accessibility ✅
+    - reduce motion ✅
 - styling + responsiveness
 
 (15th)
-
+- advanced filtering functionality 🅱️
+    - sort by [date][event] (two options toggle)🅱️
+    - filter public private🅱️
+        - only allowed for logged in members
+    - STYLE: slightly rounded white border around, with text at top (cutting out border)
+    - Sort, Access (Must be logged in)
 - styling + responsiveness
 
 (16th)
-- accessibility 🅱️
-    - reduce motion 🅱️
+
 - styling + responsiveness
 (17th)
 - writeup rough draft

@@ -3,21 +3,26 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  background-color: rgb(37, 32, 50);
+  background: linear-gradient(0deg, rgb(14, 13, 17) 30%, var(--darkcardbg));
+
   border-radius: 10px;
-  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 10px 25px 5px rgba(0, 0, 0, 0.35),
+    inset 0 0 30px 5px rgba(0, 0, 0, 0.35);
   margin-bottom: 20px;
   transition: all 0.5s ease;
   height: 300px;
 }
 .cardWrapper:hover {
-  box-shadow: 0 15px 30px 7px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 15px 30px 7px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px 5px rgba(0, 0, 0, 0.35);
   transform: translateY(-10px);
   cursor: pointer;
 }
 
 .cardTags {
-  top: 10px;
+  top: 2.5px;
   position: absolute;
   left: 25px;
   z-index: 1;
@@ -39,12 +44,9 @@
 
 .cardText {
   bottom: 0;
-  padding: 20px;
+  padding: 30px;
   padding-top: 5px;
-  padding-bottom: 10px;
-  background-color: rgba(13, 11, 17, 0.5);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 -50px 50px 0 rgba(13, 11, 17, 0.55);
+  padding-bottom: 15px;
   border-radius: 7.5px;
   z-index: 0;
 }
