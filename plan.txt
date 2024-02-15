@@ -24,9 +24,9 @@ TODAY PLAN (10th) ✅
 - fix public searchers being able to access everything ✅
 
 (12th)
-- style related events 🅱️
-    - add small background stuff 🅱️
-    - maybe time/date 🅱️
+- style related events ✅
+    - add small background stuff ✅
+    - maybe time/date ✅
 - mock sidebar ✅
 - styling + responsiveness
 
@@ -40,13 +40,11 @@ TODAY PLAN (10th) ✅
 - styling + responsiveness
 
 (14th)
-- refactor code🅱️
-    - WILL TALK GODDAMN LONG
+
 - styling + responsiveness
 
 (15th)
-- refactor code🅱️
-    - WILL TALK GODDAMN LONG
+
 - styling + responsiveness
 
 (16th)

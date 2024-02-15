@@ -68,3 +68,12 @@
   display: flex;
   bottom: 0;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .relatedContainer {
+    transition: none;
+  }
+  .relatedContainer:hover {
+    transition: none;
+  }
+}

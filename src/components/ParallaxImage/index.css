@@ -16,3 +16,10 @@
 .parallax {
     width: 100%;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax {
+    transition: none;
+    transform: rotateZ(0);
+  }
+}

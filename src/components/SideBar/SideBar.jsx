@@ -5,11 +5,6 @@ import PropTypes from "prop-types";
 import "./index.css";
 
 const SideBar = ({ onClick }) => {
-  // 1. home button at top
-  // search
-  // filter options
-  // colour switching
-  //
   const [click, setClick] = useState(true);
   const clickRef = useRef();
   const fillerRef = useRef();

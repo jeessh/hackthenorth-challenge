@@ -33,11 +33,8 @@ const EventExpanded = ({
     ? relatedEvents.filter((event) => event.permission === "public")
     : relatedEvents;
   useEffect(() => {
-    if (sidebarOpen) {
-      expandedRef.current.style.width = "70vw";
-    } else {
-      expandedRef.current.style.width = "100vw";
-    }
+      expandedRef.current.classList.toggle("expandedBackgroundSidebar", sidebarOpen);
+
   }, [sidebarOpen]);
 
   const handleClick = (e) => {
@@ -94,9 +91,7 @@ const EventExpanded = ({
               <h2 className="relatedEventsHeader">🔗 Related Events:</h2>
               <div
                 className={
-                  relatedEvents.length > 2
-                    ? "relatedEventsContainer"
-                    : "relatedEventsContainer removeScrollBg"
+                  "relatedEventsContainer" + (relatedEvents.length > 2 ? "" : " removeScrollBg")
                 }
               >
                 {relatedEvents.map((event) => (
@@ -104,6 +99,7 @@ const EventExpanded = ({
                     key={event.id}
                     id={event.id}
                     start={event.start_time}
+                    date={event.date}
                     title={event.name}
                     type={event.event_type}
                     onClickRelated={onClickRelated}

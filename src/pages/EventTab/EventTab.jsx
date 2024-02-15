@@ -122,7 +122,7 @@ const EventTab = () => {
         {/* Advanced Search Bar */}
         <section className="advancedSearchContainer">
           <div className="advancedSearchToggle" onClick={handleAdvanced}>
-            <h2 onClick={handleAdvanced}>Advanced Search</h2>
+            <h2>Advanced Search</h2>
             <div className="arrowMove">
               <div className="arrow" ref={arrowRef} />
             </div>
@@ -181,12 +181,14 @@ const EventTab = () => {
               </div>
             </section>
           ) : (
-            <div
+            <section
               className="advancedMenuContainer"
               style={{
                 height: 0,
                 width: "20%",
                 border: 0,
+                display: "flex",
+                justifyContent: "center",
                 transition: "0.2s ease-in",
               }}
             />

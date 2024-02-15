@@ -17,6 +17,7 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   }, [offset]);
 
   return (
+    // className = left or right
     <div className={className}>
       <img
         src={url}

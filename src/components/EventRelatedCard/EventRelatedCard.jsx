@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { convertToTime, formatEmoji, typeClass, cardBorder } from "../../constants/constants";
+import {
+  convertToTime,
+  getDate,
+  formatEmoji,
+  typeClass,
+  cardBorder,
+} from "../../constants/constants";
 import "./index.css";
 
 const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
@@ -11,7 +17,9 @@ const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
       onClick={() => onClickRelated(id)}
     >
       <h3 className={"related" + typeClass(type)}>{formatEmoji(type)}</h3>
-      <h4 className={"relatedTag"}>{convertToTime(start)}</h4>
+      <h4 className={"relatedTag"}>
+        {getDate(start, true)} {convertToTime(start)}
+      </h4>
       <div className="relatedContent">
         <h2>{title}</h2>
       </div>
