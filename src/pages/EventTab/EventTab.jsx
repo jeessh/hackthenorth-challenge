@@ -12,7 +12,6 @@ import "./index.css";
 
 const EventTab = () => {
   const { data } = useQuery(GET_EVENTS);
-  const [eventData, setEventData] = useState();
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,24 +24,12 @@ const EventTab = () => {
   const searchRef = useRef();
   const arrowRef = useRef();
   const { isAuthenticated } = useAuth0();
-  useEffect(() => {
-    fetch("https://api.hackthenorth.com/v3/events")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data !== eventData) {
-          setEventData(data);
-        }
-      });
-  }, []);
 
   //After rendering, set filteres for data events
   useEffect(() => {
-    if(data) {
-      console.log(data.sampleEvents);
-    }
-    if (eventData) {
+    if (data) {
       let output = [];
-      output.push(...eventData);
+      output.push(...data.sampleEvents);
 
       output = sortDate
         ? output.sort((eva, evb) =>
@@ -62,7 +49,7 @@ const EventTab = () => {
       setEvents(output);
     }
     sessionStorage.setItem("sort", sortDate);
-  }, [selectEvent, filters, sortDate, isAuthenticated, eventData]);
+  }, [selectEvent, filters, sortDate, isAuthenticated, data]);
 
   const convertToTime = (unix) => {
     var t = new Date(unix);
@@ -84,7 +71,7 @@ const EventTab = () => {
   };
 
   const handleNewExpand = (id) => {
-    let temp = eventData.filter((event) => event.id === id);
+    let temp = data.sampleEvents.filter((event) => event.id === id);
     setSelectEvent(temp[0]);
   };
 
@@ -95,12 +82,12 @@ const EventTab = () => {
   const handleSearch = (event) => {
     let search = event.target.value;
     let output = isAuthenticated
-      ? eventData.filter(
+      ? data.sampleEvents.filter(
           (event) =>
             event.name.toLowerCase().includes(search.toLowerCase()) ||
             event.description.toLowerCase().includes(search.toLowerCase()),
         )
-      : eventData.filter(
+      : data.sampleEvents.filter(
           (event) =>
             event.permission === "public" &&
             (event.name.toLowerCase().includes(search.toLowerCase()) ||
