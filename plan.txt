@@ -35,18 +35,17 @@ TODAY PLAN (10th) ✅
     - start ✅
     - login cards ✅
 - advanced filtering functionality 🅱️
-    - sort by [date][event] (two options toggle)
-    - filter public private
-    - search toggle (title, description, both)
+    - sort by [date][event] (two options toggle)🅱️
+    - filter public private🅱️
 - styling + responsiveness
 
 (14th)
-- refactor code
+- refactor code🅱️
     - WILL TALK GODDAMN LONG
 - styling + responsiveness
 
 (15th)
-- refactor code
+- refactor code🅱️
     - WILL TALK GODDAMN LONG
 - styling + responsiveness
 

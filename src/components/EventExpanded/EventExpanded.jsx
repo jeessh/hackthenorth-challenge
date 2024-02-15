@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
+import { formatType, cardBorder, typeClass } from "../../constants/constants";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/queries";
@@ -48,23 +49,6 @@ const EventExpanded = ({
     e.stopPropagation();
   };
 
-  const formatType = (type) => {
-    if (type === "tech_talk") {
-      return "Tech Talk 🎙️";
-    } else if (type === "workshop") {
-      return "Workshop 🛠️";
-    } else {
-      return "Activity 🎉";
-    }
-  };
-  const cardBorder =
-    type === "tech_talk"
-      ? "rgba(137, 43, 115, 0.75)"
-      : type === "workshop"
-        ? "rgba(71, 123, 135, 0.75)"
-        : "rgba(169, 98, 48, 0.75)";
-  const typeCol =
-    type === "tech_talk" ? "Tech" : type === "workshop" ? "Work" : "Act";
   return (
     <section
       className="expandedBackground"
@@ -74,9 +58,9 @@ const EventExpanded = ({
       <div
         className="expandedContainer"
         onClick={handleChildClick}
-        style={{ borderBottom: `8px solid ${cardBorder}` }}
+        style={{ borderBottom: `8px solid ${cardBorder(type)}` }}
       >
-        <h3 className={"expandedEv" + typeCol}>{formatType(type)}</h3>
+        <h4 className={"expandedEv" + typeClass(type)}>{formatType(type)}</h4>
 
         <div className="expandedContent">
           <h1 className="expandedHeader">{title}</h1>
@@ -119,6 +103,7 @@ const EventExpanded = ({
                   <EventRelatedCard
                     key={event.id}
                     id={event.id}
+                    start={event.start_time}
                     title={event.name}
                     type={event.event_type}
                     onClickRelated={onClickRelated}

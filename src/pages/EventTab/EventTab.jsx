@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import setting from "../../assets/setting.png";
-import moment from "moment";
 import SideBar from "../../components/SideBar/SideBar";
 import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
+import { convertToTime, getDate } from "../../constants/constants";
 import { useAuth0 } from "@auth0/auth0-react";
 import { GET_EVENTS } from "../../GraphQL/queries";
 import { useQuery } from "@apollo/client";
 import "./index.css";
 
 const EventTab = () => {
-  const { data } = useQuery(GET_EVENTS);
+  const { loading, data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,7 +37,6 @@ const EventTab = () => {
           )
         : output.sort((eva, evb) => eva.start_time - evb.start_time);
 
-      // output.sort((eva, evb) => eva.start_time - evb.start_time);
       output = !isAuthenticated
         ? output.filter(
             (event) =>
@@ -50,21 +49,6 @@ const EventTab = () => {
     }
     sessionStorage.setItem("sort", sortDate);
   }, [selectEvent, filters, sortDate, isAuthenticated, data]);
-
-  const convertToTime = (unix) => {
-    var t = new Date(unix);
-    let converted = moment(t).format("h:mm a");
-    return converted;
-  };
-
-  const getDate = (unix, format) => {
-    // if format is true, return numerical date. otherwise, return string date
-    var t = new Date(unix);
-    let converted = format
-      ? moment(t).format("MM/DD")
-      : moment(t).format("MMMM Do, YYYY");
-    return converted;
-  };
 
   const handleExpand = (event) => {
     setSelectEvent(event);
@@ -103,6 +87,11 @@ const EventTab = () => {
       : "rotateZ(90deg)";
   };
 
+  const handleAccess = () => {
+    let output = isAuthenticated;
+    console.log(output);
+  };
+
   const advClick = (e, ev) => {
     e.stopPropagation();
     let filter = [...filters];
@@ -117,7 +106,7 @@ const EventTab = () => {
   };
 
   return (
-    <section className="viewContainer">
+    <main className="viewContainer">
       {/* Regular Search bar + Sidebar */}
       <SideBar onClick={() => handleSideBar()} />
       <div className="align">
@@ -131,7 +120,7 @@ const EventTab = () => {
           />
         </div>
         {/* Advanced Search Bar */}
-        <div className="advancedSearchContainer">
+        <section className="advancedSearchContainer">
           <div className="advancedSearchToggle" onClick={handleAdvanced}>
             <h2 onClick={handleAdvanced}>Advanced Search</h2>
             <div className="arrowMove">
@@ -139,8 +128,8 @@ const EventTab = () => {
             </div>
           </div>
           {advancedSearch ? (
-            <div className="advancedMenuContainer">
-              <div className="advFilter">
+            <section className="advancedMenuContainer">
+              <div className="filterWrapper">
                 <button
                   className={
                     "filter1" + (filters[0] === "tech_talk" ? " active" : "")
@@ -166,17 +155,31 @@ const EventTab = () => {
                   Activity
                 </button>
               </div>
-              <div>
-                <h3>Sort by:</h3>
-                <button
-                  className="sortButton"
-                  onClick={() => setSortDate(!sortDate)}
-                >
-                  {sortDate ? "Event" : "Date"}
-                </button>
-                <h2></h2>
+              <div className="advancedInline">
+                <div className="advancedInlineWrapper">
+                  <button
+                    className="advancedButton"
+                    onClick={() => setSortDate(!sortDate)}
+                  >
+                    Date
+                  </button>
+                  <button
+                    className="advancedButton"
+                    onClick={() => setSortDate(!sortDate)}
+                  >
+                    Event
+                  </button>
+                </div>
+                <div className="advancedInlineWrapper">
+                  <button className="advancedButton" onClick={handleAccess}>
+                    Public
+                  </button>
+                  <button className="advancedButton" onClick={handleAccess}>
+                    Private
+                  </button>
+                </div>
               </div>
-            </div>
+            </section>
           ) : (
             <div
               className="advancedMenuContainer"
@@ -188,7 +191,7 @@ const EventTab = () => {
               }}
             />
           )}
-        </div>
+        </section>
         {/* Parallax Images */}
         <ParallaxImage
           url={setting}
@@ -230,13 +233,13 @@ const EventTab = () => {
             onClickRelated={handleNewExpand}
           />
         )}
-        {events.length === 0 && (
+        {events.length === 0 && !loading && (
           <div className="noEvents">
             <h1 className="noEventsText">No Events Found :{"("}</h1>
           </div>
         )}
       </div>
-    </section>
+    </main>
   );
 };
 

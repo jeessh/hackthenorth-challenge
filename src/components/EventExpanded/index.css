@@ -105,17 +105,22 @@
 }
 
 @media screen and (max-width: 768px) {
- .eventInfoWrapper {
+  .eventInfoWrapper {
     display: flex;
     position: relative;
     flex-direction: column;
     left: 0;
- }
- .externalLink {
-   width: 100%;
- }
- .relatedEventsHeader {
-  font-size: 1.3rem;
- }
-  
+  }
+  .expandedHeader {
+    font-size: 2em;
+  }
+  .externalLink {
+    width: 100%;
+  }
+  .relatedEventsHeader {
+    font-size: 1.3rem;
+  }
+  .expandedContent h3 {
+    font-size: 1.2rem;
+  }
 }

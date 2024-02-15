@@ -29,7 +29,7 @@
   transition: 0.8s ease-in;
 }
 .welcomeGear:hover {
-  transform: rotate(170deg);
+  transform: rotate(20deg);
   transition: 0.8s ease-out;
 }
 
@@ -114,6 +114,7 @@
 }
 .landingCard:hover {
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.7);
+  border: 4px solid rgba(220, 220, 220, 0.75);
   transform: translateY(-5px);
   cursor: pointer;
   transition: 0.2s ease-out;
@@ -157,10 +158,12 @@
 @keyframes gearSpin {
   0% {
     rotate: 0deg;
+    top: -30%;
     opacity: 0;
   }
   100% {
     rotate: 205deg;
+    top: -25%;
     opacity: 1;
   }
 }

@@ -26,9 +26,17 @@ h2 {
 
 h3 {
   font:
-    800 1rem "Roboto",
+    800 1.25rem "Roboto",
     monospace;
   color: rgb(220, 220, 220);
+}
+
+h4 {
+  font:
+    700 1.1rem "Roboto",
+    monospace;
+  color: rgb(220, 220, 220);
+
 }
 
 p {
@@ -45,4 +53,10 @@ a {
     monospace;
   color: rgb(220, 220, 220);
   text-decoration: none;
+}
+
+@media screen and (max-width: 768px){
+  h1 {
+    font-size: 1.5rem;
+  }
 }
