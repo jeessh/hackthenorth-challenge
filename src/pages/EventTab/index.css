@@ -70,6 +70,17 @@
   transition: 0.1s ease-out;
 }
 
+.closedAdvancedMenuContainer {
+  height: 0;
+  width: 20%;
+  border: 0;
+  display: flex;
+  background-color: rgb(34, 32, 40);
+  box-shadow: none;
+  justify-content: center;
+  transition: 0.15s ease-in;
+}
+
 .advancedMenuContainer {
   display: flex;
   flex-direction: column;
@@ -256,7 +267,7 @@
 
   .advancedMenuContainer {
     width: 80%;
-    height: 15em;
+    height: 16em;
   }
   .advancedInline {
     width: 100%;
@@ -266,7 +277,6 @@
   .advancedInlineWrapper {
     display: flex;
     flex-direction: column;
-    margin: 0;
     padding: 20px;
   }
   .legend {
@@ -277,7 +287,6 @@
 
   .advancedButton,
   .advancedButtonOn {
-    margin-left: 0;
     font-size: 100%;
     width: 100%;
   }

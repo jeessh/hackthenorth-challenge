@@ -24,7 +24,7 @@ const Landing = () => {
   };
 
   return (
-    <section className="welcomeContainer">
+    <main className="welcomeContainer">
       <img src={gear} className="welcomeGear" alt="gear" />
       <div className="welcomeContent">
         <h1 className="welcomeHeader">Welcome to</h1>
@@ -43,7 +43,7 @@ const Landing = () => {
           </div>
         </section>
       </div>
-    </section>
+    </main>
   );
 };
 

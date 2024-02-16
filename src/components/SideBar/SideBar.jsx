@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import setting from "../../assets/setting.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import PropTypes from "prop-types";
@@ -6,18 +6,12 @@ import "./index.css";
 
 const SideBar = ({ onClick }) => {
   const [click, setClick] = useState(true);
-  const clickRef = useRef();
-  const fillerRef = useRef();
-  const gearRef = useRef();
   const { isAuthenticated } = useAuth0();
   const { logout, loginWithRedirect } = useAuth0();
 
   const handleClick = () => {
-    onClick();
-    clickRef.current.classList.toggle("closeSide");
-    fillerRef.current.classList.toggle("closeFiller");
-    gearRef.current.classList.toggle("closeGear");
     setClick(!click);
+    onClick();
   };
   const handleLogout = async () => {
     if (isAuthenticated) {
@@ -37,22 +31,12 @@ const SideBar = ({ onClick }) => {
 
   return (
     <>
-      <div className="filler closeFiller" ref={fillerRef} />
-      <img
-        className="gear closeGear"
-        onClick={handleClick}
-        src={setting}
-        ref={gearRef}
-      />
-      <div className="sideContainer closeSide" ref={clickRef}>
+      <div className={"sideContainer" + (click ? " closeSide" : "")}>
         <a className="sideItemWrapper" href="/">
           <h1 className="sideItem"> 🏠 HOME</h1>
         </a>
         <a className="sideItemWrapper">
           <h1 className="sideItem">🎉 EVENTS</h1>
-        </a>
-        <a className="sideItemWrapper">
-          <h1 className="sideItem">⚙️ SETTINGS</h1>
         </a>
         <a className="sideLogWrapper">
           <h1 className="sideLog" onClick={handleLogout}>
@@ -60,6 +44,8 @@ const SideBar = ({ onClick }) => {
           </h1>
         </a>
       </div>
+      <div className={"filler" + (click ? " closeFiller" : "")}/>
+      <img className={"gear" + (click ? " closeGear" : "")} onClick={handleClick} src={setting}/>
     </>
   );
 };

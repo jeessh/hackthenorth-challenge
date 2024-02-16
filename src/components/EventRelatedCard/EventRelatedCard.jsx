@@ -31,7 +31,7 @@ EventRelatedCard.propTypes = {
   id: PropTypes.number,
   type: PropTypes.string,
   title: PropTypes.string,
-  start: PropTypes.string,
+  start: PropTypes.number,
   onClickRelated: PropTypes.func,
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { GET_EVENTS } from "../../GraphQL/queries";
 import { useQuery } from "@apollo/client";
@@ -15,18 +15,19 @@ import "./index.css";
 const EventTab = () => {
   const { loading, data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
+  const { isAuthenticated } = useAuth0();
 
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [search, setSearch] = useState("");
-  const [advancedSearch, setAdvancedSearch] = useState(false);
-  const [filters, setFilters] = useState(["tech_talk", "workshop", "activity"]);
+  const [advancedFilters, setAdvancedFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    tech_talk: true,
+    workshop: true,
+    activity: true,
+  });
   const [sort, setSort] = useState(sessionStorage.getItem("sort") === "true");
-
-  const searchRef = useRef();
-  const arrowRef = useRef();
-  const { isAuthenticated } = useAuth0();
 
   const sortByDate = (a, b) => {
     return a.start_time - b.start_time;
@@ -46,22 +47,30 @@ const EventTab = () => {
       );
 
       // Filtering based on user auth and event type filters
-      output = output.filter((event) =>
-        isAuthenticated
-          ? filters.includes(event.event_type)
-          : event.permission === "public" && filters.includes(event.event_type),
+      let filterList = [];
+      for (const key in filters) {
+        if (filters[key]) {
+          filterList.push(key);
+        }
+      }
+
+      output = output.filter((event) => isAuthenticated
+        ? filters[event.event_type] : event.permission === "public" && filters[event.event_type],
       );
 
       // Searching for events
       output = output.filter((event) => {
-        let search = searchRef.current.children[0].value;
-        return event.name.toLowerCase().includes(search.toLowerCase());
+        if (search === "") {
+          return event;
+        } else {
+          return event.name.toLowerCase().includes(search.toLowerCase());
+        }
       });
 
       setEvents(output);
     }
     sessionStorage.setItem("sort", sort);
-  }, [filters, sort, isAuthenticated, data]);
+  }, [filters, sort, search, isAuthenticated, data]);
 
   const handleNewExpand = (id) => {
     let selectedEvent = data.sampleEvents.find((event) => event.id === id);
@@ -71,36 +80,10 @@ const EventTab = () => {
   const handleSearch = (event) => {
     let input = event.target.value;
     setSearch(input);
-    let output = isAuthenticated
-      ? data.sampleEvents.filter((event) =>
-          event.name.toLowerCase().includes(search.toLowerCase()),
-        )
-      : data.sampleEvents.filter(
-          (event) =>
-            event.permission === "public" &&
-            event.name.toLowerCase().includes(search.toLowerCase()),
-        );
-    setEvents(output);
   };
 
-  const handleAdvanced = () => {
-    setAdvancedSearch(!advancedSearch);
-    arrowRef.current.style.transform = advancedSearch
-      ? "rotateZ(0deg)"
-      : "rotateZ(90deg)";
-  };
-
-  const advClick = (e, ev) => {
-    e.stopPropagation();
-    let filter = [...filters];
-    if (ev === "tech_talk") {
-      filter[0] = filter[0] === "tech_talk" ? "" : "tech_talk";
-    } else if (ev === "workshop") {
-      filter[1] = filter[1] === "workshop" ? "" : "workshop";
-    } else {
-      filter[2] = filter[2] === "activity" ? "" : "activity";
-    }
-    setFilters(filter);
+  const handleAdvancedFilters = () => {
+    setAdvancedFilters(!advancedFilters);
   };
 
   return (
@@ -109,7 +92,7 @@ const EventTab = () => {
       <SideBar onClick={() => setSidebarOpen(!sidebarOpen)} />
       <div className="align">
         <h1 className="eventTabHeader">Event Dashboard</h1>
-        <div className="searchContainer" ref={searchRef}>
+        <div className="searchContainer">
           <input
             type="search"
             placeholder="Search Events"
@@ -119,72 +102,42 @@ const EventTab = () => {
         </div>
         {/* Advanced Search Bar */}
         <section className="advancedSearchContainer">
-          <div className="advancedSearchToggle" onClick={handleAdvanced}>
+          <div className="advancedSearchToggle" onClick={handleAdvancedFilters}>
             <h2>Filters</h2>
             <div className="arrowMove">
-              <div className="arrow" ref={arrowRef} />
+              <div className="arrow" style={{transform: advancedFilters ? "rotateZ(90deg)" : "rotateZ(0deg)"}}/>
             </div>
           </div>
-          {advancedSearch ? (
+          {advancedFilters ? (
             <section className="advancedMenuContainer">
               <div className="filterWrapper">
-                <button
-                  className={
-                    "filter1" + (filters[0] === "tech_talk" ? " active" : "")
-                  }
-                  onClick={(e) => advClick(e, "tech_talk")}
-                >
+                <button className={"filter1" + (filters["tech_talk"] ? " active" : "")}
+                  onClick={() => setFilters({ ...filters, tech_talk: !filters["tech_talk"] })}>
                   Tech Talk
                 </button>
-                <button
-                  className={
-                    "filter2 " + (filters[1] === "workshop" ? " active" : "")
-                  }
-                  onClick={(e) => advClick(e, "workshop")}
-                >
+                <button className={"filter2 " + (filters["workshop"] ? " active" : "")}
+                  onClick={() => setFilters({ ...filters, workshop: !filters["workshop"] })}>
                   Workshop
                 </button>
-                <button
-                  className={
-                    "filter3" + (filters[2] === "activity" ? " active" : "")
-                  }
-                  onClick={(e) => advClick(e, "activity")}
-                >
+                <button className={"filter3" + (filters["activity"] ? " active" : "")}
+                  onClick={() => setFilters({ ...filters, activity: !filters["activity"] })}>
                   Activity
                 </button>
               </div>
               <div className="advancedInline">
                 <fieldset className="advancedInlineWrapper">
                   <legend className="legend">Sort By</legend>
-                  <button
-                    className={sort ? "advancedButton" : "advancedButtonOn"}
-                    onClick={() => setSort(!sort)}
-                  >
+                  <button className={sort ? "advancedButton" : "advancedButtonOn"} onClick={() => setSort(!sort)}>
                     Date
                   </button>
-                  <button
-                    className={!sort ? "advancedButton" : "advancedButtonOn"}
-                    onClick={() => setSort(!sort)}
-                  >
+                  <button className={!sort ? "advancedButton" : "advancedButtonOn"} onClick={() => setSort(!sort)}>
                     Event
                   </button>
                 </fieldset>
               </div>
             </section>
           ) : (
-            <section
-              className="advancedMenuContainer"
-              style={{
-                height: 0,
-                width: "20%",
-                border: 0,
-                display: "flex",
-                backgroundColor: "rgb(34, 32, 40)",
-                boxShadow: "none",
-                justifyContent: "center",
-                transition: "0.15s ease-in",
-              }}
-            />
+            <section className="closedAdvancedMenuContainer"/>
           )}
         </section>
         {/* Parallax Images */}
@@ -208,7 +161,9 @@ const EventTab = () => {
             />
           ))}
         </div>
-        {/* Toggled on when a card is clicked, showing expanded information */}
+        {/* Expanded Event Information:
+              - Toggled on when an event card is clicked
+        */}
         {selectEvent && (
           <EventExpanded
             title={selectEvent.name}
@@ -218,9 +173,7 @@ const EventTab = () => {
             end={convertToTime(selectEvent.end_time)}
             description={selectEvent.description}
             speakers={selectEvent.speakers.map((speaker) => speaker.name)}
-            url={
-              isAuthenticated ? selectEvent.private_url : selectEvent.public_url
-            }
+            url={isAuthenticated ? selectEvent.private_url : selectEvent.public_url}
             related={selectEvent.related_events}
             permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}

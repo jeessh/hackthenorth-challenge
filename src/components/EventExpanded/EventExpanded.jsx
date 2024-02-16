@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
@@ -22,50 +22,30 @@ const EventExpanded = ({
   onClick,
   onClickRelated,
 }) => {
+
   const { isAuthenticated } = useAuth0();
   const { data } = useQuery(GET_EVENTS);
-  const expandedRef = useRef();
 
-  let relatedEvents = data.sampleEvents.filter((event) =>
-    related.includes(event.id),
-  );
-  relatedEvents = !isAuthenticated
-    ? relatedEvents.filter((event) => event.permission === "public")
-    : relatedEvents;
+  let relatedEvents = data.sampleEvents.filter((event) => related.includes(event.id));
+  relatedEvents = isAuthenticated ? relatedEvents : relatedEvents.filter((event) => event.permission === "public");
+
   useEffect(() => {
-    expandedRef.current.classList.toggle(
-      "expandedBackgroundSidebar",
-      sidebarOpen,
-    );
   }, [sidebarOpen]);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     onClick();
-    e.stopPropagation();
   };
-
-  const handleChildClick = (e) => {
+  const handleRelatedClick = (e) => {
     e.stopPropagation();
   };
 
   return (
-    <section
-      className="expandedBackground"
-      ref={expandedRef}
-      onClick={handleClick}
-    >
-      <div
-        className="expandedContainer"
-        onClick={handleChildClick}
-        style={{ borderBottom: `8px solid ${cardBorder(type)}` }}
-      >
+    <section className={"expandedBackground" + (sidebarOpen ? " expandedBackgroundSidebar" : "")} onClick={handleClick}>
+      <div className="expandedContainer" onClick={handleRelatedClick} style={{ borderBottom: `8px solid ${cardBorder(type)}` }}>
         <h4 className={"expandedEv" + typeClass(type)}>{formatType(type)}</h4>
-
         <div className="expandedContent">
           <h1 className="expandedHeader">{title}</h1>
-          <h3>
-            🕒 {start} - {end} (UTC+0)
-          </h3>
+          <h3>🕒 {start} - {end} (UTC+0)</h3>
           <h3>📅 Date: {date}</h3>
           <p>{description}</p>
           <div className="eventInfoWrapper">
@@ -74,29 +54,17 @@ const EventExpanded = ({
                 <h3 key={index}>📣 Speakers: {speaker}</h3>
               ))}
               <h3>
-                🔒 Access:{" "}
-                {permission.charAt(0).toUpperCase() + permission.slice(1)}
+                🔒 Access:{" "}{permission.charAt(0).toUpperCase() + permission.slice(1)}
               </h3>
             </div>
-            <a
-              className="externalLink"
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="externalLink" href={url} target="_blank" rel="noreferrer">
               Join the Event!
             </a>
           </div>
-
           {relatedEvents.length > 0 && (
             <>
               <h2 className="relatedEventsHeader">🔗 Related Events:</h2>
-              <div
-                className={
-                  "relatedEventsContainer" +
-                  (relatedEvents.length > 2 ? "" : " removeScrollBg")
-                }
-              >
+              <div className={"relatedEventsContainer" + (relatedEvents.length > 2 ? "" : " removeScrollBg")}>
                 {relatedEvents.map((event) => (
                   <EventRelatedCard
                     key={event.id}

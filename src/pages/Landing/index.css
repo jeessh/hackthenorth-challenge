@@ -18,10 +18,8 @@
 }
 
 .welcomeGear {
-  position: fixed;
-  right: -5%;
-  top: -25%;
-  opacity: 0.75;
+  position: absolute;
+  right: -100px;
   filter: drop-shadow(10px 20px 20px rgba(0, 0, 0, 1));
   opacity: 0;
   transform: rotate(0);
@@ -163,8 +161,48 @@
   }
   100% {
     rotate: 205deg;
-    top: -25%;
-    opacity: 1;
+    top: -225px;
+    opacity: 0.85;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .welcomeGear {
+    width: 50vh;
+  }
+
+  .landingCardContainer {
+    position: fixed;
+    flex-direction: column;
+    bottom: -40vh;
+  }
+  .landingCard {
+    width: 80vw;
+    margin: 20px;
+  }
+
+  .hackTheNorthBackText {
+    font-size: 38vw;
+  }
+
+  .landingHeader {
+    font-size: 5vw;
+  }
+  .HTNOutline {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  @keyframes gearSpin {
+    0% {
+      rotate: 0deg;
+      top: -30%;
+      opacity: 0;
+    }
+    100% {
+      rotate: 205deg;
+      top: -150px;
+      opacity: 0.85;
+    }
   }
 }
 

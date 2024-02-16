@@ -26,9 +26,7 @@ const EventCard = ({
       <div className="cardImage" />
       <div className="cardText">
         <h1>{title}</h1>
-        <h2>
-          {date} / {start}
-        </h2>
+        <h2>{date} / {start}</h2>
       </div>
     </div>
   );

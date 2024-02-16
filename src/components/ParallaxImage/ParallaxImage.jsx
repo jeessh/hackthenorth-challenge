@@ -10,7 +10,6 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, true);
-    // Remove the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll, true);
     };
