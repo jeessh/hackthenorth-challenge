@@ -1,8 +1,9 @@
 import React from "react";
-import gear from "../../assets/setting.png";
-import "./index.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+
+import gear from "../../assets/setting.png";
+import "./index.css";
 
 const Landing = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();

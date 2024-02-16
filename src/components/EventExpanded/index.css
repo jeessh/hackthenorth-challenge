@@ -1,11 +1,13 @@
 .expandedBackground {
   position: fixed;
   height: 100vh;
+  height: 100svh;
   width: 100vw;
   top: 0;
   right: 0;
   z-index: 0;
   background-color: rgba(29, 30, 80, 0.128);
+
   backdrop-filter: blur(5px);
   transition: 0.5s ease-out;
   z-index: 2;
@@ -93,8 +95,6 @@
   cursor: pointer;
 }
 
-
-
 .relatedEventsContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -129,7 +129,6 @@
   .expandedContent h3 {
     font-size: 1.2rem;
   }
-  
 }
 
 @media (prefers-reduced-motion: reduce) {

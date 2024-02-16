@@ -101,3 +101,9 @@ CARD
 - add a star icon to set a reminder to add??
     - hardcode reminder to send 3 seconds after
 - add a border-bottom with matching color ✅
+
+DEPENDENCIES
+- apollo
+- react-router-dom
+- moment
+- auth0

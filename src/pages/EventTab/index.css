@@ -27,7 +27,7 @@
 }
 
 .searchBar {
-  width: 60%;
+  width: 50%;
   height: 50px;
   padding: 10px;
   text-indent: 3%;
@@ -76,7 +76,7 @@
   align-items: center;
   overflow: hidden;
   height: 13em;
-  width: 60%;
+  width: 50%;
   background-color: var(--darkcardbg);
   border: 2.5px solid rgba(220, 220, 220, 0.35);
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.35);
@@ -137,39 +137,13 @@
 
 .advancedInline {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 85%;
+  align-items: center;
   height: 100%;
+  gap: 5vw;
   transition: 0.3s ease-in;
 }
 
 .advancedInlineWrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.advancedButton {
-  margin: 5px;
-  padding: 10px;
-  font:
-    1.3em "Roboto",
-    monospace;
-  font-weight: 700;
-  color: rgb(220, 220, 220);
-  background-color: rgb(65, 58, 85);
-  transition: 0.35s ease-in;
-  border: 2px solid rgba(220, 220, 220, 0.35);
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-}
-.advancedButton:hover {
-  cursor: pointer;
-}
-
-.temp {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,6 +152,7 @@
   border-radius: 10px;
   padding-bottom: 15px;
   height: 60%;
+  margin-bottom: 15px;
   transition: 0.3s ease-in;
 }
 
@@ -188,6 +163,37 @@
     1em "Roboto",
     monospace;
   color: rgba(220, 220, 220, 0.35);
+}
+
+.advancedButton,
+.advancedButtonOn {
+  margin: 5px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font:
+    1.3em "Roboto",
+    monospace;
+  color: rgb(135, 135, 135);
+  background-color: rgb(65, 58, 85);
+  transition: 0.35s ease-in;
+  border: 2px solid rgba(220, 220, 220, 0.35);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.advancedButtonOn {
+  color: rgb(220, 220, 220);
+  background-color: rgb(109, 81, 181);
+  font-weight: 700;
+}
+.advancedButton:hover,
+.advancedButtonOn:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+.advancedButton:active,
+.advancedButtonOn:active {
+  transform: translateY(0);
+  transition: 0.15s ease-out;
 }
 
 /* Events Section */
@@ -232,40 +238,48 @@
     font-size: 2em;
   }
 
-  .advancedMenuContainer {
-    width: 80%;
-  }
-
   .filter1,
   .filter2,
   .filter3 {
     font:
-      90% "Roboto",
+      95% "Roboto",
       monospace;
   }
   .filter1:hover,
   .filter2:hover,
   .filter3:hover {
     font:
-      90% "Roboto",
+      10% "Roboto",
       monospace;
     height: 95%;
   }
 
   .advancedMenuContainer {
-    height: 12em;
+    width: 80%;
+    height: 15em;
+  }
+  .advancedInline {
+    width: 100%;
+    justify-content: space-around;
+    gap: 2vw;
   }
   .advancedInlineWrapper {
     display: flex;
     flex-direction: column;
     margin: 0;
-    justify-content: center;
+    padding: 20px;
+  }
+  .legend {
+    font:
+      90% "Roboto",
+      monospace;
   }
 
-  .advancedButton {
+  .advancedButton,
+  .advancedButtonOn {
     margin-left: 0;
-    font-size: 90%;
-    width: 75%;
+    font-size: 100%;
+    width: 100%;
   }
 }
 
@@ -295,7 +309,8 @@
     height: 95%;
     transition: none;
   }
-  .advancedButton {
+  .advancedButton,
+  .advancedButtonOn {
     transition: none;
   }
   .advancedMenuContainer {

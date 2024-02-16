@@ -33,8 +33,10 @@ const EventExpanded = ({
     ? relatedEvents.filter((event) => event.permission === "public")
     : relatedEvents;
   useEffect(() => {
-      expandedRef.current.classList.toggle("expandedBackgroundSidebar", sidebarOpen);
-
+    expandedRef.current.classList.toggle(
+      "expandedBackgroundSidebar",
+      sidebarOpen,
+    );
   }, [sidebarOpen]);
 
   const handleClick = (e) => {
@@ -91,7 +93,8 @@ const EventExpanded = ({
               <h2 className="relatedEventsHeader">🔗 Related Events:</h2>
               <div
                 className={
-                  "relatedEventsContainer" + (relatedEvents.length > 2 ? "" : " removeScrollBg")
+                  "relatedEventsContainer" +
+                  (relatedEvents.length > 2 ? "" : " removeScrollBg")
                 }
               >
                 {relatedEvents.map((event) => (

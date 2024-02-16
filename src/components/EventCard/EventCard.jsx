@@ -27,7 +27,7 @@ const EventCard = ({
       <div className="cardText">
         <h1>{title}</h1>
         <h2>
-          {date} {start}
+          {date} / {start}
         </h2>
       </div>
     </div>

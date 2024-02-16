@@ -10,7 +10,7 @@ export const getDate = (unix, format) => {
   // if format is true, return numerical date. otherwise, return string date
   var t = new Date(unix);
   let converted = format
-    ? moment(t).format("MM/DD")
+    ? moment(t).format("MMM. DD")
     : moment(t).format("MMMM Do, YYYY");
   return converted;
 };

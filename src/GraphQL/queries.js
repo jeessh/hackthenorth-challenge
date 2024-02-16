@@ -19,3 +19,23 @@ export const GET_EVENTS = gql`
     }
   }
 `;
+
+export const GET_EVENT = gql`
+  query GetEvent($id: Int!) {
+    sampleEvent(id: Int) {
+      id
+      name
+      event_type
+      permission
+      start_time
+      end_time
+      description
+      speakers {
+        name
+      }
+      public_url
+      private_url
+      related_events
+    }
+  }
+`;
