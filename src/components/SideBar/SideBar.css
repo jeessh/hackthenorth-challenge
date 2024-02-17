@@ -128,7 +128,7 @@
     padding-top: 100px;
     align-items: center;
   }
-  .gear {
+  .gear, .gear:hover {
     left: 0;
     width: 10vw;
   }

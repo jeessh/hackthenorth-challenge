@@ -132,10 +132,10 @@ const EventsDisplay = () => {
           )}
         </section>
         {/* Parallax Images */}
-        {/* <ParallaxImage url={gear} offsetRate={0.02} top={10} rotate={0.08} className={"left"}/>
+        <ParallaxImage url={gear} offsetRate={0.02} top={10} rotate={0.08} className={"left"}/>
         <ParallaxImage url={triangle} offsetRate={0.015} top={80} rotate={0.065} className={"right"}/>
         <ParallaxImage url={gear} offsetRate={0.02} top={145} rotate={0.08} className={"left"}/>
-        <ParallaxImage url={triangle} offsetRate={0.015} top={230} rotate={0.065} className={"right"}/> */}
+        <ParallaxImage url={triangle} offsetRate={0.015} top={230} rotate={0.065} className={"right"}/>
         {/* Event Dashboard with all event cards */}
         <div className="eventContainer">
           {events.map((event) => (
