@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import "./index.css";
+import "./ParallaxImage.css";
 
 const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   const [offset, setOffset] = useState(0);
@@ -16,7 +16,7 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   }, [offset]);
 
   return (
-    // className = left or right
+    // className: left / right
     <div className={className}>
       <img
         src={url}

@@ -4,7 +4,7 @@
   width: 100vw;
   overflow: hidden;
   margin: 0;
-  background-color: var(--darkbg);
+  background-color: var(--background);
 }
 
 .welcomeContent {
@@ -12,7 +12,7 @@
   left: 5%;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--darkcardbg);
+  color: var(--cardBackground);
   margin: 0;
   width: 90%;
 }
@@ -31,25 +31,14 @@
   transition: 0.8s ease-out;
 }
 
-.welcomeHeader {
-  position: relative;
-  margin: 0;
-  margin-left: 5px;
-  font-family: "Big Shoulders Display", sans-serif;
-  font-weight: 800;
-  letter-spacing: 5px;
-  font-size: 3vw;
-  opacity: 0;
-  animation: slideInLeft 0.8s 1 ease-in-out forwards;
-}
-
 .hackTheNorthWrapper {
   display: flex;
   align-items: end;
 }
 
 .HTN,
-.HTNOutline {
+.HTNOutline,
+.welcomeMsg {
   position: relative;
   color: rgba(220, 220, 220, 0.9);
   font-size: 13vw;
@@ -64,6 +53,10 @@
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: rgba(220, 220, 220, 0.9);
   color: rgba(0, 0, 0, 0);
+}
+.welcomeMsg {
+  margin-left: 5px;
+  font-size: 3vw;
 }
 
 .HTN:nth-child(2) {
@@ -103,7 +96,6 @@
   margin-right: 50px;
   border-radius: 10px;
   backdrop-filter: blur(20px);
-  /* background-color: var(--darkcardbg);  */
   box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.6);
   transition: 0.25s ease-in;
   border: 4px solid rgba(220, 220, 220, 0.5);
@@ -166,9 +158,9 @@
   }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .welcomeGear {
-    width: 50vh;
+    width: 45vh;
   }
 
   .landingCardContainer {
@@ -208,22 +200,13 @@
 
 @media (prefers-reduced-motion: reduce) {
   .HTN,
-  .HTNOutline {
-    opacity: 1;
-  }
-  .landingCard {
-    opacity: 1;
-  }
-  .welcomeHeader {
-    opacity: 1;
-  }
-  .hackTheNorthBackText {
-    opacity: 1;
-  }
+  .HTNOutline,
+  .landingCard, .hackTheNorthBackText,
+  .welcomeMsg,
   .welcomeGear {
     opacity: 1;
-    transform: rotate(205deg);
   }
+  .welcomeGear,
   .welcomeGear:hover {
     transform: rotate(205deg);
   }

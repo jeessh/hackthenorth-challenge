@@ -17,6 +17,18 @@
     width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .left {
+    width: 100vw;
+    left: -50vw;
+  }
+  .right {
+    width: 100vw;
+    right: -50vw;
+  }
+  
+}
+
 @media (prefers-reduced-motion: reduce) {
   .parallax {
     transition: none;

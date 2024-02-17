@@ -2,8 +2,8 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-import gear from "../../assets/setting.png";
-import "./index.css";
+import gear from "../../assets/GradientGear.png";
+import "./Landing.css";
 
 const Landing = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -27,13 +27,13 @@ const Landing = () => {
     <main className="welcomeContainer">
       <img src={gear} className="welcomeGear" alt="gear" />
       <div className="welcomeContent">
-        <h1 className="welcomeHeader">Welcome to</h1>
+        <h1 className="HTN welcomeMsg">Welcome to</h1>
         <div className="hackTheNorthWrapper">
           <h1 className="HTN">HACK</h1>
           <h1 className="HTN HTNOutline">THE</h1>
           <h1 className="HTN">NORTH</h1>
         </div>
-        <div className="hackTheNorthBackText">2021</div>
+        <div className="hackTheNorthBackText">2024</div>
         <section className="landingCardContainer">
           <div className="landingCard" onClick={handleLoginClick}>
             <h1 className="landingHeader">Hacker 💻</h1>

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { formatType, cardBorder, typeClass } from "../../constants/constants";
-import "./index.css";
+import "./EventCard.css";
 
 const EventCard = ({
   title,
@@ -23,7 +23,6 @@ const EventCard = ({
       <div className="cardTags">
         <h4 className={"eventType" + typeClass(type)}>{formatType(type)}</h4>
       </div>
-      <div className="cardImage" />
       <div className="cardText">
         <h1>{title}</h1>
         <h2>{date} / {start}</h2>

@@ -7,7 +7,7 @@ import {
   typeClass,
   cardBorder,
 } from "../../constants/constants";
-import "./index.css";
+import "./EventRelatedCard.css";
 
 const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
   return (
@@ -16,7 +16,7 @@ const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
       style={{ border: `3.5px solid ${cardBorder(type)}` }}
       onClick={() => onClickRelated(id)}
     >
-      <h3 className={"related" + typeClass(type)}>{formatEmoji(type)}</h3>
+      <h3 className={"relatedEmoji" + typeClass(type)}>{formatEmoji(type)}</h3>
       <h4 className={"relatedTag"}>
         {getDate(start, true)} {convertToTime(start)}
       </h4>

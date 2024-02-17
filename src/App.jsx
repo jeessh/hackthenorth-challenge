@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
 import { Routes, Route, Navigate } from "react-router-dom";
-import EventTab from "./pages/EventTab/EventTab";
+import EventsDisplay from "./pages/EventsDisplay/EventsDisplay";
 import Landing from "./pages/Landing/Landing";
 
 import "./styles/globals.css";
@@ -20,7 +20,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/events" element={<EventTab />} />
+        <Route path="/events" element={<EventsDisplay />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ApolloProvider>

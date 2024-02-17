@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import "./index.css";
+import "./EventExpanded.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
 import { formatType, cardBorder, typeClass } from "../../constants/constants";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -32,7 +32,7 @@ const EventExpanded = ({
   useEffect(() => {
   }, [sidebarOpen]);
 
-  const handleClick = () => {
+  const handleClose = () => {
     onClick();
   };
   const handleRelatedClick = (e) => {
@@ -40,9 +40,10 @@ const EventExpanded = ({
   };
 
   return (
-    <section className={"expandedBackground" + (sidebarOpen ? " expandedBackgroundSidebar" : "")} onClick={handleClick}>
+    <section className={"expandedBackground" + (sidebarOpen ? " backgroundWithSidebar" : "")} onClick={handleClose}>
       <div className="expandedContainer" onClick={handleRelatedClick} style={{ borderBottom: `8px solid ${cardBorder(type)}` }}>
-        <h4 className={"expandedEv" + typeClass(type)}>{formatType(type)}</h4>
+        <h4 className={"expandedTag" + typeClass(type)}>{formatType(type)}</h4>
+        <div className="closeX" onClick={handleClose}>X</div>
         <div className="expandedContent">
           <h1 className="expandedHeader">{title}</h1>
           <h3>🕒 {start} - {end} (UTC+0)</h3>
@@ -61,10 +62,11 @@ const EventExpanded = ({
               Join the Event!
             </a>
           </div>
-          {relatedEvents.length > 0 && (
+          { // Display related events if there are any
+          relatedEvents.length > 0 && (
             <>
               <h2 className="relatedEventsHeader">🔗 Related Events:</h2>
-              <div className={"relatedEventsContainer" + (relatedEvents.length > 2 ? "" : " removeScrollBg")}>
+              <div className={"relatedEventsContainer" }>
                 {relatedEvents.map((event) => (
                   <EventRelatedCard
                     key={event.id}

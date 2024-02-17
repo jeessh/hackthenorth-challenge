@@ -42,17 +42,15 @@ TODAY PLAN (10th) ✅
 - styling + responsiveness
 
 (15th)
-- advanced filtering functionality 🅱️
-    - sort by [date][event] (two options toggle)🅱️
-    - filter public private🅱️
+- advanced filtering functionality ✅
+    - sort by [date][event] (two options toggle)✅
         - only allowed for logged in members
-    - STYLE: slightly rounded white border around, with text at top (cutting out border)
-    - Sort, Access (Must be logged in)
+    - STYLE: slightly rounded white border around, with text at top (cutting out border) ✅
+    - Sort, Access (Must be logged in) ✅
 - styling + responsiveness
 
 (16th)
-
-- styling + responsiveness
+- styling + responsiveness 
 (17th)
 - writeup rough draft
 (18th)
@@ -107,3 +105,5 @@ DEPENDENCIES
 - react-router-dom
 - moment
 - auth0
+
+REMEMBER TO DO README AND NOTION PAGE

@@ -8,11 +8,11 @@ import EventCard from "../../components/EventCard/EventCard";
 import EventExpanded from "../../components/EventExpanded/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
 import { convertToTime, getDate } from "../../constants/constants";
-import setting from "../../assets/setting.png";
+import gear from "../../assets/GradientGear.png";
+import triangle from "../../assets/Triangle.png";
+import "./EventsDisplay.css";
 
-import "./index.css";
-
-const EventTab = () => {
+const EventsDisplay = () => {
   const { loading, data } = useQuery(GET_EVENTS);
   const [events, setEvents] = useState([]);
   const { isAuthenticated } = useAuth0();
@@ -29,6 +29,7 @@ const EventTab = () => {
   });
   const [sort, setSort] = useState(sessionStorage.getItem("sort") === "true");
 
+  // Sorting functions:
   const sortByDate = (a, b) => {
     return a.start_time - b.start_time;
   };
@@ -36,7 +37,7 @@ const EventTab = () => {
     return a.event_type.localeCompare(b.event_type);
   };
 
-  //After rendering, set filters/sort for data events
+  // After rendering, set filters/sort for data events
   useEffect(() => {
     if (data) {
       let output = [...data.sampleEvents];
@@ -47,13 +48,6 @@ const EventTab = () => {
       );
 
       // Filtering based on user auth and event type filters
-      let filterList = [];
-      for (const key in filters) {
-        if (filters[key]) {
-          filterList.push(key);
-        }
-      }
-
       output = output.filter((event) => isAuthenticated
         ? filters[event.event_type] : event.permission === "public" && filters[event.event_type],
       );
@@ -72,7 +66,8 @@ const EventTab = () => {
     sessionStorage.setItem("sort", sort);
   }, [filters, sort, search, isAuthenticated, data]);
 
-  const handleNewExpand = (id) => {
+  // When an event card is clicked, expand the event
+  const handleRelatedEvent = (id) => {
     let selectedEvent = data.sampleEvents.find((event) => event.id === id);
     setSelectEvent(selectedEvent);
   };
@@ -82,16 +77,16 @@ const EventTab = () => {
     setSearch(input);
   };
 
-  const handleAdvancedFilters = () => {
+  const toggleAdvancedFilters = () => {
     setAdvancedFilters(!advancedFilters);
   };
 
   return (
-    <main className="viewContainer">
-      {/* Regular Search bar + Sidebar */}
+    <main className="eventsDisplayContainer">
+      {/* Regular Search Bar + Sidebar */}
       <SideBar onClick={() => setSidebarOpen(!sidebarOpen)} />
-      <div className="align">
-        <h1 className="eventTabHeader">Event Dashboard</h1>
+      <section className="eventsDisplay">
+        <h1 className="dashboardTitle">Events Dashboard</h1>
         <div className="searchContainer">
           <input
             type="search"
@@ -102,9 +97,9 @@ const EventTab = () => {
         </div>
         {/* Advanced Search Bar */}
         <section className="advancedSearchContainer">
-          <div className="advancedSearchToggle" onClick={handleAdvancedFilters}>
+          <div className="advancedSearchToggle" onClick={toggleAdvancedFilters}>
             <h2>Filters</h2>
-            <div className="arrowMove">
+            <div className="arrowWrapper">
               <div className="arrow" style={{transform: advancedFilters ? "rotateZ(90deg)" : "rotateZ(0deg)"}}/>
             </div>
           </div>
@@ -124,8 +119,8 @@ const EventTab = () => {
                   Activity
                 </button>
               </div>
-              <div className="advancedInline">
-                <fieldset className="advancedInlineWrapper">
+              <div className="sort">
+                <fieldset className="sortWrapper">
                   <legend className="legend">Sort By</legend>
                   <button className={sort ? "advancedButton" : "advancedButtonOn"} onClick={() => setSort(!sort)}>
                     Date
@@ -141,13 +136,10 @@ const EventTab = () => {
           )}
         </section>
         {/* Parallax Images */}
-        <ParallaxImage
-          url={setting}
-          offsetRate={0.02}
-          top={10}
-          rotate={0.08}
-          className={"left"}
-        />
+        <ParallaxImage url={gear} offsetRate={0.02} top={10} rotate={0.08} className={"left"}/>
+        <ParallaxImage url={triangle} offsetRate={0.015} top={80} rotate={0.065} className={"right"}/>
+        <ParallaxImage url={gear} offsetRate={0.02} top={145} rotate={0.08} className={"left"}/>
+        <ParallaxImage url={triangle} offsetRate={0.015} top={230} rotate={0.065} className={"right"}/>
         {/* Event Dashboard with all event cards */}
         <div className="eventContainer">
           {events.map((event) => (
@@ -157,7 +149,7 @@ const EventTab = () => {
               date={getDate(event.start_time, true)}
               type={event.event_type}
               start={convertToTime(event.start_time)}
-              onClick={() => setSelectEvent(event)} // Modify this line
+              onClick={() => setSelectEvent(event)}
             />
           ))}
         </div>
@@ -178,7 +170,7 @@ const EventTab = () => {
             permission={selectEvent.permission}
             sidebarOpen={sidebarOpen}
             onClick={() => setSelectEvent(null)}
-            onClickRelated={handleNewExpand}
+            onClickRelated={handleRelatedEvent}
           />
         )}
         {events.length === 0 && !loading && (
@@ -186,9 +178,9 @@ const EventTab = () => {
             <h1 className="noEventsText">No Events Found :{"("}</h1>
           </div>
         )}
-      </div>
+      </section>
     </main>
   );
 };
 
-export default EventTab;
+export default EventsDisplay;

@@ -5,13 +5,12 @@
   flex-direction: column;
   width: 25%;
   height: 100vh;
-  /* background-color: rgb(46, 42, 52); */
   background-color: rgb(41, 37, 53);
   transition: 0.5s ease-in;
   z-index: 3;
   top: 0;
   border-right: 5px solid rgba(220, 220, 220, 0.3);
-  box-shadow: 50px 0 100px 10px rgb(0, 0, 0, 0.4);
+  box-shadow: 50px 0 100px 10px rgba(0, 0, 0, 0.5);
 }
 .filler {
   position: relative;
@@ -34,7 +33,7 @@
   z-index: 100;
   position: fixed;
   left: 25%;
-  width: 50px;
+  width: 60px;
   top: 0;
   padding: 20px;
   cursor: pointer;
@@ -48,7 +47,7 @@
 }
 
 .gear:hover {
-  width: 55px;
+  width: 65px;
 }
 
 /* SIDEBAR ITEMS */
@@ -85,12 +84,6 @@
 .sideItemWrapper:hover .sideItem {
   transform: scale(1.05) translateX(2.5%);
   transition: 0.3s ease-out;
-}
-
-.settings {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 .sideLogWrapper {
@@ -137,6 +130,7 @@
   }
   .gear {
     left: 0;
+    width: 10vw;
   }
 
   .sideItemWrapper {

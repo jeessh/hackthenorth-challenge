@@ -1,9 +1,17 @@
 
 
 :root {
-  --darkbg: rgb(28, 25, 38);
-  --darkcardbg: rgb(37, 32, 50);
-  --eventbg: rgb(34, 32, 40);
+  --background: rgb(28, 25, 38);
+  --cardBackground: rgb(37, 32, 50);
+  --eventsDisplayBackground: rgb(34, 32, 40);
+
+  --whiteText: rgb(220, 220, 220);
+  --greyText: rgb(135, 135, 135);
+
+  --activityEvent: rgba(169, 98, 48, 0.9);
+  --techEvent: rgba(137, 43, 115, 0.9);
+  --workEvent: rgba(71, 123, 135, 0.9);
+  
 }
 
 body {
@@ -14,28 +22,28 @@ h1 {
   font:
     800 1.8rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
 }
 
 h2 {
   font:
     500 1.5rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
 }
 
 h3 {
   font:
     800 1.25rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
 }
 
 h4 {
   font:
     700 1.1rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
 
 }
 
@@ -43,7 +51,7 @@ p {
   font:
     500 1rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
   line-height: 2rem;
 }
 
@@ -51,12 +59,21 @@ a {
   font:
     500 1rem "Roboto",
     monospace;
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
   text-decoration: none;
 }
 
 @media screen and (max-width: 768px){
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  h4 {
+    font-size: 1rem;
   }
 }

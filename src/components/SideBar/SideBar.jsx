@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import setting from "../../assets/setting.png";
+import gear from "../../assets/GreyGear.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import PropTypes from "prop-types";
-import "./index.css";
+import "./SideBar.css";
 
 const SideBar = ({ onClick }) => {
   const [click, setClick] = useState(true);
@@ -14,15 +14,15 @@ const SideBar = ({ onClick }) => {
     onClick();
   };
   const handleLogout = async () => {
+    // User is currently logged in, log them out
     if (isAuthenticated) {
-      // user is logged in, log them out
       logout({
         logoutParams: {
           returnTo: window.location.origin,
         },
       });
+      // User is not logged in, send to login
     } else {
-      // user is not loggedin, send to login
       await loginWithRedirect({
         appState: { returnTo: "/events" },
       });
@@ -44,8 +44,12 @@ const SideBar = ({ onClick }) => {
           </h1>
         </a>
       </div>
-      <div className={"filler" + (click ? " closeFiller" : "")}/>
-      <img className={"gear" + (click ? " closeGear" : "")} onClick={handleClick} src={setting}/>
+      <div className={"filler" + (click ? " closeFiller" : "")} />
+      <img
+        className={"gear" + (click ? " closeGear" : "")}
+        onClick={handleClick}
+        src={gear}
+      />
     </>
   );
 };

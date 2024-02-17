@@ -1,17 +1,17 @@
 /* overall containers */
-.viewContainer {
+.eventsDisplayContainer {
   display: flex;
   position: relative;
-  background-color: rgb(34, 32, 40);
+  background-color: var(--eventsDisplayBackground);
   overflow: hidden;
 }
 
-.align {
+.eventsDisplay {
   width: 100%;
 }
 
 /* "Event Dashboard" */
-.eventTabHeader {
+.dashboardTitle {
   margin-top: 2em;
   font-size: 5vw;
   text-align: center;
@@ -56,43 +56,39 @@
   height: 0;
   border-top: 0.75em solid transparent;
   border-bottom: 0.75em solid transparent;
-  border-left: 0.75em solid rgb(220, 220, 220);
+  border-left: 0.75em solid var(--whiteText);
   border-right: 0;
   border-radius: 5px;
   transition: 0.15s ease-in;
 }
-.arrowMove {
+.arrowWrapper {
   transform: translate(15px);
   transition: 0.15s ease-in;
 }
-.advancedSearchToggle:hover .arrowMove {
+.advancedSearchToggle:hover .arrowWrapper {
   transform: translate(20px);
   transition: 0.1s ease-out;
 }
 
+.advancedMenuContainer,
 .closedAdvancedMenuContainer {
-  height: 0;
-  width: 20%;
-  border: 0;
-  display: flex;
-  background-color: rgb(34, 32, 40);
-  box-shadow: none;
-  justify-content: center;
-  transition: 0.15s ease-in;
-}
-
-.advancedMenuContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   height: 13em;
   width: 50%;
-  background-color: var(--darkcardbg);
+  background-color: var(--cardBackground);
   border: 2.5px solid rgba(220, 220, 220, 0.35);
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
-  transition: 0.3s ease-in;
+  transition: 0.3s ease-out;
+}
+.closedAdvancedMenuContainer {
+  height: 0;
+  width: 20%;
+  border: 0;
+  transition: 0.15s ease-in;
 }
 
 .filterWrapper {
@@ -111,7 +107,7 @@
   font:
     1.3em "Roboto",
     monospace;
-  color: rgb(135, 135, 135);
+  color: var(--greyText);
   transition: 0.35s ease-in;
   background-color: rgb(65, 58, 85);
   border: 2px solid rgba(220, 220, 220, 0.35);
@@ -134,19 +130,19 @@
 .filter2.active,
 .filter3.active {
   font-weight: 800;
-  background-color: rgba(137, 43, 115, 0.9);
-  color: rgb(220, 220, 220);
+  background-color: var(--techEvent);
+  color: var(--whiteText);
   border: none;
   border-bottom: 5px solid rgba(220, 220, 220, 0.35);
 }
 .filter2.active {
-  background-color: rgba(71, 123, 135, 0.9);
+  background-color: var(--workEvent);
 }
 .filter3.active {
-  background-color: rgba(169, 98, 48, 0.9);
+  background-color: var(--activityEvent);
 }
 
-.advancedInline {
+.sort {
   display: grid;
   align-items: center;
   height: 100%;
@@ -154,7 +150,7 @@
   transition: 0.3s ease-in;
 }
 
-.advancedInlineWrapper {
+.sortWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,14 +181,14 @@
   font:
     1.3em "Roboto",
     monospace;
-  color: rgb(135, 135, 135);
+  color: var(--greyText);
   background-color: rgb(65, 58, 85);
   transition: 0.35s ease-in;
   border: 2px solid rgba(220, 220, 220, 0.35);
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .advancedButtonOn {
-  color: rgb(220, 220, 220);
+  color: var(--whiteText);
   background-color: rgb(109, 81, 181);
   font-weight: 700;
 }
@@ -236,19 +232,15 @@
     flex-direction: column;
     padding: 50px;
   }
-  .eventTabHeader {
-    font-size: 2em;
+  .dashboardTitle {
+    font-size: 8vw;
   }
   .searchBar {
     width: 80%;
   }
-  .eventHeader {
-    font-size: 8vw;
-  }
   .noEventsText {
     font-size: 2em;
   }
-
   .filter1,
   .filter2,
   .filter3 {
@@ -260,7 +252,7 @@
   .filter2:hover,
   .filter3:hover {
     font:
-      10% "Roboto",
+      95% "Roboto",
       monospace;
     height: 95%;
   }
@@ -269,12 +261,12 @@
     width: 80%;
     height: 16em;
   }
-  .advancedInline {
+  .sort {
     width: 100%;
     justify-content: space-around;
     gap: 2vw;
   }
-  .advancedInlineWrapper {
+  .sortWrapper {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -296,11 +288,11 @@
   .arrow {
     transition: none;
   }
-  .arrowMove {
+  .arrowWrapper {
     transform: translateX(15px);
     transition: none;
   }
-  .advancedSearchToggle:hover .arrowMove {
+  .advancedSearchToggle:hover .arrowWrapper {
     transform: translateX(15px);
     transition: none;
   }
