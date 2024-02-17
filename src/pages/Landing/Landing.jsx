@@ -9,9 +9,15 @@ const Landing = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
 
+  // Selected Hacker
   const handleLoginClick = async () => {
+    // User is already logged in:
+    //  - Redirect straight to events page
     if (isAuthenticated) {
       navigate("/events");
+    // User is not logged in:
+    //  - Send to login page
+    //  - Return to events page after login
     } else {
       await loginWithRedirect({
         appState: { returnTo: "/events" },
@@ -19,6 +25,7 @@ const Landing = () => {
     }
   };
 
+  // Selected Visitor
   const handleVisitClick = () => {
     navigate("/events");
   };

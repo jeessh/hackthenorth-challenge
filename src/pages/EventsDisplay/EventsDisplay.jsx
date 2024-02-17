@@ -37,22 +37,21 @@ const EventsDisplay = () => {
     return a.event_type.localeCompare(b.event_type);
   };
 
-  // After rendering, set filters/sort for data events
   useEffect(() => {
     if (data) {
       let output = [...data.sampleEvents];
 
-      // Sorting by event type or date
+      // Sorting Events:
       output = output.sort((a, b) =>
         sort ? sortByType(a, b) : sortByDate(a, b),
       );
 
-      // Filtering based on user auth and event type filters
+      // Filtering Events:
       output = output.filter((event) => isAuthenticated
         ? filters[event.event_type] : event.permission === "public" && filters[event.event_type],
       );
 
-      // Searching for events
+      // Searching Events:
       output = output.filter((event) => {
         if (search === "") {
           return event;
@@ -66,7 +65,8 @@ const EventsDisplay = () => {
     sessionStorage.setItem("sort", sort);
   }, [filters, sort, search, isAuthenticated, data]);
 
-  // When an event card is clicked, expand the event
+  // Expanding related event information:
+  //  - matches the new event to display
   const handleRelatedEvent = (id) => {
     let selectedEvent = data.sampleEvents.find((event) => event.id === id);
     setSelectEvent(selectedEvent);
@@ -75,10 +75,6 @@ const EventsDisplay = () => {
   const handleSearch = (event) => {
     let input = event.target.value;
     setSearch(input);
-  };
-
-  const toggleAdvancedFilters = () => {
-    setAdvancedFilters(!advancedFilters);
   };
 
   return (
@@ -97,7 +93,7 @@ const EventsDisplay = () => {
         </div>
         {/* Advanced Search Bar */}
         <section className="advancedSearchContainer">
-          <div className="advancedSearchToggle" onClick={toggleAdvancedFilters}>
+          <div className="advancedSearchToggle" onClick={() => setAdvancedFilters(!advancedFilters)}>
             <h2>Filters</h2>
             <div className="arrowWrapper">
               <div className="arrow" style={{transform: advancedFilters ? "rotateZ(90deg)" : "rotateZ(0deg)"}}/>
