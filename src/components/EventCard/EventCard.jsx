@@ -23,6 +23,7 @@ const EventCard = ({
       <div className="cardTags">
         <h4 className={"eventType" + typeClass(type)}>{formatType(type)}</h4>
       </div>
+
       <div className="cardText">
         <h1>{title}</h1>
         <h2>{date} / {start}</h2>
