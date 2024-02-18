@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useScreenSize from "../../hooks/useScreenSize";
 import PropTypes from "prop-types";
 import "./ParallaxImage.css";
 
@@ -7,6 +8,8 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   const handleScroll = () => {
     setOffset(window.scrollY);
   };
+
+  const screenSize = useScreenSize();
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, true);
@@ -22,10 +25,11 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
         src={url}
         alt="parallax"
         className="parallax"
-        style={{
-          transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
-          marginTop: `${top}em`,
-        }}
+        style={
+          screenSize >= 768 ? 
+          {transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
+          marginTop: `${top}em`} : {marginTop: `${top}em`}
+        }
       />
     </div>
   );

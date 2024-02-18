@@ -18,16 +18,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .left {
-    width: 100vw;
-    left: -50vw;
-  }
-  .right {
-    width: 100vw;
-    right: -50vw;
-  }
-  .parallax {
-    transform: none!important;
+  .left, .right, .parallax {
+    display: none!important
   }
 }
 
