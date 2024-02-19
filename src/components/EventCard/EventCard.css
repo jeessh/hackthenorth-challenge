@@ -19,9 +19,9 @@
   transition: 0.2s ease-out;
 }
 
-.eventContainer:has(.cardWrapper:hover)
-.cardWrapper:not(:hover) {
-  filter: brightness(0.75) grayscale(0.25)
+.eventContainer:has(.cardWrapper:hover) 
+  .cardWrapper:not(:hover) {
+  filter: brightness(0.75) grayscale(0.25);
 }
 
 .cardTags {
@@ -58,7 +58,7 @@
     padding-top: 80px;
   }
   .eventContainer:has(.cardWrapper:hover)
-.cardWrapper:not(:hover) {
+    .cardWrapper:not(:hover) {
     filter: none;
   }
 }
@@ -67,5 +67,9 @@
   .cardWrapper,
   .cardWrapper:hover {
     transition: none;
+  }
+  .eventContainer:has(.cardWrapper:hover) 
+    .cardWrapper:not(:hover) {
+    filter: none;
   }
 }

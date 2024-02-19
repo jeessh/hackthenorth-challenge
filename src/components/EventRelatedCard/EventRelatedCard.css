@@ -2,7 +2,11 @@
   position: relative;
   display: flex;
   justify-self: center;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 10%, var(--cardBackground));
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 10%,
+    var(--cardBackground)
+  );
   border-radius: 5px;
   transition: 0.2s ease-in;
   width: 80%;
@@ -11,8 +15,8 @@
 }
 
 .relatedEventsContainer:has(.relatedContainer:hover)
-.relatedContainer:not(:hover) {
-  filter: brightness(0.5) saturate(0.25)
+  .relatedContainer:not(:hover) {
+  filter: brightness(0.5) saturate(0.25);
 }
 
 .relatedContainer:hover {
@@ -69,9 +73,9 @@
     padding: 0;
   }
   .relatedEventsContainer:has(.relatedContainer:hover)
-.relatedContainer:not(:hover) {
-  filter: none;
-}
+    .relatedContainer:not(:hover) {
+    filter: none;
+  }
   .relatedContent {
     padding: 15px;
   }
@@ -81,5 +85,9 @@
   .relatedContainer,
   .relatedContainer:hover {
     transition: none;
+  }
+  .relatedEventsContainer:has(.relatedContainer:hover)
+    .relatedContainer:not(:hover) {
+    filter: none;
   }
 }

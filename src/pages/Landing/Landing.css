@@ -6,7 +6,6 @@
   margin: 0;
   background-color: var(--background);
 }
-
 .welcomeContent {
   position: absolute;
   left: 5%;
@@ -16,7 +15,6 @@
   margin: 0;
   width: 90%;
 }
-
 .welcomeGear {
   position: absolute;
   right: -100px;
@@ -30,12 +28,10 @@
   transform: rotate(20deg);
   transition: 0.8s ease-out;
 }
-
 .hackTheNorthWrapper {
   display: flex;
   align-items: end;
 }
-
 .HTN,
 .HTNOutline,
 .welcomeMsg {
@@ -51,7 +47,7 @@
   animation: slideInLeft 0.8s 1 ease-in-out forwards;
 }
 .HTNOutline {
-  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: rgba(220, 220, 220, 0.9);
   color: rgba(0, 0, 0, 0);
 }
@@ -71,8 +67,8 @@
 
 .hackTheNorthBackText {
   position: absolute;
-  top: -10%;
   right: 0;
+  margin-top: 12px;
   background: -webkit-linear-gradient(20deg, rgba(74, 51, 124, 0.6), rgba(44, 87, 116, 0.6));
   -webkit-background-clip: text;
   background-clip: text;
@@ -98,7 +94,7 @@
   position: relative;
   width: 20vw;
   margin-top: 50px;
-  margin-right: 50px;
+  margin-right: 20px;
   border-radius: 10px;
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.6);
@@ -163,9 +159,18 @@
   }
 }
 
+
 @media screen and (max-width: 768px) {
+  .welcomeMsg {
+    margin-left: 0;
+    font-size: 4vw;
+    margin-bottom: 10px;
+  }
   .welcomeGear {
     width: 45vh;
+  }
+  .welcomeGear:hover{
+    transform: rotate(0)
   }
 
   .landingCardContainer {
@@ -212,10 +217,13 @@
   .welcomeMsg,
   .welcomeGear {
     opacity: 1;
+    top: -10%;
+
   }
   .welcomeGear,
   .welcomeGear:hover {
     transform: rotate(205deg);
+    top: -225px;
   }
 
   @keyframes slideInLeft {
@@ -224,4 +232,11 @@
   }
   @keyframes gearSpin {
   }
+}
+
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .welcomeGear,
+  .welcomeGear:hover {
+    top: -180px;
+}
 }
