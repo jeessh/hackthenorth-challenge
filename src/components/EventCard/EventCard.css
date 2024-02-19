@@ -5,7 +5,7 @@
   justify-content: end;
   background: linear-gradient(0deg, rgb(14, 13, 17) 30%, var(--cardBackground));
 
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow:
     0 10px 25px 5px rgba(0, 0, 0, 0.35),
     inset 0 0 30px 5px rgba(0, 0, 0, 0.35);
@@ -15,9 +15,6 @@
 }
 .cardWrapper:hover {
   cursor: pointer;
-  box-shadow:
-    0 15px 30px 7px rgba(0, 0, 0, 0.6),
-    inset 0 0 30px 5px rgba(0, 0, 0, 0.35);
   transform: translateY(-5px);
   transition: 0.2s ease-out;
 }
@@ -46,10 +43,8 @@
 .cardText {
   bottom: 0;
   padding: 30px;
-  padding-top: 5px;
+  padding-top: 0;
   padding-bottom: 15px;
-  border-radius: 7.5px;
-  z-index: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -60,10 +55,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cardWrapper {
-    transition: none;
-  }
+  .cardWrapper,
   .cardWrapper:hover {
-    transform: none;
+    transition: none;
   }
 }

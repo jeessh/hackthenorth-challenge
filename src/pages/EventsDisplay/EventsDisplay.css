@@ -2,7 +2,7 @@
 .eventsDisplayContainer {
   display: flex;
   position: relative;
-  background-color: var(--eventsDisplayBackground);
+  background-color: var(--background);
   overflow: hidden;
 }
 
@@ -41,8 +41,8 @@
 .advancedSearchContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .advancedSearchToggle {
@@ -234,6 +234,7 @@
   }
   .dashboardTitle {
     font-size: 8vw;
+    margin-top: 3em;
   }
   .searchBar {
     width: 80%;
@@ -243,18 +244,15 @@
   }
   .filter1,
   .filter2,
-  .filter3 {
-    font:
-      95% "Roboto",
-      monospace;
-  }
+  .filter3,
   .filter1:hover,
   .filter2:hover,
   .filter3:hover {
     font:
-      95% "Roboto",
+      800 95% "Roboto",
       monospace;
-    height: 95%;
+      height: 95%;
+
   }
 
   .advancedMenuContainer {
@@ -285,21 +283,23 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arrow {
-    transition: none;
-  }
-  .arrowWrapper {
-    transform: translateX(15px);
-    transition: none;
-  }
-  .advancedSearchToggle:hover .arrowWrapper {
-    transform: translateX(15px);
-    transition: none;
-  }
+  .arrow,
   .filter1,
   .filter2,
-  .filter3 {
+  .filter3,
+  .filter1:hover,
+  .filter2:hover,
+  .filter3:hover,
+  .advancedButton,
+  .advancedButtonOn,
+  .advancedMenuContainer,
+  .arrowWrapper,
+  .advancedSearchToggle:hover .arrowWrapper {
     transition: none;
+  }
+  .arrowWrapper,
+  .advancedSearchToggle:hover .arrowWrapper {
+    transform: translateX(15px);
   }
   .filter1:hover,
   .filter2:hover,
@@ -308,13 +308,5 @@
       1.3em "Roboto",
       monospace;
     height: 95%;
-    transition: none;
-  }
-  .advancedButton,
-  .advancedButtonOn {
-    transition: none;
-  }
-  .advancedMenuContainer {
-    transition: none;
   }
 }

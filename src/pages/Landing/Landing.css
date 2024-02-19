@@ -45,6 +45,7 @@
   margin: 0;
   font-family: "Big Shoulders Display", sans-serif;
   font-weight: 800;
+  line-height: 7.5vw;
   letter-spacing: 5px;
   opacity: 0;
   animation: slideInLeft 0.8s 1 ease-in-out forwards;
@@ -72,7 +73,10 @@
   position: absolute;
   top: -10%;
   right: 0;
-  color: rgba(79, 64, 96, 1);
+  background: -webkit-linear-gradient(20deg, rgba(74, 51, 124, 0.6), rgba(44, 87, 116, 0.6));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 33vw;
   font-family: "Big Shoulders Display", sans-serif;
   font-weight: 800;
@@ -93,6 +97,7 @@
 .landingCard {
   position: relative;
   width: 20vw;
+  margin-top: 50px;
   margin-right: 50px;
   border-radius: 10px;
   backdrop-filter: blur(20px);
@@ -171,6 +176,8 @@
   .landingCard {
     width: 80vw;
     margin: 20px;
+    margin-top: 15px;
+    margin-bottom: 0;
   }
 
   .hackTheNorthBackText {

@@ -3,14 +3,7 @@ import PropTypes from "prop-types";
 import { formatType, cardBorder, typeClass } from "../../constants/constants";
 import "./EventCard.css";
 
-const EventCard = ({
-  title,
-  type,
-  date,
-  start,
-  onClick,
-
-}) => {
+const EventCard = ({ title, type, date, start, onClick }) => {
   const handleClick = () => {
     onClick();
   };
@@ -18,7 +11,7 @@ const EventCard = ({
     <div
       className="cardWrapper"
       onClick={handleClick}
-      style={{ border: `3px solid ${cardBorder(type)}` }}
+      style={{ border: `3.5px solid ${cardBorder(type)}`}}
     >
       <div className="cardTags">
         <h4 className={"eventType" + typeClass(type)}>{formatType(type)}</h4>
@@ -26,7 +19,9 @@ const EventCard = ({
 
       <div className="cardText">
         <h1>{title}</h1>
-        <h2>{date} / {start}</h2>
+        <h2>
+          {date} / {start}
+        </h2>
       </div>
     </div>
   );

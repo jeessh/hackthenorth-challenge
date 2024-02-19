@@ -16,7 +16,6 @@ const EventExpanded = ({
   end,
   speakers,
   url,
-  permission,
   related,
   sidebarOpen,
   onClick,
@@ -48,20 +47,13 @@ const EventExpanded = ({
           <h1 className="expandedHeader">{title}</h1>
           <h3>🕒 {start} - {end} (UTC+0)</h3>
           <h3>📅 Date: {date}</h3>
-          <p>{description}</p>
-          <div className="eventInfoWrapper">
-            <div>
-              {speakers.map((speaker, index) => (
+          {speakers.map((speaker, index) => (
                 <h3 key={index}>📣 Speakers: {speaker}</h3>
               ))}
-              <h3>
-                🔒 Access:{" "}{permission.charAt(0).toUpperCase() + permission.slice(1)}
-              </h3>
-            </div>
+          <p>{description}</p>
             <a className="externalLink" href={url} target="_blank" rel="noreferrer">
               Join the Event!
             </a>
-          </div>
           { // Display related events if there are any
           relatedEvents.length > 0 && (
             <>
@@ -96,7 +88,6 @@ EventExpanded.propTypes = {
   description: PropTypes.string,
   speakers: PropTypes.array,
   url: PropTypes.string,
-  permission: PropTypes.string,
   related: PropTypes.array,
   sidebarOpen: PropTypes.bool,
   onClick: PropTypes.func,

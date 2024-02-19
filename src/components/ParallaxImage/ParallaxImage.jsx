@@ -26,7 +26,7 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
         alt="parallax"
         className="parallax"
         style={
-          screenSize >= 768 ? 
+          screenSize.width >= 768 ? 
           {transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
           marginTop: `${top}em`} : {marginTop: `${top}em`}
         }

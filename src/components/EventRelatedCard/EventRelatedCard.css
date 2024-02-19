@@ -1,14 +1,12 @@
 .relatedContainer {
   position: relative;
   display: flex;
-  flex-direction: column;
-  background-color: var(--cardBackground);
-  padding: 20px;
+  justify-self: center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 10%, var(--cardBackground));
   border-radius: 5px;
   transition: 0.2s ease-in;
-  width: 250px;
-  height: 120px;
-  margin: 20px;
+  width: 80%;
+  margin-bottom: 30px;
   box-shadow: 0 2px 30px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -17,18 +15,6 @@
   transform: translateY(-5px);
   cursor: pointer;
   transition: 0.15s ease-out;
-}
-
-.relatedContainer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 40%, var(--cardBackground));
-  z-index: 0;
 }
 
 .relatedTag {
@@ -64,21 +50,26 @@
 }
 
 .relatedContent {
-  position: absolute;
+  position: relative;
   display: flex;
-  bottom: 0;
+  align-items: flex-end;
+  margin-top: 30px;
+  padding: 25px;
+  padding-bottom: 15px;
 }
 
 @media screen and (max-width: 768px) {
+  .relatedContainer {
+    margin-bottom: 30px;
+    padding: 0;
+  }
   .relatedContent {
-    padding: 10px;
+    padding: 15px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .relatedContainer {
-    transition: none;
-  }
+  .relatedContainer,
   .relatedContainer:hover {
     transition: none;
   }

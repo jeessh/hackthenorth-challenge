@@ -145,6 +145,7 @@ const EventsDisplay = () => {
               date={getDate(event.start_time, true)}
               type={event.event_type}
               start={convertToTime(event.start_time)}
+              speakers={event.speakers.map((speaker) => speaker.name)}
               onClick={() => setSelectEvent(event)}
             />
           ))}

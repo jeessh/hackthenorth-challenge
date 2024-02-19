@@ -1,9 +1,8 @@
 
 
 :root {
-  --background: rgb(28, 25, 38);
-  --cardBackground: rgb(37, 32, 50);
-  --eventsDisplayBackground: rgb(34, 32, 40);
+  --background: rgb(18, 17, 31);
+  --cardBackground: rgb(30, 27, 47);
 
   --whiteText: rgb(220, 220, 220);
   --greyText: rgb(135, 135, 135);
@@ -23,6 +22,7 @@ h1 {
     800 1.8rem "Roboto",
     monospace;
   color: var(--whiteText);
+  line-height: 2.7rem;
 }
 
 h2 {
