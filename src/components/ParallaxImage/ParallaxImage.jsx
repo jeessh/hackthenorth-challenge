@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import PropTypes from "prop-types";
 import "./ParallaxImage.css";
 
-const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
+const ParallaxImage = memo (function ParallaxImage({ url, offsetRate, top, rotate, className }) {
   const [offset, setOffset] = useState(0);
   const handleScroll = () => {
     setOffset(window.scrollY);
@@ -17,23 +17,20 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
 
   return (
     // className: left / right
-    window.innerWidth >= 768 ? (
       <div className={className}>
         <img
           src={url}
           alt="parallax"
           className="parallax"
-          style={{
+          style={window.innerWidth < 768 ? {marginTop: `${top}em`} : {
             transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
             marginTop: `${top}em`,
           }}
         />
       </div>
-    ) : (
-      <div></div>
-    )
+
   );
-};
+});
 
 ParallaxImage.propTypes = {
   url: PropTypes.string.isRequired,
