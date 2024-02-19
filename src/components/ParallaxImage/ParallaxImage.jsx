@@ -23,9 +23,9 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
         alt="parallax"
         className="parallax"
         style={
-          window.innerWidth >= 768 ? 
+          window.innerWidth <= 768 ? {marginTop: `${top}em`} :
           {transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
-          marginTop: `${top}em`} : {marginTop: `${top}em`}
+          marginTop: `${top}em`}
         }
       />
     </div>
