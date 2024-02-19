@@ -19,6 +19,11 @@
   transition: 0.2s ease-out;
 }
 
+.eventContainer:has(.cardWrapper:hover)
+.cardWrapper:not(:hover) {
+  filter: brightness(0.75) grayscale(0.25)
+}
+
 .cardTags {
   top: 2.5px;
   position: absolute;
@@ -51,6 +56,10 @@
   .cardWrapper {
     height: auto;
     padding-top: 80px;
+  }
+  .eventContainer:has(.cardWrapper:hover)
+.cardWrapper:not(:hover) {
+    filter: none;
   }
 }
 

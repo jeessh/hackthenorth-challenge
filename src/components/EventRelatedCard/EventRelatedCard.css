@@ -10,6 +10,11 @@
   box-shadow: 0 2px 30px 2px rgba(0, 0, 0, 0.4);
 }
 
+.relatedEventsContainer:has(.relatedContainer:hover)
+.relatedContainer:not(:hover) {
+  filter: brightness(0.5) saturate(0.25)
+}
+
 .relatedContainer:hover {
   box-shadow: 0 5px 15px 2.5px rgba(0, 0, 0, 0.7);
   transform: translateY(-5px);
@@ -63,6 +68,10 @@
     margin-bottom: 30px;
     padding: 0;
   }
+  .relatedEventsContainer:has(.relatedContainer:hover)
+.relatedContainer:not(:hover) {
+  filter: none;
+}
   .relatedContent {
     padding: 15px;
   }
