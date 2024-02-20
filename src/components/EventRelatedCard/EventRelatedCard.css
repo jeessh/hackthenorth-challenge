@@ -16,7 +16,7 @@
 
 .relatedEventsContainer:has(.relatedContainer:hover)
   .relatedContainer:not(:hover) {
-    filter: brightness(0.6) grayscale(0.25);
+  filter: brightness(0.6) grayscale(0.25);
 }
 
 .relatedContainer:hover {

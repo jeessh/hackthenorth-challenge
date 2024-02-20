@@ -7,9 +7,9 @@
   --whiteText: rgb(220, 220, 220);
   --greyText: rgb(135, 135, 135);
 
-  --activityEvent: rgba(169, 98, 48, 0.9);
+  --activityEvent: rgba(167, 106, 62, 0.9);
   --techEvent: rgba(137, 43, 115, 0.9);
-  --workEvent: rgba(71, 123, 135, 0.9);
+  --workEvent: rgba(62, 136, 147, 0.9);
   
 }
 
@@ -72,8 +72,11 @@ a {
   }
   h3 {
     font-size: 1.1rem;
+    font-weight: 400;
+
   }
   h4 {
     font-size: 1rem;
+    font-weight: 100;
   }
 }

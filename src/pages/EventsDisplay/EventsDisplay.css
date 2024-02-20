@@ -224,8 +224,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .viewContainer {
-    padding-top: 30px;
+  .eventsDisplayContainer {
+    padding-top: 25px;
   }
   .eventContainer {
     display: flex;
@@ -249,10 +249,9 @@
   .filter2:hover,
   .filter3:hover {
     font:
-      800 95% "Roboto",
+      600 82.5% "Roboto",
       monospace;
-      height: 95%;
-
+    height: 95%;
   }
 
   .advancedMenuContainer {
@@ -276,7 +275,10 @@
   }
 
   .advancedButton,
-  .advancedButtonOn {
+  .advancedButtonOn,
+  .advancedButton:hover,
+  .advancedButtonOn:hover {
+    transform: translateY(0);
     font-size: 100%;
     width: 100%;
   }

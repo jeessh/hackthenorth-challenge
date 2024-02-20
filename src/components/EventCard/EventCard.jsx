@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { formatType, cardBorder, typeClass } from "../../constants/constants";
+import { formatType, cardBorder, typeClass } from "../../utils/utils";
 import "./EventCard.css";
 
 const EventCard = ({ title, type, date, start, onClick }) => {

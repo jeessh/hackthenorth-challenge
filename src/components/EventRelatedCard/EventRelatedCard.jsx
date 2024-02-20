@@ -6,7 +6,7 @@ import {
   formatEmoji,
   typeClass,
   cardBorder,
-} from "../../constants/constants";
+} from "../../utils/utils";
 import "./EventRelatedCard.css";
 
 const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {

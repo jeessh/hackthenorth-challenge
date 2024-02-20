@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./EventExpanded.css";
 import EventRelatedCard from "../EventRelatedCard/EventRelatedCard";
-import { formatType, cardBorder, typeClass } from "../../constants/constants";
+import { formatType, cardBorder, typeClass } from "../../utils/utils";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../../GraphQL/queries";

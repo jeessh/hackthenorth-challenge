@@ -14,7 +14,7 @@
 }
 
 .parallax {
-    width: 100%;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
