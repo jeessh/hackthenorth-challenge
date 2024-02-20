@@ -3,11 +3,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { GET_EVENTS } from "../../GraphQL/queries";
 import { useQuery } from "@apollo/client";
 
-import SideBar from "../../components/SideBar/SideBar";
-import EventCard from "../../components/EventCard/EventCard";
-import EventExpanded from "../../components/EventExpanded/EventExpanded";
-import ParallaxImage from "../../components/ParallaxImage/ParallaxImage";
-import { convertToTime, getDate } from "../../utils/utils";
+import SideBar from "../../components/SideBar";
+import EventCard from "../../components/EventCard";
+import EventExpanded from "../../components/EventExpanded";
+import ParallaxImage from "../../components/ParallaxImage";
+import { convertToTime, getDate, sortByDate, sortByType } from "../../utils/utils";
 import gear from "../../assets/GradientGear.png";
 import triangle from "../../assets/Triangle.png";
 import "./EventsDisplay.css";
@@ -22,33 +22,29 @@ const EventsDisplay = () => {
 
   const [search, setSearch] = useState("");
   const [advancedFilters, setAdvancedFilters] = useState(false);
-  const [filters, setFilters] = useState({
-    tech_talk: true,
-    workshop: true,
-    activity: true,
-  });
   const [sort, setSort] = useState(sessionStorage.getItem("sort") === "true");
-
-  // Sorting functions:
-  const sortByDate = (a, b) => {
-    return a.start_time - b.start_time;
-  };
-  const sortByType = (a, b) => {
-    return a.event_type.localeCompare(b.event_type);
-  };
+  
+  // Filters:
+  //   - If filters were saved in the session storage, use those filters
+  //   - Otherwise, default to all filters being true (typically new user)
+  const [filters, setFilters] = useState(
+    sessionStorage.getItem("filters")
+      ? JSON.parse(sessionStorage.getItem("filters"))
+      : { tech_talk: true, workshop: true, activity: true },
+  );
 
   useEffect(() => {
     if (data) {
       let output = [...data.sampleEvents];
 
       // Sorting Events:
-      output = output.sort((a, b) =>
-        sort ? sortByType(a, b) : sortByDate(a, b),
-      );
+      output = output.sort((a, b) => sort ? sortByType(a, b) : sortByDate(a, b));
 
       // Filtering Events:
-      output = output.filter((event) => isAuthenticated
-        ? filters[event.event_type] : event.permission === "public" && filters[event.event_type],
+      output = output.filter((event) =>
+        isAuthenticated
+          ? filters[event.event_type]
+          : event.permission === "public" && filters[event.event_type],
       );
 
       // Searching Events:
@@ -62,6 +58,9 @@ const EventsDisplay = () => {
 
       setEvents(output);
     }
+
+    // Save filtering and sorting options to session storage
+    sessionStorage.setItem("filters", JSON.stringify(filters));
     sessionStorage.setItem("sort", sort);
   }, [filters, sort, search, isAuthenticated, data]);
 
@@ -91,52 +90,69 @@ const EventsDisplay = () => {
             onChange={handleSearch}
           />
         </div>
-        {/* Advanced Search Bar */}
+        {/* Filters Bar */}
         <section className="advancedSearchContainer">
-          <div className="advancedSearchToggle" onClick={() => setAdvancedFilters(!advancedFilters)}>
+          <div
+            className="advancedSearchToggle"
+            onClick={() => setAdvancedFilters(!advancedFilters)}
+          >
             <h2>Filters</h2>
             <div className="arrowWrapper">
-              <div className="arrow" style={{transform: advancedFilters ? "rotateZ(90deg)" : "rotateZ(0deg)"}}/>
+              <div
+                className="arrow"
+                style={{ transform: advancedFilters ? "rotateZ(90deg)" : "rotateZ(0deg)" }}
+              />
             </div>
           </div>
+          {/* Display filters if advancedSearchToggle is clicked */}
           {advancedFilters ? (
             <section className="advancedMenuContainer">
               <div className="filterWrapper">
-                <button className={"filter1" + (filters["tech_talk"] ? " active" : "")}
-                  onClick={() => setFilters({ ...filters, tech_talk: !filters["tech_talk"] })}>
+                <button
+                  className={ "filter1" + (filters["tech_talk"] ? " active" : "") }
+                  onClick={() => setFilters({ ...filters, tech_talk: !filters["tech_talk"] })}
+                >
                   Tech Talk
                 </button>
-                <button className={"filter2 " + (filters["workshop"] ? " active" : "")}
-                  onClick={() => setFilters({ ...filters, workshop: !filters["workshop"] })}>
+                <button
+                  className={ "filter2 " + (filters["workshop"] ? " active" : "") }
+                  onClick={() => setFilters({ ...filters, workshop: !filters["workshop"] })}
+                >
                   Workshop
                 </button>
-                <button className={"filter3" + (filters["activity"] ? " active" : "")}
-                  onClick={() => setFilters({ ...filters, activity: !filters["activity"] })}>
+                <button
+                  className={"filter3" + (filters["activity"] ? " active" : "")}
+                  onClick={() => setFilters({ ...filters, activity: !filters["activity"] })}
+                >
                   Activity
                 </button>
               </div>
               <div className="sort">
                 <fieldset className="sortWrapper">
                   <legend className="legend">Sort By</legend>
-                  <button className={sort ? "advancedButton" : "advancedButtonOn"} onClick={() => setSort(!sort)}>
+                  <button
+                    className={sort ? "advancedButton" : "advancedButtonOn"}
+                    onClick={() => setSort(!sort)}
+                  >
                     Date
                   </button>
-                  <button className={!sort ? "advancedButton" : "advancedButtonOn"} onClick={() => setSort(!sort)}>
+                  <button
+                    className={!sort ? "advancedButton" : "advancedButtonOn"}
+                    onClick={() => setSort(!sort)}
+                  >
                     Event
                   </button>
                 </fieldset>
               </div>
             </section>
           ) : (
-            <section className="closedAdvancedMenuContainer"/>
+            <section className="closedAdvancedMenuContainer" />
           )}
         </section>
         {/* Parallax Images */}
         <ParallaxImage url={gear} offsetRate={0.02} top={10} rotate={0.08} className={"left"}/>
         <ParallaxImage url={triangle} offsetRate={0.015} top={80} rotate={0.065} className={"right"}/>
-        <ParallaxImage url={gear} offsetRate={0.02} top={145} rotate={0.08} className={"left"}/>
-        <ParallaxImage url={triangle} offsetRate={0.015} top={230} rotate={0.065} className={"right"}/>
-        {/* Event Dashboard with all event cards */}
+        {/* Event Cards */}
         <div className="eventContainer">
           {events.map((event) => (
             <EventCard
@@ -145,14 +161,11 @@ const EventsDisplay = () => {
               date={getDate(event.start_time, true)}
               type={event.event_type}
               start={convertToTime(event.start_time)}
-              speakers={event.speakers.map((speaker) => speaker.name)}
               onClick={() => setSelectEvent(event)}
             />
           ))}
         </div>
-        {/* Expanded Event Information:
-              - Toggled on when an event card is clicked
-        */}
+        {/* Expanded Event Tab */}
         {selectEvent && (
           <EventExpanded
             title={selectEvent.name}

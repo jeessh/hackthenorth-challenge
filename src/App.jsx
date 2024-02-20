@@ -1,8 +1,8 @@
 import React from "react";
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
 import { Routes, Route, Navigate } from "react-router-dom";
-import EventsDisplay from "./pages/EventsDisplay/EventsDisplay";
-import Landing from "./pages/Landing/Landing";
+import EventsDisplay from "./pages/EventsDisplay";
+import Landing from "./pages/Landing";
 
 import "./styles/globals.css";
 

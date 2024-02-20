@@ -17,9 +17,9 @@ const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
       onClick={() => onClickRelated(id)}
     >
       <div>
-        <h3 className={"relatedEmoji" + typeClass(type)}>
+        <div className={"relatedEmoji" + typeClass(type)}>
           {formatEmoji(type)}
-        </h3>
+        </div>
         <h4 className={"relatedTag"}>
           {getDate(start, true)} {convertToTime(start)}
         </h4>

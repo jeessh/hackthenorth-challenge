@@ -7,11 +7,12 @@ const EventCard = ({ title, type, date, start, onClick }) => {
   const handleClick = () => {
     onClick();
   };
+  
   return (
     <div
       className="cardWrapper"
       onClick={handleClick}
-      style={{ border: `3.5px solid ${cardBorder(type)}`}}
+      style={{ border: `3.5px solid ${cardBorder(type)}` }}
     >
       <div className="cardTags">
         <h4 className={"eventType" + typeClass(type)}>{formatType(type)}</h4>

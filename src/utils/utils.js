@@ -15,6 +15,14 @@ export const getDate = (unix, format) => {
   return converted;
 };
 
+export const sortByDate = (a, b) => {
+  return a.start_time - b.start_time;
+};
+
+export const sortByType = (a, b) => {
+  return a.event_type.localeCompare(b.event_type);
+};
+
 export const formatType = (type) => {
   if (type === "tech_talk") {
     return "Tech Talk 🎙️";
