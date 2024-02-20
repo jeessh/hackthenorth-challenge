@@ -19,8 +19,7 @@ const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
   }, [offset]);
 
   return (
-    // className: left / right
-    // window.innerWidth >= 768 ? (
+
       <div className={className}>
         <img
           src={img}
@@ -32,9 +31,7 @@ const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
           }}
         />
       </div>
-    // ) : (
-    //   <div></div>
-    // )
+
   );
 };
 
