@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./ParallaxImage.css";
+import gear from "../../assets/GradientGear.png";
+import triangle from "../../assets/Triangle.png";
 
-const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
+const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
   const [offset, setOffset] = useState(0);
   const handleScroll = () => {
     setOffset(window.scrollY);
   };
+  const img = image === "gear" ? gear : triangle;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, true);
@@ -17,10 +20,10 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
 
   return (
     // className: left / right
-    window.innerWidth >= 768 ? (
+    // window.innerWidth >= 768 ? (
       <div className={className}>
         <img
-          src={url}
+          src={img}
           alt="parallax"
           className="parallax"
           style={{
@@ -29,14 +32,14 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
           }}
         />
       </div>
-    ) : (
-      <div></div>
-    )
+    // ) : (
+    //   <div></div>
+    // )
   );
 };
 
 ParallaxImage.propTypes = {
-  url: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   offsetRate: PropTypes.number.isRequired,
   top: PropTypes.number,
   rotate: PropTypes.number,
