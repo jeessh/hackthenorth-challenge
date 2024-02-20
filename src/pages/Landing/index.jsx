@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-import gear from "../../assets/GradientGear.png";
+import gear from "../../assets/GradientGear.webp";
 import "./Landing.css";
 
 const Landing = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import gear from "../../assets/GreyGear.png";
+import gear from "../../assets/GreyGear.webp";
 import { useAuth0 } from "@auth0/auth0-react";
 import PropTypes from "prop-types";
 import "./SideBar.css";

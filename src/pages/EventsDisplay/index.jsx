@@ -8,8 +8,8 @@ import EventCard from "../../components/EventCard";
 import EventExpanded from "../../components/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage";
 import { convertToTime, getDate, sortByDate, sortByType } from "../../utils/utils";
-import gear from "../../assets/GradientGear.png";
-import triangle from "../../assets/Triangle.png";
+import gear from "../../assets/GradientGear.webp";
+import triangle from "../../assets/GradientTriangle.webp";
 import "./EventsDisplay.css";
 
 const EventsDisplay = () => {
