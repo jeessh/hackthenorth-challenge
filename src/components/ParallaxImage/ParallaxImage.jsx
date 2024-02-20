@@ -4,7 +4,7 @@ import "./ParallaxImage.css";
 import gear from "../../assets/GradientGear.png";
 import triangle from "../../assets/Triangle.png";
 
-const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
+const ParallaxImage = ({ image,className }) => {
   const [offset, setOffset] = useState(0);
   const handleScroll = () => {
     setOffset(window.scrollY);
@@ -25,10 +25,10 @@ const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
           src={img}
           alt="parallax"
           className="parallax"
-          style={{
-            transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
-            marginTop: `${top}em`,
-          }}
+          // style={{
+          //   transform: `translateY(${offset * offsetRate}rem) rotateZ(${offset * rotate}deg)`,
+          //   marginTop: `${top}em`,
+          // }}
         />
       </div>
 
@@ -37,9 +37,6 @@ const ParallaxImage = ({ image, offsetRate, top, rotate, className }) => {
 
 ParallaxImage.propTypes = {
   image: PropTypes.string.isRequired,
-  offsetRate: PropTypes.number.isRequired,
-  top: PropTypes.number,
-  rotate: PropTypes.number,
   className: PropTypes.string,
 };
 
