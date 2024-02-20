@@ -64,9 +64,9 @@ const EventExpanded = ({
                     key={event.id}
                     id={event.id}
                     start={event.start_time}
-                    date={event.date}
                     title={event.name}
                     type={event.event_type}
+                    speakers={event.speakers}
                     onClickRelated={onClickRelated}
                   />
                 ))}

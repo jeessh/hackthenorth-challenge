@@ -4,10 +4,12 @@ import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <SpeedInsights />
     <Router>
       <Auth0Provider
         domain="dev-ruci46tz0uzhgmcu.us.auth0.com"

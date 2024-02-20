@@ -16,7 +16,7 @@
 
 .relatedEventsContainer:has(.relatedContainer:hover)
   .relatedContainer:not(:hover) {
-  filter: brightness(0.5) saturate(0.25);
+    filter: brightness(0.6) grayscale(0.25);
 }
 
 .relatedContainer:hover {
@@ -61,10 +61,16 @@
 .relatedContent {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: end;
   margin-top: 30px;
   padding: 25px;
   padding-bottom: 15px;
+}
+
+.relatedContent h3 {
+  margin-top: 0;
+  font-weight: 100;
 }
 
 @media screen and (max-width: 768px) {
