@@ -1,4 +1,4 @@
-.cardWrapper {
+.cardContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,13 +13,13 @@
   transition: 0.25s ease-in;
   padding-top: 100px;
 }
-.cardWrapper:hover {
+.cardContainer:hover {
   cursor: pointer;
   transform: translateY(-5px);
   transition: 0.2s ease-out;
 }
 
-.eventContainer:has(.cardWrapper:hover) .cardWrapper:not(:hover) {
+.eventContainer:has(.cardContainer:hover) .cardContainer:not(:hover) {
   filter: brightness(0.6) grayscale(0.25);
 }
 
@@ -54,21 +54,21 @@
 }
 
 @media screen and (max-width: 768px) {
-  .cardWrapper {
+  .cardContainer {
     height: auto;
     padding-top: 80px;
   }
-  .eventContainer:has(.cardWrapper:hover) .cardWrapper:not(:hover) {
+  .eventContainer:has(.cardContainer:hover) .cardContainer:not(:hover) {
     filter: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cardWrapper,
-  .cardWrapper:hover {
+  .cardContainer,
+  .cardContainer:hover {
     transition: none;
   }
-  .eventContainer:has(.cardWrapper:hover) .cardWrapper:not(:hover) {
+  .eventContainer:has(.cardContainer:hover) .cardContainer:not(:hover) {
     filter: none;
   }
 }

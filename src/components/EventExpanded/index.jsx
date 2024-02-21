@@ -12,15 +12,14 @@ const EventExpanded = (props) => {
   const { isAuthenticated } = useAuth0();
   const { data } = useQuery(GET_EVENTS);
 
+  // Retrieving related events to the current expanded event
   let relatedEvents = data.sampleEvents.filter((event) => props.related.includes(event.id));
   relatedEvents = isAuthenticated ? relatedEvents : relatedEvents.filter((event) => event.permission === "public");
-
-  useEffect(() => {
-  }, [props.sidebarOpen]);
 
   const handleClose = () => {
     props.onClick();
   };
+  
   const handleRelatedClick = (e) => {
     e.stopPropagation();
   };

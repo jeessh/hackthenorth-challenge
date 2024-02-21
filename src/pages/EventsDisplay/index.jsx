@@ -7,6 +7,7 @@ import SideBar from "../../components/SideBar";
 import EventCard from "../../components/EventCard";
 import EventExpanded from "../../components/EventExpanded";
 import ParallaxImage from "../../components/ParallaxImage";
+
 import { convertToTime, getDate, sortByDate, sortByType } from "../../utils/utils";
 import gear from "../../assets/GradientGear.webp";
 import triangle from "../../assets/GradientTriangle.webp";
@@ -14,9 +15,8 @@ import "./EventsDisplay.css";
 
 const EventsDisplay = () => {
   const { loading, data } = useQuery(GET_EVENTS);
-  const [events, setEvents] = useState([]);
   const { isAuthenticated } = useAuth0();
-
+  const [events, setEvents] = useState([]);
   const [selectEvent, setSelectEvent] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -90,7 +90,7 @@ const EventsDisplay = () => {
             onChange={handleSearch}
           />
         </div>
-        {/* Filters Bar */}
+        {/* Advanced Search Bar (Filter + Sort) */}
         <section className="advancedSearchContainer">
           <div
             className="advancedSearchToggle"

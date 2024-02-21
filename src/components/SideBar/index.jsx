@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 import "./SideBar.css";
 
 const SideBar = ({ onClick }) => {
-  const [click, setClick] = useState(true);
+  const [sidebar, setSidebar] = useState(true);
   const { isAuthenticated } = useAuth0();
   const { logout, loginWithRedirect } = useAuth0();
 
-  const handleClick = () => {
-    setClick(!click);
+  const handleOpen = () => {
+    setSidebar(!sidebar);
     onClick();
   };
   const handleLogout = async () => {
@@ -31,7 +31,7 @@ const SideBar = ({ onClick }) => {
 
   return (
     <>
-      <div className={"sideContainer" + (click ? " closeSide" : "")}>
+      <div className={"sideContainer" + (sidebar ? " closeSide" : "")}>
         <a className="sideItemWrapper" href="/">
           <h1 className="sideItem"> 🏠 HOME</h1>
         </a>
@@ -44,10 +44,10 @@ const SideBar = ({ onClick }) => {
           </h1>
         </a>
       </div>
-      <div className={"filler" + (click ? " closeFiller" : "")} />
+      <div className={"filler" + (sidebar ? " closeFiller" : "")} />
       <img
-        className={"gear" + (click ? " closeGear" : "")}
-        onClick={handleClick}
+        className={"gear" + (sidebar ? " closeGear" : "")}
+        onClick={handleOpen}
         src={gear}
       />
     </>

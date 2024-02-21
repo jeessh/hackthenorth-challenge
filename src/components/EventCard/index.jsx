@@ -10,7 +10,7 @@ const EventCard = ({ title, type, date, start, onClick }) => {
   
   return (
     <div
-      className="cardWrapper"
+      className="cardContainer"
       onClick={handleClick}
       style={{ border: `3.5px solid ${cardBorder(type)}` }}
     >
