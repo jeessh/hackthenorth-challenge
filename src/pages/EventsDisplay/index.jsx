@@ -37,15 +37,15 @@ const EventsDisplay = () => {
     if (data) {
       let output = [...data.sampleEvents];
 
-      // Sorting Events:
-      output = output.sort((a, b) => sort ? sortByType(a, b) : sortByDate(a, b));
-
       // Filtering Events:
       output = output.filter((event) =>
         isAuthenticated
           ? filters[event.event_type]
           : event.permission === "public" && filters[event.event_type],
       );
+
+      // Sorting Events:
+      output = output.sort((a, b) => sort ? sortByType(a, b) : sortByDate(a, b));
 
       // Searching Events:
       output = output.filter((event) => {
@@ -127,7 +127,7 @@ const EventsDisplay = () => {
                   Activity
                 </button>
               </div>
-              <div className="sort">
+              <div className="sortContainer">
                 <fieldset className="sortWrapper">
                   <legend className="legend">Sort By</legend>
                   <button

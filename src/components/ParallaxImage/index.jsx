@@ -4,6 +4,7 @@ import "./ParallaxImage.css";
 
 const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   const [offset, setOffset] = useState(0);
+
   const handleScroll = () => {
     setOffset(window.scrollY);
   };
@@ -16,8 +17,8 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
   }, [offset]);
 
   return (
-    // className: left / right
-    // window.innerWidth >= 768 ? (
+    // Disable parallax images if on mobile viewport
+    window.innerWidth >= 768 ? (
       <div className={className}>
         <img
           src={url}
@@ -29,9 +30,9 @@ const ParallaxImage = ({ url, offsetRate, top, rotate, className }) => {
           }}
         />
       </div>
-    // ) : (
-    //   <div></div>
-    // )
+    ) : (
+      <div></div>
+    )
   );
 };
 

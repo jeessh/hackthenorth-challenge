@@ -20,6 +20,6 @@
 @media (prefers-reduced-motion: reduce) {
   .parallax {
     transition: none;
-    transform: rotateZ(0);
+    transform: rotateZ(25deg)!important;
   }
 }

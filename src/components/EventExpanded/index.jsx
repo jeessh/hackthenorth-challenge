@@ -41,7 +41,7 @@ const EventExpanded = (props) => {
             <a className="externalLink" href={props.url} target="_blank" rel="noreferrer">
               Join the Event!
             </a>
-          { // Display related events if there are any
+          { // Display related events if they exist
           relatedEvents.length > 0 && (
             <>
               <h2 className="relatedEventsHeader">🔗 Related Events:</h2>

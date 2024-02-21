@@ -14,14 +14,14 @@ const SideBar = ({ onClick }) => {
     onClick();
   };
   const handleLogout = async () => {
-    // User is currently logged in, log them out
+    // User is currently logged in: log them out
     if (isAuthenticated) {
       logout({
         logoutParams: {
           returnTo: window.location.origin,
         },
       });
-      // User is not logged in, send to login
+      // User is not logged in: send to login
     } else {
       await loginWithRedirect({
         appState: { returnTo: "/events" },

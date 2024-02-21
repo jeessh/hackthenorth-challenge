@@ -25,7 +25,7 @@ const Landing = () => {
     }
   };
 
-  // Selected Visitor
+  // Selected Visitor option
   const handleVisitClick = () => {
     navigate("/events");
   };

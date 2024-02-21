@@ -142,7 +142,7 @@
   background-color: var(--activityEvent);
 }
 
-.sort {
+.sortContainer {
   display: grid;
   align-items: center;
   height: 100%;
@@ -234,7 +234,7 @@
   }
   .dashboardTitle {
     font-size: 8vw;
-    margin-top: 3em;
+    margin-top: 2em;
   }
   .searchBar {
     width: 80%;

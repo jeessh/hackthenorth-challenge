@@ -12,7 +12,7 @@ import "./EventRelatedCard.css";
 const EventRelatedCard = ({ id, type, title, start, onClickRelated }) => {
   return (
     <div
-      className="relatedContainer"
+      className="relatedWrapper"
       style={{ border: `3.5px solid ${cardBorder(type)}` }}
       onClick={() => onClickRelated(id)}
     >
