@@ -20,7 +20,7 @@
 }
 
 .eventContainer:has(.cardContainer:hover) .cardContainer:not(:hover) {
-  filter: brightness(0.6) grayscale(0.25);
+  filter: brightness(0.8) grayscale(0.25);
 }
 
 .cardTags {

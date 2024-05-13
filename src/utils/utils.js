@@ -23,7 +23,7 @@ export const sortByType = (a, b) => {
   return a.event_type.localeCompare(b.event_type);
 };
 
-export const formatType = (type) => {
+export const formatType = (type) => { 
   if (type === "tech_talk") {
     return "Tech Talk 🎙️";
   } else if (type === "workshop") {

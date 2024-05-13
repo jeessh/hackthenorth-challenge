@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./EventExpanded.css";
 import EventRelatedCard from "../EventRelatedCard";
@@ -19,7 +19,7 @@ const EventExpanded = (props) => {
   const handleClose = () => {
     props.onClick();
   };
-  
+
   const handleRelatedClick = (e) => {
     e.stopPropagation();
   };
