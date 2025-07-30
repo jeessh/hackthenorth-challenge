@@ -7,7 +7,7 @@ import Landing from "./pages/Landing";
 import "./styles/globals.css";
 
 const link = new HttpLink({
-  uri: "https://corsproxy.io/?https://api.hackthenorth.com/v3/graphql"
+  uri: "https://corsproxy.io/?https://api.hackthenorth.com/v3/frontend-challenge"
 });
 
 const client = new ApolloClient({
